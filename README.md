@@ -203,7 +203,6 @@ You can define an "auth" section in each of your ansible tasks, like so :
 
 
 ```
----
 - hosts: openstack-server
   vars:
       auth_dict:
@@ -218,9 +217,27 @@ You can define an "auth" section in each of your ansible tasks, like so :
   become_method: sudo
   tasks:
   - os_project:
-      auth: "{{  auth_dict  }}"
+      auth: "{{ auth_dict }}"
       state: present
       name: demoproject
+```
 
+Also apparently Ansible also respects the Environmental variable that are defined here : 
 
-sdfdsf
+https://wiki.openstack.org/wiki/OpenStackClient/Authentication.
+
+If you chose the clouds.yaml method, which I prefer as you credentials are secure on the server behind ssh, then the above playbook reduces to : 
+
+```asciidoc
+- hosts: openstack-server
+  remote_user: justin
+  become: yes
+  become_method: sudo
+  tasks:
+  - os_project:
+      cloud: default
+      state: present
+      name: demoproject
+```
+
+Where "cloud: default" simply references the "default" cloud defined in clouds.yaml above. BUt your cloud could be called anything ....
