@@ -174,7 +174,7 @@ https://docs.openstack.org/shade/latest/
 
 Shade seen to act as a bridge between ansible and open stack. 
 
-In order for shade to work it need to know how and what to authenticate with. to do that this is used : 
+In order for shade to work it need to know how and what to authenticate with, to do that, this is used : 
 
 https://pypi.python.org/pypi/os-client-config
 
@@ -198,3 +198,27 @@ clouds:
 ```
 
 This defines a cloud called "default", the name "default" is arbitrary, it's simply a tag to group credentials and be used in playbooks.
+The data in this file is used by shade/os-client-config to authenticate with your Openstack setup. There are other ways to provide this data.
+You can define an "auth" section in each of your ansible tasks, like so :
+
+```$xslt
+---
+- hosts: openstack-server
+  vars:
+      auth_dict:
+        password: <password>
+        auth_url: http://<identity host>:5000/v3
+        username: admin
+        project_name: admin
+        user_domain_name: default
+        project_domain_name: default
+  remote_user: justin
+  become: yes
+  become_method: sudo
+  tasks:
+  - os_project:
+      auth: "{{  auth_dict  }}"
+      state: present
+      name: demoproject
+
+```
