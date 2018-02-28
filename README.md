@@ -160,3 +160,41 @@ systemctl restart neutron-dhcp-agent.service
 
 ssl console issues
 https://ask.openstack.org/en/question/6192/horizon-unable-to-view-vnc-console-in-iframe-with-ssl/
+
+
+## Openstack with Ansible
+
+This is a bit complicated, you can't just point ansible and your openstack setup and expect it to work. 
+
+You need to configure the server(s) that host open stack.
+
+Firstly shade needs to be deployed.
+
+https://docs.openstack.org/shade/latest/
+
+Shade seen to act as a bridge between ansible and open stack. 
+
+In order for shade to work it need to know how and what to authenticate with. to do that this is used : 
+
+https://pypi.python.org/pypi/os-client-config
+
+If you run your playbooks as root you need to provide the follwing file in root's $HOME :
+
+/root/.config/openstack/clouds.yaml
+
+Heres an example of what the file needs to contain :
+
+```
+clouds:
+  default:
+    auth:
+      auth_url: https://<identity.example.com>:5000/v3
+      password: <password>
+      project_name: admin
+      username: admin
+      user_domain_name: default
+      project_domain_name: default
+    region_name: RegionOne
+```
+
+This defines a cloud called "default", the name "default" is arbitrary, it's simply a tag to group credentials and be used in playbooks.

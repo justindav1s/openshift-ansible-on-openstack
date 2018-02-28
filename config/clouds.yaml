@@ -1,0 +1,10 @@
+clouds:
+  default:
+    auth:
+      auth_url: https://<identity.example.com>:5000/v3
+      password: <password>
+      project_name: admin
+      username: admin
+      user_domain_name: default
+      project_domain_name: default
+    region_name: RegionOne

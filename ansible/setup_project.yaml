@@ -1,0 +1,22 @@
+---
+- hosts: openstack-server
+  vars:
+  remote_user: justin
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: create project
+    os_project:
+      cloud: default
+      endpoint_type: admin
+      state: present
+      name: openshift
+
+  - name: create user
+    os_user:
+      cloud: default
+      state: present
+      name: openshift
+      password: openshift
+      domain: default
+      default_project: openshift

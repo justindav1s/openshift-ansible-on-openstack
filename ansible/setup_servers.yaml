@@ -1,0 +1,19 @@
+---
+- hosts: openstack-server
+  vars:
+  remote_user: justin
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Create a new instance and attaches to a network and passes metadata to the instance
+    os_server:
+      state: present
+      cloud: default
+      name: vm4
+      image: "RHEL 7.4"
+      key_name: kp1
+      timeout: 200
+      flavor: "m1.small"
+      security_groups: default
+      nics:
+        - net-name: "admin-internal"
