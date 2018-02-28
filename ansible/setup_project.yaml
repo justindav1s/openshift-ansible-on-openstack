@@ -11,6 +11,7 @@
       endpoint_type: admin
       state: present
       name: openshift
+      description: "Let's host Openshift"
 
   - name: create user
     os_user:
@@ -21,3 +22,18 @@
       name: openshift
       password: openshift
       default_project: openshift
+
+  - name: copy public key to openstack server to keep shade happy
+    copy:
+      src: /Users/jusdavis/.ssh/id_rsa.pub
+      dest: /root/openshift.pub
+      owner: root
+      group: root
+      mode: 0600
+
+  - name: add a key pair
+    os_keypair:
+      cloud: default
+      state: present
+      name: openshift_key
+      public_key_file: /root/openshift.pub
