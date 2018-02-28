@@ -1,0 +1,94 @@
+---
+- hosts: openstack-server
+  vars:
+  remote_user: justin
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Create a security group
+    os_security_group:
+      cloud: openshift_cloud
+      state: present
+      name: openshift-sg
+      description: security group for openshift servers
+
+  - name: Delete a egress IPv4 TCP rule covering all ports
+    os_security_group_rule:
+      state: absent
+      cloud: openshift_cloud
+      security_group: openshift-sg
+      ethertype: IPv4
+      direction: egress
+
+  - name: Delete a egress IPv6 TCP rule covering all ports
+    os_security_group_rule:
+      state: absent
+      cloud: openshift_cloud
+      security_group: openshift-sg
+      ethertype: IPv6
+      direction: egress
+
+  - name: Create a ingress TCP rule covering all ports
+    os_security_group_rule:
+      cloud: openshift_cloud
+      security_group: openshift-sg
+      protocol: tcp
+      port_range_min: 1
+      port_range_max: 65535
+      remote_ip_prefix: 0.0.0.0/0
+      direction: ingress
+
+  - name: Create a egress TCP rule covering all ports
+    os_security_group_rule:
+      cloud: openshift_cloud
+      security_group: openshift-sg
+      protocol: tcp
+      port_range_min: 1
+      port_range_max: 65535
+      remote_ip_prefix: 0.0.0.0/0
+      direction: egress
+
+  - name: Create an externally accessible network named 'ext_network'.
+    os_network:
+      cloud: openshift_cloud
+      state: present
+      name: openshift_ext_net
+      external: true
+      provider_physical_network: extnet
+      provider_network_type: flat
+
+  - name: Create a new (or update an existing) subnet on the specified network
+    os_subnet:
+      state: present
+      cloud: openshift_cloud
+      network_name: openshift_ext_net
+      name: openshift_ext_subnet
+      cidr: 192.168.0.128/27
+      gateway_ip: 192.168.0.1
+      enable_dhcp: False
+      allocation_pool_start: 192.168.0.129
+      allocation_pool_end: 192.168.0.158
+      dns_nameservers:
+        - 192.168.0.1
+
+  - name: Create an private network
+    os_network:
+      cloud: openshift_cloud
+      state: present
+      name: openshift_int_net
+      project: openshift
+      external: false
+
+  - name: Create a new private subnet on the specified network
+    os_subnet:
+      state: present
+      cloud: openshift_cloud
+      network_name: openshift_int_net
+      name: openshift_int_subnet
+      cidr: 10.0.10.0/24
+      gateway_ip: 10.0.10.1
+      enable_dhcp: True
+      allocation_pool_start: 10.0.10.2
+      allocation_pool_end: 10.0.10.64
+      dns_nameservers:
+        - 192.168.0.1

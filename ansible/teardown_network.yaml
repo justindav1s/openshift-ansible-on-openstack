@@ -1,0 +1,44 @@
+---
+- hosts: openstack-server
+  vars:
+  remote_user: justin
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Delete a security group
+    os_security_group:
+      cloud: default
+      state: absent
+      name: openshift-sg
+      description: security group for openshift servers
+
+  - name: Delete a new (or update an existing) subnet on the specified network
+    os_subnet:
+      state: absent
+      cloud: default
+      network_name: openshift_ext_net
+      name: openshift_ext_subnet
+
+  - name: Delete an externally accessible network named 'ext_network'.
+    os_network:
+      cloud: default
+      state: absent
+      name: openshift_ext_net
+      external: true
+      provider_physical_network: extnet
+      provider_network_type: flat
+
+  - name: Delete a new private subnet on the specified network
+    os_subnet:
+      state: absent
+      cloud: default
+      network_name: openshift_int_net
+      name: openshift_int_subnet
+
+  - name: Delete an private network
+    os_network:
+      cloud: default
+      state: absent
+      name: openshift_int_net
+      #project: openshift
+

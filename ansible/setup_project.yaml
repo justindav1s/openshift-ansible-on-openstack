@@ -23,6 +23,13 @@
       password: openshift
       default_project: openshift
 
+  - os_user_role:
+      cloud: default
+      user: openshift
+      role: admin
+      project: openshift
+      endpoint_type: admin
+
   - name: copy public key to openstack server to keep shade happy
     copy:
       src: /Users/jusdavis/.ssh/id_rsa.pub
@@ -33,7 +40,7 @@
 
   - name: add a key pair
     os_keypair:
-      cloud: default
+      cloud: openshift_cloud
       state: present
       name: openshift_key
       public_key_file: /root/openshift.pub
