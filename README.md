@@ -133,7 +133,7 @@ packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:
 ```
 
 
-####Useful links : 
+#### Useful links : 
 
 https://ask.openstack.org/en/question/56257/failed-to-intialize-kvm-hypervisor-permission-denied/
 
