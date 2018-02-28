@@ -136,9 +136,13 @@ packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:
 ####Useful links : 
 
 https://ask.openstack.org/en/question/56257/failed-to-intialize-kvm-hypervisor-permission-denied/
+
 https://docs.openstack.org/cinder/queens/admin/blockstorage-manage-volumes.html
+
 https://opstadmin.wordpress.com/2016/05/08/cinder-default-configuration-by-applied-by-packstack/
+
 https://www.youtube.com/watch?v=Udtr1zJhcrw
+
 https://youtu.be/eOlIB323c8s
 
 
