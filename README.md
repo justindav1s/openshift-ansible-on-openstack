@@ -1,10 +1,9 @@
 # Openstack
-Assorted adventures with Openstack
+## Assorted adventures with Openstack
 
-Using Packstack :
+### Using Packstack :
 
 https://www.rdoproject.org/install/packstack/
-
 
 Make sure you have loads of room in /var as that is where cinder volumes
 
@@ -13,13 +12,15 @@ take note of your nic mac address and the interface name asigned by your OS.
 All this was done on Centos 7
 
 Switch off NetworkManager and use the oldstyle network services.
+
 Switch off SELinux.
 
 mac : 30:3c:23:5f:f3:16
+
 interface : enp0s31f6 
 
 vi /etc/sysconfig/network-scripts/ifcfg-enp0s31f6
-
+```
 TYPE=Ethernet
 BOOTPROTO=dhcp
 ONBOOT=yes
@@ -34,39 +35,57 @@ HWADDR=30:9c:23:5e:f3:16
 PEERDNS=yes
 IPV6_PEERDNS=yes
 IPV6_PEERROUTES=yes
+```
 
 vi /etc/sysconfig/network
 
+```
 NETWORKING=yes
 HOSTNAME=justin-centos7
 GATEWAY=192.168.0.1
+```
+
 
 vi /etc/sysconfig/selinux
+
+set : 
+
+SELINUX=enforcing
+
 reboot
 
+```
 sestatus
+
+systemctl enable sshd
+systemctl start sshd
 systemctl disable firewalld
 systemctl stop firewalld
 systemctl disable NetworkManager
 systemctl stop NetworkManager
-reboot
-
 systemctl enable network
 systemctl start network
+```
+
+reboot
 
 test network
 
-systemctl enable sshd
-systemctl start sshd
 
+```
 yum install -y centos-release-openstack-pike
 yum-config-manager --enable openstack-pike
 yum update -y
 yum install -y openstack-packstack
+```
 
-packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ovs-bridge-interfaces=br-ex:eth0 --os-neutron-ml2-type-drivers=vxlan,flat --cinder-volumes-size=500G
+Configure network bride that will integrate with you wider LAN
 
-[root@localhost ~]# vi /etc/sysconfig/network-scripts/ifcfg-br-ex
+```
+vi /etc/sysconfig/network-scripts/ifcfg-br-ex
+
+add : 
+
 DEVICE=br-ex
 DEVICETYPE=ovs
 TYPE=OVSBridge
@@ -78,7 +97,10 @@ GATEWAY=192.168.0.1
 DNS1=192.168.0.1
 ONBOOT=yes
 
+
 vi /etc/sysconfig/network-scripts/ifcfg-enp0s31f6
+
+delete : 
 
 TYPE=Ethernet
 BOOTPROTO=dhcp
@@ -95,15 +117,23 @@ PEERDNS=yes
 IPV6_PEERDNS=yes
 IPV6_PEERROUTES=yes
 
-to
+replace with :
 
 DEVICE=enp0s31f6
 TYPE=OVSPort
 DEVICETYPE=ovs
 OVS_BRIDGE=br-ex
 ONBOOT=yes
+```
 
-Useful links : 
+run packstack with these settings for the network bridge and a larger area for Cinder
+
+``` 
+packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ovs-bridge-interfaces=br-ex:eth0 --os-neutron-ml2-type-drivers=vxlan,flat --cinder-volumes-size=500G
+```
+
+
+####Useful links : 
 
 https://ask.openstack.org/en/question/56257/failed-to-intialize-kvm-hypervisor-permission-denied/
 https://docs.openstack.org/cinder/queens/admin/blockstorage-manage-volumes.html
