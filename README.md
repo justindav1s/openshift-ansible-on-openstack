@@ -201,7 +201,8 @@ This defines a cloud called "default", the name "default" is arbitrary, it's sim
 The data in this file is used by shade/os-client-config to authenticate with your Openstack setup. There are other ways to provide this data.
 You can define an "auth" section in each of your ansible tasks, like so :
 
-```$xslt
+
+```
 ---
 - hosts: openstack-server
   vars:
@@ -221,4 +222,5 @@ You can define an "auth" section in each of your ansible tasks, like so :
       state: present
       name: demoproject
 
-```
+
+sdfdsf
