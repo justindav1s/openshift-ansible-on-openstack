@@ -14,9 +14,10 @@
 
   - name: create user
     os_user:
-      cloud: default
       state: present
+      cloud: default
+      endpoint_type: admin
+      domain: default
       name: openshift
       password: openshift
-      domain: default
       default_project: openshift

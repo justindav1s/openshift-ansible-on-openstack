@@ -5,7 +5,7 @@
   become: yes
   become_method: sudo
   tasks:
-  - name: Create a new instance and attaches to a network and passes metadata to the instance
+  - name: Create a new instance and attaches to a network
     os_server:
       state: present
       cloud: default

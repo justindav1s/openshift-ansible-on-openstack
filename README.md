@@ -226,7 +226,7 @@ Also apparently Ansible also respects the Environmental variable that are define
 
 https://wiki.openstack.org/wiki/OpenStackClient/Authentication.
 
-If you chose the clouds.yaml method, which I prefer as you credentials are secure on the server behind ssh, then the above playbook reduces to : 
+If you choose the clouds.yaml method, which I prefer as your credentials are secure on the server behind ssh, then the above playbook reduces to : 
 
 ```asciidoc
 - hosts: openstack-server
@@ -240,4 +240,60 @@ If you chose the clouds.yaml method, which I prefer as you credentials are secur
       name: demoproject
 ```
 
-Where "cloud: default" simply references the "default" cloud defined in clouds.yaml above. BUt your cloud could be called anything ....
+Where "cloud: default" simply references the "default" cloud defined in clouds.yaml above. But your cloud could be called anything ....
+
+After you've done all this, the os_* modules mostly work as documented, with the exception of things performed in identity domain, managing users and projects.
+
+So this works :
+
+```
+- hosts: openstack-server
+  remote_user: justin
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: create project
+    os_project:
+      cloud: default
+      endpoint_type: admin
+      state: present
+      name: openshift
+```      
+
+This does not : 
+
+```
+- hosts: openstack-server
+  remote_user: justin
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: create project
+    os_project:
+      cloud: default
+      state: present
+      name: openshift
+```
+  
+For these kinds of activity "endpoint_type: admin" must be included. This is however NOT required when creating servers eg :
+
+```
+- hosts: openstack-server
+  vars:
+  remote_user: justin
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Create a new instance and attaches to a network
+    os_server:
+      state: present
+      cloud: default
+      name: vm1
+      image: "RHEL 7.4"
+      key_name: kp1
+      timeout: 200
+      flavor: "m1.small"
+      security_groups: default
+      nics:
+        - net-name: "admin-internal"
+```     

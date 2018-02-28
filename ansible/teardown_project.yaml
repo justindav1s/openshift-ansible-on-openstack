@@ -7,15 +7,16 @@
   tasks:
   - name: delete project
     os_project:
+      state: absent
       cloud: default
       endpoint_type: admin
-      state: absent
       name: openshift
 
   - name: delete user
     os_user:
-      cloud: default
       state: absent
+      cloud: default
+      endpoint_type: admin
       name: openshift
       domain: default
       default_project: openshift
