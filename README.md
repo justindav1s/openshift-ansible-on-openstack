@@ -296,4 +296,6 @@ For these kinds of activity "endpoint_type: admin" must be included. This is how
       security_groups: default
       nics:
         - net-name: "admin-internal"
-```     
+```   
+
+Now lets setup some infrastructure on which to deploy Openshift ......... (see the ansible folder)  
