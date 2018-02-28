@@ -4,6 +4,7 @@
 *.iml
 # Log file
 *.log
+*.retry
 
 # BlueJ files
 *.ctxt
