@@ -6,4 +6,5 @@
   become_method: sudo
   gather_facts: no
   roles:
+  - teardown_network
   - teardown_project
