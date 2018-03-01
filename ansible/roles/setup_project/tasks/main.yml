@@ -51,7 +51,7 @@
 - name: add an image
   os_image:
     cloud: "{{ app_cloud }}"
-    name: "{{ image_name }}"
+    name: "{{ app_image_name }}"
     container_format: bare
     disk_format: "{{ image_format }}"
     state: present
