@@ -1,0 +1,25 @@
+---
+- hosts: openstack-server
+  vars:
+    ports: []
+  remote_user: justin
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Get private subnet port facts
+    os_port_facts:
+      cloud: default
+
+  - name: add port ids to fact list
+    set_fact:
+      ports: "{{ ports + [item.id] }}"
+    with_items: "{{ openstack_ports }}"
+
+  - name: debug fact list
+    debug:
+      msg: "{{ ports  }}"
+
+
+
+
+

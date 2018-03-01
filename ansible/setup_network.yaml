@@ -50,17 +50,17 @@
 
   - name: Create an externally accessible network named 'ext_network'.
     os_network:
-      cloud: openshift_cloud
+      cloud: default
       state: present
       name: openshift_ext_net
       external: true
       provider_physical_network: extnet
       provider_network_type: flat
 
-  - name: Create a new (or update an existing) subnet on the specified network
+  - name: Create a subnet on the external network
     os_subnet:
       state: present
-      cloud: openshift_cloud
+      cloud: default
       network_name: openshift_ext_net
       name: openshift_ext_subnet
       cidr: 192.168.0.128/27
@@ -92,3 +92,12 @@
       allocation_pool_end: 10.0.10.64
       dns_nameservers:
         - 192.168.0.1
+
+  - name: Creates a router attached to openshift_ext_net  and one internal subnet interface.
+    os_router:
+      cloud: openshift_cloud
+      state: present
+      name: openshift_router
+      network: openshift_ext_net
+      interfaces:
+        - openshift_int_subnet
