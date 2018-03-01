@@ -17,3 +17,7 @@ clouds:
       user_domain_name: default
       project_domain_name: default
     region_name: RegionOne
+ansible:
+  use_hostnames: True
+  expand_hostvars: False
+  fail_on_errors: True
