@@ -48,8 +48,8 @@
     name: "{{ app_public_key }}"
     public_key_file: "{{ remote_public_key }}"
 
- - name: add an image
-   os_image:
+- name: add an image
+  os_image:
     cloud: "{{ app_cloud }}"
     name: "{{ image_name }}"
     container_format: bare
