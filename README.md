@@ -50,7 +50,7 @@ vi /etc/sysconfig/selinux
 
 set : 
 
-SELINUX=enforcing
+SELINUX=disbaled
 
 reboot
 
