@@ -5,8 +5,18 @@
   become: yes
   become_method: sudo
   tasks:
-  - name: delete instance
+
+  - name: Delete an openshift master instance in private network
     os_server:
       state: absent
-      cloud: default
-      name: vm4
+      delete_fip: yes
+      cloud: openshift_cloud
+      wait: yes
+      name: "openshift-master"
+
+  - name: create a volume openshift master
+    os_volume:
+      state: absent
+      cloud: openshift_cloud
+      size: 10
+      display_name: master-docker-vol

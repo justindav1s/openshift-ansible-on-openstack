@@ -1,0 +1,15 @@
+---
+- name: "delete project {{ project }}"
+  os_project:
+    state: absent
+    cloud: "{{ admin_cloud }}"
+    endpoint_type: admin
+    name: "{{ project }}"
+
+- name: delete user
+  os_user:
+    state: absent
+    cloud: "{{ admin_cloud }}"
+    endpoint_type: admin
+    name: "{{ app_user }}"
+    domain: default

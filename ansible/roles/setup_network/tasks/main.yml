@@ -1,0 +1,97 @@
+---
+- name: Create a security group
+  os_security_group:
+    cloud: "{{ app_cloud }}"
+    state: present
+    name: "{{ app_sec_grp }}"
+    description: security group for openshift servers
+
+- name: Delete a egress IPv4 TCP rule covering all ports
+  os_security_group_rule:
+    state: absent
+    cloud: "{{ app_cloud }}"
+    security_group: "{{ app_sec_grp }}"
+    ethertype: IPv4
+    direction: egress
+
+- name: Delete a egress IPv6 TCP rule covering all ports
+  os_security_group_rule:
+    state: absent
+    cloud: "{{ app_cloud }}"
+    security_group: "{{ app_sec_grp }}"
+    ethertype: IPv6
+    direction: egress
+
+- name: Create a ingress TCP rule covering all ports
+  os_security_group_rule:
+    cloud: "{{ app_cloud }}"
+    security_group: "{{ app_sec_grp }}"
+    protocol: tcp
+    port_range_min: 1
+    port_range_max: 65535
+    remote_ip_prefix: 0.0.0.0/0
+    direction: ingress
+
+- name: Create a egress TCP rule covering all ports
+  os_security_group_rule:
+    cloud: "{{ app_cloud }}"
+    security_group: "{{ app_sec_grp }}"
+    protocol: tcp
+    port_range_min: 1
+    port_range_max: 65535
+    remote_ip_prefix: 0.0.0.0/0
+    direction: egress
+
+- name: Create an externally accessible network named 'ext_network'.
+  os_network:
+    cloud: "{{ admin_cloud }}"
+    state: present
+    name: "{{ openstack_ext_net_name }}"
+    external: true
+    provider_physical_network: "{{ ext_net_name }}"
+    provider_network_type: "{{ ext_net_type }}"
+
+- name: Create a subnet on the external network
+  os_subnet:
+    state: present
+    cloud: "{{ admin_cloud }}"
+    network_name: "{{ openstack_ext_net_name }}"
+    name: "{{ openstack_ext_subnet_name }}"
+    cidr: "{{ ext_net_cidr }}"
+    gateway_ip: "{{ ext_net_gateway }}"
+    enable_dhcp: False
+    allocation_pool_start: "{{ ext_net_pool_start }}"
+    allocation_pool_end: "{{ ext_net_pool_end }}"
+    dns_nameservers:
+        - "{{ ext_net_dns }}"
+
+- name: Create an private network
+  os_network:
+    cloud: "{{ app_cloud }}"
+    state: present
+    name: openshift_int_net
+    project: openshift
+    external: false
+
+- name: Create a new private subnet on the specified network
+  os_subnet:
+    state: present
+    cloud: "{{ app_cloud }}"
+    network_name: openshift_int_net
+    name: openshift_int_subnet
+    cidr: 10.0.10.0/24
+    gateway_ip: 10.0.10.1
+    enable_dhcp: True
+    allocation_pool_start: 10.0.10.2
+    allocation_pool_end: 10.0.10.64
+    dns_nameservers:
+      - 192.168.0.1
+
+- name: Creates a router attached to openshift_ext_net  and one internal subnet interface.
+  os_router:
+    cloud: "{{ app_cloud }}"
+    state: present
+    name: openshift_router
+    network: openshift_ext_net
+    interfaces:
+      - openshift_int_subnet

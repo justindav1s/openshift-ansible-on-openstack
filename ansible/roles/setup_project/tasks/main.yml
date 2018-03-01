@@ -1,0 +1,49 @@
+---
+- name: "create {{ project }} project"
+  os_project:
+    cloud: "{{ admin_cloud }}"
+    endpoint_type: admin
+    state: present
+    name: "{{ project }}"
+    description: "Let's host {{ project }}"
+
+- name: "create app user {{ app_user }}"
+  os_user:
+    state: present
+    cloud: "{{ admin_cloud }}"
+    endpoint_type: admin
+    domain: default
+    name: "{{ app_user }}"
+    password: "{{ app_user_password }}"
+    default_project: "{{ project }}"
+
+- name: "define app user {{ app_user }} roles"
+  os_user_role:
+    cloud: "{{ admin_cloud }}"
+    user: "{{ app_user }}"
+    role: "{{ app_user_role }}"
+    project: "{{ project }}"
+    endpoint_type: admin
+
+- name: "define admin user roles"
+  os_user_role:
+    cloud: "{{ admin_cloud }}"
+    user: admin
+    role: admin
+    project: "{{ project }}"
+    endpoint_type: admin
+
+- name: copy public key to openstack server to keep shade happy
+  copy:
+   src: "{{ public_key }}"
+   dest: "{{ remote_public_key }}"
+   owner: root
+   group: root
+   mode: 0600
+
+- name: add a key pair
+  os_keypair:
+    cloud: "{{ admin_cloud }}"
+    state: present
+    name: "{{ app_public_key }}"
+    public_key_file: "{{ remote_public_key }}"

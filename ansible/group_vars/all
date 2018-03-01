@@ -1,0 +1,35 @@
+remote_ssh_user: justin
+admin_cloud: default
+project: openshift
+
+app_cloud: "{{ project }}"
+app_user: "{{ project }}"
+app_user_password: openshift
+app_user_role: admin
+public_key: "/Users/jusdavis/.ssh/id_rsa.pub"
+app_public_key: "{{ project }}_key"
+remote_public_key: "/root/{{ app_public_key }}"
+
+#Network config. Other local LANS will like uses other IP ranges
+app_sec_grp: "{{ project }}-sg"
+openstack_ext_net_name: "{{ project }}_extnet"
+openstack_ext_subnet_name: "{{ project }}_extnet_subnet"
+openstack_int_net_name: "{{ project }}_intnet"
+openstack_int_subnet_name: "{{ project }}_intnet_subnet"
+
+
+ext_net_name: extnet
+ext_net_type: flat
+ext_net_c_class: 192.168.0
+ext_net_cidr: "{{ ext_lan_c_class }}.128/27"
+ext_net_gateway: "{{ ext_lan_c_class }}.1"
+ext_net_dns: "{{ ext_lan_c_class }}.1"
+ext_net_pool_start: "{{ ext_lan_c_class }}.129"
+ext_net_pool_end: "{{ ext_lan_c_class }}.158"
+
+int_net_c_class: 10.0.10
+int_net_cidr: "{{ int_lan_c_class }}.0/24"
+int_net_gateway: "{{ int_lan_c_class }}.1"
+int_net_dns: "{{ ext_lan_c_class }}.1"
+int_net_pool_start: "{{ int_lan_c_class }}.129"
+int_net_pool_end: "{{ int_lan_c_class }}.158"

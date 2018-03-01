@@ -1,0 +1,9 @@
+---
+- hosts: openstack-server
+  vars:
+  remote_user: "{{ remote_ssh_user }}"
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  roles:
+  - setup_project

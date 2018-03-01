@@ -5,15 +5,59 @@
   become: yes
   become_method: sudo
   tasks:
-  - name: Create a new instance and attaches to a network
+
+  - name: Create an openshift master instance in private network
     os_server:
       state: present
-      cloud: default
-      name: vm4
+      cloud: openshift_cloud
+      wait: yes
+      name: "openshift-master"
       image: "RHEL 7.4"
-      key_name: kp1
+      key_name: "openshift_key"
       timeout: 200
       flavor: "m1.small"
-      security_groups: default
-      nics:
-        - net-name: "admin-internal"
+      security_groups: "openshift-sg"
+      network: "openshift_int_net"
+
+  - name: create a volume openshift master
+    os_volume:
+      state: present
+      cloud: openshift_cloud
+      size: 10
+      display_name: master-docker-vol
+
+  - name: attach docker volume to openshift master
+    os_server_volume:
+      state: present
+      cloud: openshift_cloud
+      server: "openshift-master"
+      volume: master-docker-vol
+      device: /dev/vdb
+
+  - name: Create an openshift infra instance in private network
+    os_server:
+      state: present
+      cloud: openshift_cloud
+      wait: yes
+      name: "openshift-infra"
+      image: "RHEL 7.4"
+      key_name: "openshift_key"
+      timeout: 200
+      flavor: "m1.small"
+      security_groups: "openshift-sg"
+      network: "openshift_int_net"
+
+  - name: create a volume openshift master
+    os_volume:
+      state: present
+      cloud: openshift_cloud
+      size: 10
+      display_name: infra-docker-vol
+
+  - name: attach docker volume to openshift master
+    os_server_volume:
+      state: present
+      cloud: openshift_cloud
+      server: "openshift-infra"
+      volume: infra-docker-vol
+      device: /dev/vdb

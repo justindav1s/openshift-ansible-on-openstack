@@ -1,0 +1,19 @@
+---
+- hosts: openshift-master
+  vars:
+    ports: []
+  remote_user: cloud-user
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  tasks:
+  - name: "uname -a"
+    command: "uname -a"
+    register: myvar
+
+  - debug:
+      msg: "{{ myvar }}"
+
+  - debug:
+      msg: "{{ RHDN_USERNAME }}"
+
