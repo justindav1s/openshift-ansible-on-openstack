@@ -69,29 +69,29 @@
   os_network:
     cloud: "{{ app_cloud }}"
     state: present
-    name: openshift_int_net
-    project: openshift
+    name: "{{ openstack_int_net_name }}"
+    project: "{{ project }}"
     external: false
 
 - name: Create a new private subnet on the specified network
   os_subnet:
     state: present
     cloud: "{{ app_cloud }}"
-    network_name: openshift_int_net
-    name: openshift_int_subnet
-    cidr: 10.0.10.0/24
-    gateway_ip: 10.0.10.1
+    network_name: "{{ openstack_int_net_name }}"
+    name: "{{ openstack_int_subnet_name }}"
+    cidr: "{{ int_net_cidr }}"
+    gateway_ip: "{{ int_net_gateway }}"
     enable_dhcp: True
-    allocation_pool_start: 10.0.10.2
-    allocation_pool_end: 10.0.10.64
+    allocation_pool_start: "{{ int_net_pool_start }}"
+    allocation_pool_end: "{{ int_net_pool_end }}"
     dns_nameservers:
-      - 192.168.0.1
+      - "{{ int_net_dns }}"
 
-- name: Creates a router attached to openshift_ext_net  and one internal subnet interface.
+- name: "Create a router attached to {{ openstack_ext_net_name }}  connecting to internal subnet {{ openstack_int_subnet_name }}"
   os_router:
     cloud: "{{ app_cloud }}"
     state: present
-    name: openshift_router
-    network: openshift_ext_net
+    name: "{{ openstack_router }}"
+    network: "{{ openstack_ext_net_name }}"
     interfaces:
-      - openshift_int_subnet
+      - "{{ openstack_int_subnet_name }}"

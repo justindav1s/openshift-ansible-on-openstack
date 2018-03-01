@@ -16,7 +16,7 @@ openstack_ext_net_name: "{{ project }}_extnet"
 openstack_ext_subnet_name: "{{ project }}_extnet_subnet"
 openstack_int_net_name: "{{ project }}_intnet"
 openstack_int_subnet_name: "{{ project }}_intnet_subnet"
-
+openstack_router: "{{ project }}_router"
 
 ext_net_name: extnet
 ext_net_type: flat
