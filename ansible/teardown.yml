@@ -7,5 +7,6 @@
   become_method: sudo
   gather_facts: no
   roles:
+  - { role: teardown_server, server_name: "{{ project }}-master"}
   - teardown_network
   - teardown_project

@@ -11,25 +11,25 @@
     state: absent
     name: "{{ openstack_router }}"
 
-- name: Get private subnet port facts
-  os_port_facts:
-    cloud: "{{ app_cloud }}"
-
-- name: add port ids to fact list
-  set_fact:
-    ports: "{{ ports + [item.id] }}"
-  with_items: "{{ openstack_ports }}"
-
-- name: debug fact list
-  debug:
-    msg: "{{ ports  }}"
-
-- name: delete ports
-  os_port:
-    state: absent
-    cloud: "{{ app_cloud }}"
-    name: "{{ item }}"
-  with_items: "{{ ports }}"
+#- name: Get private subnet port facts
+#  os_port_facts:
+#    cloud: "{{ app_cloud }}"
+#
+#- name: add port ids to fact list
+#  set_fact:
+#    ports: "{{ ports + [item.id] }}"
+#  with_items: "{{ openstack_ports }}"
+#
+#- name: debug fact list
+#  debug:
+#    msg: "{{ ports  }}"
+#
+#- name: delete ports
+#  os_port:
+#    state: absent
+#    cloud: "{{ admin_cloud }}"
+#    name: "{{ item }}"
+#  with_items: "{{ ports }}"
 
 - name: Delete private subnet
   os_subnet:
@@ -44,12 +44,12 @@
     state: absent
     name: "{{ openstack_int_net_name }}"
 
-- name: Delete subnet on the external network
-  os_subnet:
-    state: absent
-    cloud: "{{ admin_cloud }}"
-    network_name: "{{ openstack_ext_net_name }}"
-    name: "{{ openstack_ext_subnet_name }}"
+#- name: Delete subnet on the external network
+#  os_subnet:
+#    state: absent
+#    cloud: "{{ admin_cloud }}"
+#    network_name: "{{ openstack_ext_net_name }}"
+#    name: "{{ openstack_ext_subnet_name }}"
 
 - name: Delete an external network
   os_network:

@@ -1,0 +1,14 @@
+---
+- name: "delete instance called {{ server_name }}"
+  os_server:
+    state: absent
+    cloud: "{{ app_cloud }}"
+    wait: yes
+    name: "{{ server_name }}"
+
+- name: delete a volume for docker
+  os_volume:
+    state: absent
+    cloud: "{{ app_cloud }}"
+    display_name: "{{ server_name }}-docker-vol"
+
