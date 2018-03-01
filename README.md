@@ -195,6 +195,19 @@ clouds:
       user_domain_name: default
       project_domain_name: default
     region_name: RegionOne
+  openshift_cloud:
+    auth:
+      auth_url: https://<identity.example.com>:5000/v3
+      password: <password>
+      project_name: openshift
+      username: openshift
+      user_domain_name: default
+      project_domain_name: default
+    region_name: RegionOne    
+ansible:
+  use_hostnames: True
+  expand_hostvars: False
+  fail_on_errors: True    
 ```
 
 This defines a cloud called "default", the name "default" is arbitrary, it's simply a tag to group credentials and be used in playbooks.
