@@ -33,3 +33,7 @@ int_net_gateway: "{{ int_net_c_class }}.1"
 int_net_dns: "{{ ext_net_c_class }}.1"
 int_net_pool_start: "{{ int_net_c_class }}.129"
 int_net_pool_end: "{{ int_net_c_class }}.158"
+
+local_image: "/Users/jusdavis/Downloads/rhel-guest-image-7.0-20140930.0.x86_64.qcow2"
+app_image_name: rhel_74
+image_format: qcow2

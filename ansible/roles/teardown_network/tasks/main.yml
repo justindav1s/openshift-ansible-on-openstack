@@ -53,7 +53,7 @@
 
 - name: Delete an external network
   os_network:
-    cloud: "{{ amin_cloud }}"
+    cloud: "{{ admin_cloud }}"
     state: absent
     name: "{{ openstack_ext_net_name }}"
 

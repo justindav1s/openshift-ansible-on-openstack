@@ -1,6 +1,7 @@
 ---
 - hosts: openstack-server
   vars:
+    ports: []
   remote_user: "{{ remote_ssh_user }}"
   become: yes
   become_method: sudo

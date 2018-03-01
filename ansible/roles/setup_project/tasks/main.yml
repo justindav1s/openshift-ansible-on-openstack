@@ -43,7 +43,17 @@
 
 - name: add a key pair
   os_keypair:
-    cloud: "{{ admin_cloud }}"
+    cloud: "{{ app_cloud }}"
     state: present
     name: "{{ app_public_key }}"
     public_key_file: "{{ remote_public_key }}"
+
+ - name: add an image
+   os_image:
+    cloud: "{{ app_cloud }}"
+    name: "{{ image_name }}"
+    container_format: bare
+    disk_format: "{{ image_format }}"
+    state: present
+    filename: "{{ local_image }}"
+    wait: yes
