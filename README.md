@@ -82,7 +82,7 @@ yum install -y openstack-packstack
 run packstack with these settings for the network bridge and a larger area for Cinder
 
 ``` 
-packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ovs-bridge-interfaces=br-ex:eth0 --os-neutron-ml2-type-drivers=vxlan,flat --cinder-volumes-size=1000G --os-horizon-ssl-y
+packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ovs-bridge-interfaces=br-ex:eth0 --os-neutron-ml2-type-drivers=vxlan,flat --cinder-volumes-size=1000G --os-horizon-ssl=y
 ```
 
 
