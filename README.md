@@ -93,6 +93,8 @@ packstack --allinone \
     --os-horizon-ssl=y
 ```
 
+If you fo this you'll need to add your certs to : /etc/httpd/conf.d/15-horizon_ssl_vhost.conf
+
 and if not : 
 
 ```
@@ -151,6 +153,30 @@ OVS_BRIDGE=br-ex
 ONBOOT=yes
 ```
 
+If you are running on centos7 you need to make this change to allow VMs to be created :
+
+```
+vi /etc/neutron/dhcp_agent.ini
+
+change :
+
+enable_isolated_metadata=False
+
+to 
+
+enable_isolated_metadata=true
+
+```
+
+
+Install shade on the Openstack server, and also on your laptop. Ansible requires shade in both places.
+```
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py 
+pip install shade
+```
+
+**Now REBOOT !**
 
 
 #### Useful links : 
@@ -164,19 +190,6 @@ https://opstadmin.wordpress.com/2016/05/08/cinder-default-configuration-by-appli
 https://www.youtube.com/watch?v=Udtr1zJhcrw
 
 https://youtu.be/eOlIB323c8s
-
-
-fix network issues with cloud-init
-cd /etc/neutron/
-vi dhcp_agent.ini
-
-set this :
-
-enable_isolated_metadata= true
-
-then
- 
-systemctl restart neutron-dhcp-agent.service
 
 ssl console issues
 https://ask.openstack.org/en/question/6192/horizon-unable-to-view-vnc-console-in-iframe-with-ssl/
