@@ -11,5 +11,6 @@
   - { role: teardown_server, server_name: "{{ project }}-node2"}
   - { role: teardown_server, server_name: "{{ project }}-infra"}
   - { role: teardown_server, server_name: "{{ project }}-master"}
+  - { role: teardown_server, server_name: "{{ project }}-ansible"}
   - teardown_network
   - teardown_project
