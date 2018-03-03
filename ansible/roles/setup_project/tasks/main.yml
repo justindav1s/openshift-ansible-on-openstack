@@ -89,6 +89,6 @@
     cloud: "{{ admin_cloud }}"
     state: present
     name: "{{project }}.ansible"
-    ram: 2048
+    ram: 4096
     vcpus: 2
     disk: 20

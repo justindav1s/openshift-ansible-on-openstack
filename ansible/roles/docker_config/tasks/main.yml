@@ -1,3 +1,13 @@
+- name: install docker-1.12.6
+  yum:
+    name: "docker-1.12.6"
+    state: latest
+
+- name: enable the docker service
+  systemd:
+    enabled: yes
+    name: docker
+
 - name: copy docker-storage-setup to servers
   copy:
    src: docker-storage-setup

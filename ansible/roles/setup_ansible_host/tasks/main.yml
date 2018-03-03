@@ -3,6 +3,11 @@
     name: "python2-pip"
     state: latest
 
+- name: install atomic-openshift-utils
+  yum:
+    name: atomic-openshift-utils
+    state: latest
+
 - name: install shade
   command: "pip install shade"
   register: result
@@ -22,3 +27,33 @@
    owner: root
    group: root
    mode: 0600
+
+- name: make home for scripts and inventory
+  file:
+    path: /root/bin/inventory
+    state: directory
+    mode: 0700
+
+- name: copy inventory
+  copy:
+   src: "hosts"
+   dest: /root/bin/inventory/
+   owner: root
+   group: root
+   mode: 0600
+
+- name: copy inventory
+  copy:
+   src: "openstack.py"
+   dest: /root/bin/inventory/
+   owner: root
+   group: root
+   mode: 655
+
+- name: copy install_ocp.sh
+  copy:
+   src: "install_ocp.sh"
+   dest: /root/bin/
+   owner: root
+   group: root
+   mode: 655

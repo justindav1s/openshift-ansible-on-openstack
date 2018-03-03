@@ -1,0 +1,39 @@
+[OSEv3:children]
+nodes
+nfs
+masters
+etcd
+
+[OSEv3:vars]
+openshift_master_cluster_public_hostname=ocp.datr.eu
+openshift_master_default_subdomain=apps.ocp.datr.eu
+ansible_ssh_user=root
+openshift_master_cluster_hostname=192.168.0.11
+openshift_override_hostname_check=true
+deployment_type=openshift-enterprise
+openshift_disable_check=disk_availability,docker_storage,memory_availability,docker_image_availability
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
+openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP.'}
+
+
+openshift_hosted_registry_storage_kind=nfs
+openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
+openshift_hosted_registry_storage_host="{{ hostvars["openshift-master"]["ansible_default_ipv4"]["address"] }}"
+openshift_hosted_registry_storage_nfs_directory=/exports
+openshift_hosted_registry_storage_volume_name=registry
+openshift_hosted_registry_storage_volume_size=20Gi
+
+openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/ocp.datr.eu.crt", "keyfile": "/etc/pki/tls/private/ocp.datr.eu.key", "cafile": "/etc/pki/tls/certs/ocp.datr.eu.issuer.crt"}]
+
+[nodes]
+openshift-node1  openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_hostname={"{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+openshift-node2  openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+
+[nfs]
+openshift-master  openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname"{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
+
+[masters]
+openshift-master openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
+
+[etcd]
+openshift-master  openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs

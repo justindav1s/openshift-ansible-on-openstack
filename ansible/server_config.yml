@@ -1,18 +1,34 @@
 ---
+
 - hosts: openshift_cloud
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
   become_method: sudo
   gather_facts: no
-  #serial: 1
+  serial: 1
   roles:
   - rhel_subscribe
+
+- hosts: openshift_cloud
+  vars:
+  remote_user: "{{ app_remote_ssh_user }}"
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  roles:
   - sync_keys
   - install_repos
-  - install_prerequisites
+
+- hosts: openshift-servers
+  vars:
+  remote_user: "{{ app_remote_ssh_user }}"
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  roles:
   - docker_config
-  
+
 - hosts: openshift-ansible
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
