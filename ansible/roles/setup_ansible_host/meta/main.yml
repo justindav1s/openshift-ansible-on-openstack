@@ -1,0 +1,6 @@
+---
+dependencies:
+  - rhel_subscribe
+  - install_repos
+  - sync_keys
+  - install_prerequisites

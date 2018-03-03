@@ -1,0 +1,4 @@
+- name: install docker-1.12.6
+  yum:
+    name: "docker-1.12.6"
+    state: latest

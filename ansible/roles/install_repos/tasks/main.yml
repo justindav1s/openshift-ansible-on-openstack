@@ -1,11 +1,29 @@
-- name: add extras repo
+- name: add rhel-7-server-rpms repo
+  command: "subscription-manager repos --enable rhel-7-server-rpms"
+  register: result
+- debug:
+    var: result.stdout
+
+- name: add rhel-7-server-extras-rpms repo
   command: "subscription-manager repos --enable rhel-7-server-extras-rpms"
   register: result
 - debug:
     var: result.stdout
 
-- name: add optional repo
+- name: add rhel-7-server-optional-rpms repo
   command: "subscription-manager repos --enable rhel-7-server-optional-rpms"
+  register: result
+- debug:
+    var: result.stdout
+
+- name: add rhel-7-server-ose-3.7-rpms repo
+  command: "subscription-manager repos --enable rhel-7-server-ose-3.7-rpms"
+  register: result
+- debug:
+    var: result.stdout
+
+- name: add rhel-7-fast-datapath-rpms repo
+  command: "subscription-manager repos --enable rhel-7-fast-datapath-rpms"
   register: result
 - debug:
     var: result.stdout
@@ -16,3 +34,8 @@
   ignore_errors: True
 - debug:
     var: result.stdout
+
+- name: upgrade all packages
+  yum:
+    name: "*"
+    state: latest
