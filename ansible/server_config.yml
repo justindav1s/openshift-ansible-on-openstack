@@ -36,7 +36,7 @@
   roles:
   - docker_config
 
-- hosts: openshift-master
+- hosts: openshift-ansible
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
@@ -51,6 +51,5 @@
   become: yes
   become_method: sudo
   gather_facts: no
-  serial: 1
   roles:
   - setup_ansible_host

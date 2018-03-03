@@ -8,6 +8,11 @@
     name: atomic-openshift-utils
     state: latest
 
+- name: gcc, python-devel
+  yum:
+    name: gcc, python-devel
+    state: latest
+
 - name: install shade
   command: "pip install shade"
   register: result
