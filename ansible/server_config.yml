@@ -11,7 +11,8 @@
   - sync_keys
   - install_repos
   - install_prerequisites
-
+  - docker_config
+  
 - hosts: openshift-ansible
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
