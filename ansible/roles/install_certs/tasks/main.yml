@@ -1,0 +1,23 @@
+- name: copy ocp cert
+  copy:
+   src: "{{ local_cert_path }}"
+   dest: /etc/pki/tls/certs/
+   owner: root
+   group: root
+   mode: 600
+
+- name: copy ocp issuer cert
+  copy:
+   src: "{{ local_issuer_cert_path }}"
+   dest: /etc/pki/tls/certs/
+   owner: root
+   group: root
+   mode: 600
+
+- name: copy ocp cert key
+  copy:
+   src: "{{ local_cert_key_path }}"
+   dest: /etc/pki/tls/private/
+   owner: root
+   group: root
+   mode: 600

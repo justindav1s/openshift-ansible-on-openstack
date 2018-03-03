@@ -34,6 +34,22 @@
     state: directory
     mode: 0700
 
+
+- name: install ansible
+  yum:
+    name: "ansible"
+    state: latest
+
+- name: python requests module
+  easy_install:
+    name: requests
+    state: latest
+
+- name: python urllib3 module
+  easy_install:
+    name: urllib3
+    state: latest
+
 - name: copy inventory
   copy:
    src: "hosts"

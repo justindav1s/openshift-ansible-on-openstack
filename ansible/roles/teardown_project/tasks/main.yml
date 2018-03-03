@@ -18,11 +18,7 @@
   os_image:
     cloud: "{{ app_cloud }}"
     name: "{{ app_image_name }}"
-    container_format: bare
-    disk_format: "{{ image_format }}"
-    state: present
-    filename: "{{ remote_image }}"
-    wait: yes
+    state: absent
 
 - name: "delete '{{ project }}.standard' flavor with 8GB of RAM, 2 virtual CPUs, and a 50GB local disk"
   os_nova_flavor:
