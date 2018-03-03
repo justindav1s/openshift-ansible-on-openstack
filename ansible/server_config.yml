@@ -5,7 +5,7 @@
   become: yes
   become_method: sudo
   gather_facts: no
-  serial: 1
+  #serial: 1
   roles:
   - rhel_subscribe
   - sync_keys
