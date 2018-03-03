@@ -8,7 +8,7 @@ etcd
 openshift_master_cluster_public_hostname=ocp.datr.eu
 openshift_master_default_subdomain=apps.ocp.datr.eu
 ansible_ssh_user=root
-openshift_master_cluster_hostname="{{ hostvars["openshift-master"]["ansible_default_ipv4"]["address"] }}"
+openshift_master_cluster_hostname=192.168.0.137
 openshift_override_hostname_check=true
 deployment_type=openshift-enterprise
 openshift_disable_check=disk_availability,docker_storage,memory_availability,docker_image_availability
@@ -18,7 +18,7 @@ openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP
 
 openshift_hosted_registry_storage_kind=nfs
 openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
-openshift_hosted_registry_storage_host="{{ hostvars["openshift-master"]["ansible_default_ipv4"]["address"] }}"
+openshift_hosted_registry_storage_host=192.168.0.137
 openshift_hosted_registry_storage_nfs_directory=/exports
 openshift_hosted_registry_storage_volume_name=registry
 openshift_hosted_registry_storage_volume_size=20Gi

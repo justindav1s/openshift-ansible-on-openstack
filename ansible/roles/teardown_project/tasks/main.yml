@@ -16,7 +16,7 @@
 
 - name: delete image
   os_image:
-    cloud: "{{ app_cloud }}"
+    cloud: "{{ admin_cloud }}"
     name: "{{ app_image_name }}"
     state: absent
 
