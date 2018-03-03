@@ -10,7 +10,7 @@
   - rhel_subscribe
   - sync_keys
   - install_repos
-  - install_prerequites
+  - install_prerequisites
 
 - hosts: openshift-ansible
   vars:
