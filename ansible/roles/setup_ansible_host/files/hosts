@@ -7,8 +7,8 @@ etcd
 [OSEv3:vars]
 openshift_master_cluster_public_hostname=ocp.datr.eu
 openshift_master_default_subdomain=apps.ocp.datr.eu
-ansible_ssh_user=root
-openshift_master_cluster_hostname=192.168.0.11
+ansible_ssh_user=cloud-user
+openshift_master_cluster_hostname="{{ hostvars["openshift-master"]["ansible_default_ipv4"]["address"] }}"
 openshift_override_hostname_check=true
 deployment_type=openshift-enterprise
 openshift_disable_check=disk_availability,docker_storage,memory_availability,docker_image_availability

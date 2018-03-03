@@ -2,4 +2,4 @@
 
 rm -rf ../ansible/*.retry
 
-ansible-playbook  -i ./openstack.py ../ansible/server_config.yml
+ansible-playbook  -i inventory ../ansible/server_config.yml
