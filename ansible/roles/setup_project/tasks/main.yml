@@ -83,3 +83,12 @@
     ram: 16384
     vcpus: 4
     disk: 50
+
+- name: "Create '{{ project }}.ansible' flavor with 2GB of RAM, 2 virtual CPUs, and a 20GB local disk"
+  os_nova_flavor:
+    cloud: "{{ admin_cloud }}"
+    state: present
+    name: "{{project }}.ansible"
+    ram: 2048
+    vcpus: 2
+    disk: 20

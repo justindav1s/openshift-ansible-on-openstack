@@ -20,59 +20,10 @@
    group: root
    mode: 0600
 
-- name: copy public key to servers
+- name: copy authorized_keys to servers
   copy:
    src: id_rsa.pub
    dest: /root/.ssh/authorized_keys
    owner: root
    group: root
    mode: 0600
-
-- name: make home for clouds.yaml
-  file:
-    path: /root/.config/openstack
-    state: directory
-    mode: 0700
-
-- name: copy private key to servers
-  copy:
-   src: "{{ clouds_yaml }}"
-   dest: /root/.config/openstack/clouds.yaml
-   owner: root
-   group: root
-   mode: 0600
-
-- name: add extras repo
-  command: "subscription-manager repos --enable rhel-7-server-extras-rpms"
-  register: result
-- debug:
-    var: result.stdout
-
-- name: add optional repo
-  command: "subscription-manager repos --enable rhel-7-server-optional-rpms"
-  register: result
-- debug:
-    var: result.stdout
-
-- name: add epel repo
-  command: "rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
-  register: result
-  ignore_errors: True
-- debug:
-    var: result.stdout
-
-- name: upgrade all packages
-  yum:
-    name: "*"
-    state: latest
-
-- name: install python2-pip
-  yum:
-    name: "python2-pip"
-    state: latest
-
-- name: install shade
-  command: "pip install shade"
-  register: result
-- debug:
-    var: result.stdout
