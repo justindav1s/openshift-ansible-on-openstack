@@ -8,7 +8,7 @@ app_user: "{{ project }}"
 app_user_password: openshift
 app_user_role: admin
 public_key: "/Users/jusdavis/.ssh/id_rsa.pub"
-public_key: "/Users/jusdavis/.ssh/id_rsa"
+private_key: "/Users/jusdavis/.ssh/id_rsa"
 app_public_key: "{{ project }}_key"
 remote_public_key: "/root/{{ app_public_key }}"
 clouds_yaml: "/Users/jusdavis/.config/openstack/clouds.yaml"
