@@ -19,7 +19,7 @@ openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/ocp.datr.e
 [nodes]
 10.0.10.140 openshift_node_labels="{'region': 'primary', 'zone': 'default'}" openshift_schedulable=True
 10.0.10.132 openshift_node_labels="{'region': 'primary', 'zone': 'default'}" openshift_schedulable=True
-10.0.10.134
+10.0.10.134 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=True
 
 [masters]
 10.0.10.134
