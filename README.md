@@ -346,5 +346,16 @@ For these kinds of activity "endpoint_type: admin" must be included. This is how
 
 Now lets setup some infrastructure on which to deploy Openshift ......... (see the ansible folder)  
 
+
+## Ansible run list.
+
+There are a bunch of scripts in the bin directory, run them in this order :
+
+- cloud_setup.sh
+- base_server_setup.sh
+- build_ocp_infra.sh
+
+
+
 oc login -u system:admin
 oc adm policy add-cluster-role-to-user cluster-admin justin

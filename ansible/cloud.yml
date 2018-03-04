@@ -8,7 +8,4 @@
   roles:
   - setup_project
   - setup_network
-  - { role: setup_server, server_name: "{{ project }}-ansible", image_name: "{{ app_image_name }}", server_flavour: "{{ project }}.ansible", docker_vol_size: 20}
-  - { role: setup_server, server_name: "{{ project }}-master", image_name: "{{ app_image_name }}", server_flavour: "{{ project }}.standard", docker_vol_size: 20}
-#  - { role: setup_server, server_name: "{{ project }}-node1", image_name: "{{ app_image_name }}", server_flavour: "{{ project }}.node", docker_vol_size: 100}
-#  - { role: setup_server, server_name: "{{ project }}-node2", image_name: "{{ app_image_name }}", server_flavour: "{{ project }}.node", docker_vol_size: 100}
+  - { role: setup_server, server_name: "{{ project }}-base", image_name: "{{ app_image_name }}", server_flavour: "{{ project }}.standard", docker_vol_size: 20}
