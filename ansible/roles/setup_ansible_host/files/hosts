@@ -18,7 +18,6 @@ openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP
 
 openshift_hosted_registry_storage_kind=nfs
 openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
-openshift_hosted_registry_storage_host=10.0.10.140
 openshift_hosted_registry_storage_nfs_directory=/exports
 openshift_hosted_registry_storage_volume_name=registry
 openshift_hosted_registry_storage_volume_size=30Gi
@@ -26,15 +25,15 @@ openshift_hosted_registry_storage_volume_size=30Gi
 openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/ocp.datr.eu.crt", "keyfile": "/etc/pki/tls/private/ocp.datr.eu.key", "cafile": "/etc/pki/tls/certs/ocp.datr.eu.issuer.crt"}]
 
 [nodes]
-openshift-node1  openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
-openshift-node2  openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
-openshift-master openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
+openshift-node1  openshift_public_ip="{{ ansible_eth0.ipv4.address }}" openshift_ip="{{ ansible_eth0.ipv4.address }}" openshift_hostname="{{ ansible_eth0.ipv4.address }}" connect_to="{{ ansible_eth0.ipv4.address }}" openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+openshift-node2  openshift_public_ip="{{ ansible_eth0.ipv4.address }}" openshift_ip="{{ ansible_eth0.ipv4.address }}" openshift_hostname="{{ ansible_eth0.ipv4.address }}" connect_to="{{ ansible_eth0.ipv4.address }}" openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+openshift-master openshift_public_ip="{{ ansible_eth0.ipv4.address }}" openshift_ip="{{ ansible_eth0.ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_eth0.ipv4.address }}" connect_to="{{ ansible_eth0.ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
 
 [nfs]
-openshift-master  openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
+openshift-master  openshift_public_ip="{{ ansible_eth0.ipv4.address }}" openshift_ip="{{ ansible_eth0.ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_eth0.ipv4.address }}" connect_to="{{ ansible_eth0.ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
 
 [masters]
-openshift-master openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
+openshift-master openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_eth0.ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_eth0.ipv4.address }}" connect_to="{{ ansible_eth0.ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
 
 [etcd]
-openshift-master openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
+openshift-master openshift_public_ip="{{ ansible_eth0.ipv4.address }}" openshift_ip="{{ ansible_eth0.ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_eth0.ipv4.address }}" connect_to="{{ ansible_eth0.ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
