@@ -1,0 +1,8 @@
+---
+- name: copy inventory
+  copy:
+   src: "hosts"
+   dest: /root/bin/inventory/
+   owner: root
+   group: root
+   mode: 0600

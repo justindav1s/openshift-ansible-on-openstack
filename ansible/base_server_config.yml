@@ -12,6 +12,7 @@
   - install_repos
   - install_certs
   - setup_ansible_host
+  - sync_inventory
 
 - hosts: openshift_cloud
   vars:

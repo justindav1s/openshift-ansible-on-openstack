@@ -55,15 +55,7 @@
     name: urllib3
     state: latest
 
-- name: copy inventory
-  copy:
-   src: "hosts"
-   dest: /root/bin/inventory/
-   owner: root
-   group: root
-   mode: 0600
-
-- name: copy inventory
+- name: copy openstack.py inventory
   copy:
    src: "openstack.py"
    dest: /root/bin/inventory/
