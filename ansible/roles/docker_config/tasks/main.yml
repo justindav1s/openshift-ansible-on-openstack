@@ -4,7 +4,7 @@
     state: latest
 
 - pause:
-    minutes: 5
+    seconds: 5
 
 - name: enable the docker service
   systemd:
@@ -12,7 +12,7 @@
     name: docker
 
 - pause:
-    minutes: 5
+    seconds: 5
 
 - name: copy docker-storage-setup to servers
   copy:
@@ -23,7 +23,16 @@
    mode: 0600
 
 - pause:
-    minutes: 5
+    seconds: 5
+
+- name: run docker-storage-setup
+  command: "docker-storage-setup"
+  register: result
+- debug:
+    var: result.stdout
+
+- pause:
+    seconds: 5
 
 - name: restart docker service, and daemon-reload to pick up config changes
   systemd:

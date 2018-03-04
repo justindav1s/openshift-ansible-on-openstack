@@ -345,3 +345,6 @@ For these kinds of activity "endpoint_type: admin" must be included. This is how
 ```   
 
 Now lets setup some infrastructure on which to deploy Openshift ......... (see the ansible folder)  
+
+oc login -u system:admin
+oc adm policy add-cluster-role-to-user cluster-admin justin

@@ -7,5 +7,3 @@
   gather_facts: no
   roles:
   - docker_config
-
-
