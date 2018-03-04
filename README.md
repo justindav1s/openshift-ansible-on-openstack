@@ -351,11 +351,16 @@ Now lets setup some infrastructure on which to deploy Openshift ......... (see t
 
 There are a bunch of scripts in the bin directory, run them in this order :
 
-- cloud_setup.sh
-- base_server_setup.sh
-- build_ocp_infra.sh
+- cloud_setup.sh - this sets up users, projects, immges, flavours and the network in openstack
+- base_server_setup.sh - this updates an configures  a RHEL instance so that it is ready to have OCP installed, and thsnapshots it.
+- build_ocp_infra.sh - this uses the snapshot image from above to build out as many servers as are required, and install docker.
+- reboot all servers
+- login into the openshift-ansible instance as cloud-user, become root, go to ~/bin, then run :
+- install_ocp.sh
 
+## Setting up Openshift
 
+From the root user on the openshift-master :
 
-oc login -u system:admin
-oc adm policy add-cluster-role-to-user cluster-admin justin
+- oc login -u system:admin
+- oc adm policy add-cluster-role-to-user cluster-admin justin
