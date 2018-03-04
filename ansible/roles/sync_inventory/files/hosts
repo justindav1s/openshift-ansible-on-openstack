@@ -17,12 +17,12 @@ openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP
 openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/ocp.datr.eu.crt", "keyfile": "/etc/pki/tls/private/ocp.datr.eu.key", "cafile": "/etc/pki/tls/certs/ocp.datr.eu.issuer.crt"}]
 
 [nodes]
-10.0.10.140 openshift_node_labels="{'region': 'primary', 'zone': 'default'}" openshift_schedulable=True
+10.0.10.141 openshift_node_labels="{'region': 'primary', 'zone': 'default'}" openshift_schedulable=True
 10.0.10.132 openshift_node_labels="{'region': 'primary', 'zone': 'default'}" openshift_schedulable=True
-10.0.10.134 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=True
+10.0.10.139 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=True
 
 [masters]
-10.0.10.134
+10.0.10.139
 
 [etcd]
-10.0.10.134
+10.0.10.139
