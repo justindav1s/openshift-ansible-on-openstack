@@ -2,4 +2,8 @@
 
 rm -rf ../ansible/*.retry
 
-ansible-playbook  -i ../ansible/inventory ../ansible/base_server_config.yml
+nohup ansible-playbook  -i ../ansible/inventory ../ansible/base_server_config.yml  > base_server_config.log 2>&1 &
+
+sleep 5
+
+tail -f base_server_config.log

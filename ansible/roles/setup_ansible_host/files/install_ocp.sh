@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-nohup ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml & > install.log 2>&1
+nohup ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml > install.log 2>&1 &
 
 sleep 5
 
