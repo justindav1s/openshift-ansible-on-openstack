@@ -1,5 +1,6 @@
-- pause:
-    seconds: 15
+- name: pausing for 30 secs to allow servers to come up
+  pause:
+    seconds: 30
 
 - name: make home for ssh keys
   file:
