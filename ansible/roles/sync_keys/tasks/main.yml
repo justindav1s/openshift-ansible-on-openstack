@@ -1,3 +1,6 @@
+- pause:
+    seconds: 15
+
 - name: make home for ssh keys
   file:
     path: ~/.ssh
