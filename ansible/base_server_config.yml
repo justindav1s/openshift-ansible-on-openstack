@@ -11,6 +11,7 @@
   - sync_keys
   - install_repos
   - install_certs
+  - setup_ansible_host
 
 - hosts: openshift_cloud
   vars:
@@ -18,12 +19,3 @@
   gather_facts: no
   roles:
   - sync_keys
-
-- hosts: openshift_cloud
-  vars:
-  remote_user: "{{ app_remote_ssh_user }}"
-  become: yes
-  become_method: sudo
-  gather_facts: no
-  roles:
-  - setup_ansible_host
