@@ -55,13 +55,13 @@
     name: urllib3
     state: latest
 
-- name: copy openstack.py inventory
-  copy:
-   src: "openstack.py"
-   dest: /root/bin/inventory/
-   owner: root
-   group: root
-   mode: 655
+#- name: copy openstack.py inventory
+#  copy:
+#   src: "openstack.py"
+#   dest: /root/bin/inventory/
+#   owner: root
+#   group: root
+#   mode: 655
 
 - name: copy install_ocp.sh
   copy:
