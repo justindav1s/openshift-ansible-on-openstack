@@ -3,10 +3,16 @@
     name: "docker-1.12.6"
     state: latest
 
+- pause:
+    minutes: 5
+
 - name: enable the docker service
   systemd:
     enabled: yes
     name: docker
+
+- pause:
+    minutes: 5
 
 - name: copy docker-storage-setup to servers
   copy:
@@ -15,6 +21,9 @@
    owner: root
    group: root
    mode: 0600
+
+- pause:
+    minutes: 5
 
 - name: restart docker service, and daemon-reload to pick up config changes
   systemd:

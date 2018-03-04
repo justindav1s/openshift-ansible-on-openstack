@@ -21,13 +21,14 @@ openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
 openshift_hosted_registry_storage_host=192.168.0.137
 openshift_hosted_registry_storage_nfs_directory=/exports
 openshift_hosted_registry_storage_volume_name=registry
-openshift_hosted_registry_storage_volume_size=20Gi
+openshift_hosted_registry_storage_volume_size=30Gi
 
 openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/ocp.datr.eu.crt", "keyfile": "/etc/pki/tls/private/ocp.datr.eu.key", "cafile": "/etc/pki/tls/certs/ocp.datr.eu.issuer.crt"}]
 
 [nodes]
 openshift-node1  openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
 openshift-node2  openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+openshift-master openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
 
 [nfs]
 openshift-master  openshift_public_ip="{{ ansible_default_ipv4.address }}" openshift_ip="{{ ansible_default_ipv4.address }}" openshift_public_hostname=ocp.datr.eu openshift_hostname="{{ ansible_default_ipv4.address }}" connect_to="{{ ansible_default_ipv4.address }}" openshift_hosted_registry_storage_kind=nfs
