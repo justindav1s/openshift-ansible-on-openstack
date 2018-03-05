@@ -27,6 +27,7 @@ openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/ocp.datr.e
 
 [nodes]
 10.0.10.134  openshift_public_ip=192.168.0.140 openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+10.0.10.  openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
 
 [nfs]
 10.0.10.134  openshift_public_ip=192.168.0.140 openshift_hosted_registry_storage_kind=nfs
