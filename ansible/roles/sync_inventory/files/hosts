@@ -8,7 +8,7 @@ etcd
 openshift_master_cluster_public_hostname=ocp.datr.eu
 openshift_master_default_subdomain=apps.ocp.datr.eu
 ansible_ssh_user=root
-openshift_master_cluster_hostname=10.0.10.134
+openshift_master_cluster_hostname=10.0.10.135
 openshift_override_hostname_check=true
 deployment_type=openshift-enterprise
 openshift_master_cluster_method=native
@@ -27,14 +27,14 @@ openshift_hosted_registry_storage_volume_size=5Gi
 openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/ocp.datr.eu.crt", "keyfile": "/etc/pki/tls/private/ocp.datr.eu.key", "cafile": "/etc/pki/tls/certs/ocp.datr.eu.issuer.crt"}]
 
 [nodes]
-10.0.10.134  openshift_public_ip=192.168.0.140 openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
-10.0.10.  openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
+10.0.10.135  openshift_public_ip=192.168.0.140 openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+10.0.10.131  openshift_hosted_registry_storage_kind=nfs openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
 
 [nfs]
-10.0.10.134  openshift_public_ip=192.168.0.140 openshift_hosted_registry_storage_kind=nfs
+10.0.10.135  openshift_public_ip=192.168.0.140 openshift_hosted_registry_storage_kind=nfs
 
 [masters]
-10.0.10.134  openshift_public_ip=192.168.0.140 openshift_hosted_registry_storage_kind=nfs
+10.0.10.135  openshift_public_ip=192.168.0.140 openshift_hosted_registry_storage_kind=nfs
 
 [etcd]
-10.0.10.134  openshift_public_ip=192.168.0.140  openshift_hosted_registry_storage_kind=nfs
+10.0.10.135  openshift_public_ip=192.168.0.140  openshift_hosted_registry_storage_kind=nfs
