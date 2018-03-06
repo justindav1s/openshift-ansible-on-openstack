@@ -11,14 +11,14 @@
 
 - name: "modify {{ openstack_name }} public A record to {{ openstack_servers[0].public_v4 }}"
   nsupdate:
-    server: "{{ dns_server }}"
+    server: "127.0.0.1"
     zone: "swlon.datr.eu"
     record: "{{ inventory_hostname }}"
     value: "{{ openstack_servers[0].public_v4 }}"
 
 - name: "modify {{ openstack_name }} private A record to {{ ansible_default_ipv4.address }}"
   nsupdate:
-    server: "{{ dns_server }}"
+    server: "127.0.0.1"
     zone: "swlon.local"
     record: "{{ inventory_hostname }}"
     value: "{{ ansible_default_ipv4.address }}"
