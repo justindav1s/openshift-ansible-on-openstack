@@ -9,7 +9,7 @@ infra
 openshift_master_cluster_public_hostname=ocp.datr.eu
 openshift_master_default_subdomain=apps.ocp.datr.eu
 ansible_ssh_user=root
-openshift_master_cluster_hostname=master.swlon.local
+openshift_master_cluster_hostname=master.swlon.datr.eu
 openshift_override_hostname_check=true
 deployment_type=openshift-enterprise
 openshift_master_cluster_method=native
@@ -40,6 +40,8 @@ ansible_service_broker_install=false
 master.swlon.local openshift_hostname=master.swlon.local openshift_public_ip=192.168.0.140 openshift_node_labels="{'region': 'primary'}" openshift_schedulable=False
 node1.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
 #node2.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
+
+[infra]
 infra1.swlon.local openshift_hostname=infra1.swlon.local openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
 
 [nfs]
