@@ -20,7 +20,7 @@ openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP
 
 openshift_hosted_registry_storage_kind=nfs
 openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
-openshift_hosted_registry_storage_host=infra1.swlon.local
+#openshift_hosted_registry_storage_host=infra1.swlon.local
 openshift_hosted_registry_storage_nfs_directory=/exports
 openshift_hosted_registry_storage_volume_name=registry
 openshift_hosted_registry_storage_volume_size=20Gi
@@ -39,7 +39,7 @@ ansible_service_broker_install=false
 [nodes]
 master.swlon.local openshift_hostname=master.swlon.local openshift_public_ip=192.168.0.140 openshift_node_labels="{'region': 'primary'}" openshift_schedulable=False
 node1.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
-node2.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
+#node2.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
 infra1.swlon.local openshift_hostname=infra1.swlon.local openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
 
 [nfs]
