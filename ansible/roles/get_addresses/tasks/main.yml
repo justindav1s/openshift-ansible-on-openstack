@@ -1,6 +1,6 @@
 - name: getting IP addresses
   debug:
-    msg: "{{ inventory_hostname }}: private: {{ inventory_hostname.ansible_default_ipv4.address }}"
+    msg: "{{ inventory_hostname }}: private: {{ ansible_default_ipv4.address }}"
 
 - os_server_facts:
     cloud: "{{ app_cloud }}"
