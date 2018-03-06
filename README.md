@@ -364,3 +364,5 @@ From the root user on the openshift-master :
 
 - oc login -u system:admin
 - oc adm policy add-cluster-role-to-user cluster-admin justin
+
+ansible -i ../ansible/inventory infra1.swlon.datr.eu -u cloud-user -m setup
