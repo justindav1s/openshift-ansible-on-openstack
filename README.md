@@ -358,31 +358,33 @@ There are a bunch of scripts in the bin directory, run them in this order :
 - login into the openshift-ansible instance as cloud-user, become root, go to ~/bin, then run :
 - install_ocp.sh
 
-## Setting up Openshift
+### Setting up Openshift Admin
 
 From the root user on the openshift-master :
 
 - oc login -u system:admin
 - oc adm policy add-cluster-role-to-user cluster-admin justin
 
-## Openshift Uninstall
+#### Openshift Uninstall
 ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
 
-### To prevent NetworkManager blowing away DNS settings, edit :
+#### To prevent NetworkManager blowing away DNS settings, edit :
 
 /etc/sysconfig/network-scripts/ifcfg-eth0
 
 add : 
 
+```
 PEERDNS=no
 DNS1=192.168.0.13
 DNS2=192.168.0.1
+```
 
-### All the facts about a host
+#### All the facts about a host
 ansible -i ../ansible/inventory infra1.swlon.datr.eu -u cloud-user -m setup
 
-### Reboot all hosts
+#### Reboot all hosts
 ansible -i ../ansible/inventory all -m command -a "reboot"
 
-### Ping all hosts
+#### Ping all hosts
 ansible -i ../ansible/inventory all -m ping
