@@ -1,3 +1,4 @@
+$TTL    604800
 @       IN      SOA     ns1.swlon.datr.eu. admin.swlon.datr.eu. (
                               3         ; Serial
              604800     ; Refresh
