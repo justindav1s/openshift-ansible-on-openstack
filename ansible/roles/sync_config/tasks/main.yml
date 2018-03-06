@@ -1,4 +1,4 @@
 - name: copy resolv.conf into place
   copy:
-   src: "resolve.conf"
+   src: "resolv.conf"
    dest: /etc
