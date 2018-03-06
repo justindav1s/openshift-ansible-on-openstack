@@ -3,6 +3,8 @@ app_remote_ssh_user: cloud-user
 admin_cloud: default
 project: openshift
 
+dns_server: openstack.datr.eu
+
 app_cloud: "{{ project }}_cloud"
 app_user: "{{ project }}"
 app_user_password: openshift

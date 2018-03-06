@@ -2,10 +2,23 @@
   debug:
     msg: "{{ inventory_hostname }}: private: {{ ansible_default_ipv4.address }}"
 
-# Gather facts about all servers named C<web*>:
 - os_server_facts:
     cloud: "{{ app_cloud }}"
     server: "{{ openstack_name }}"
 
 - debug:
     var: openstack_servers[0].public_v4
+
+- name: "modify {{ openstack_name }} public A record to {{ openstack_servers[0].public_v4 }}"
+  nsupdate:
+    server: "{{ dns_server }}"
+    zone: "swlon.datr.eu"
+    record: "{{ inventory_hostname }}"
+    value: "{{ openstack_servers[0].public_v4 }}"
+
+- name: "modify {{ openstack_name }} private A record to {{ ansible_default_ipv4.address }}"
+  nsupdate:
+    server: "{{ dns_server }}"
+    zone: "swlon.local"
+    record: "{{ inventory_hostname }}"
+    value: "{{ ansible_default_ipv4.address }}"
