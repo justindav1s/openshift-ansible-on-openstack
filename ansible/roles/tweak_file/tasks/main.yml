@@ -2,11 +2,13 @@
     path: /etc/origin/master/master-config.yaml
     regexp: '  networkPluginName: redhat/openshift-ovs-subnet'
     line: '  networkPluginName: "redhat/openshift-ovs-multitenant"'
+  ignore_errors: True
 
 - lineinfile:
     path: /etc/origin/node/node-config.yaml
     regexp: '  networkPluginName: redhat/openshift-ovs-subnet'
     line: '  networkPluginName: "redhat/openshift-ovs-multitenant"'
+  ignore_errors: True
 
 - name: restart master-api
   systemd:
