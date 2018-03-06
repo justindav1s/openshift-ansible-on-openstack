@@ -368,7 +368,7 @@ From the root user on the openshift-master :
 ## Openshift Uninstall
 ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
 
-to Prevent NetworkManager blowing away network settings,edit :
+### To prevent NetworkManager blowing away DNS settings, edit :
 
 /etc/sysconfig/network-scripts/ifcfg-eth0
 
