@@ -6,6 +6,6 @@
 - os_server_facts:
     cloud: "{{ app_cloud }}"
     server: "{{ inventory_hostname }}"
-    register: server_facts
+  register: server_facts
 - debug:
     var: server_facts
