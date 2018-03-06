@@ -4,7 +4,7 @@
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
   become_method: sudo
-  gather_facts: no
+  gather_facts: yes
   roles:
   - get_addresses
 
