@@ -1,0 +1,19 @@
+zone "swlon.datr.eu" {
+    type master;
+    file "/etc/named/zones/db.swlon.datr.eu"; # zone file path for 192.168 addresses
+};
+
+zone "swlon.local" {
+    type master;
+    file "/etc/named/zones/db.swlon.local"; # zone file path for 10.0 addresses
+};
+
+zone "0.10.in-addr.arpa" {
+    type master;
+    file "/etc/named/zones/db.10.0";  # 10.0.0.0/16 subnet
+    };
+
+zone "168.192.in-addr.arpa" {
+    type master;
+    file "/etc/named/zones/db.192.168";  # 192.160.0.0/24 subnet
+    };

@@ -1,0 +1,17 @@
+$TTL    604800
+@       IN      SOA     ns1.swlon.datr.eu. admin.swlon.datr.eu. (
+                              3         ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800 )   ; Negative Cache TTL
+
+; name servers - NS records
+    IN      NS      ns1.swlon.datr.eu.
+
+; PTR records
+135.10 IN      PTR     master.swlon.local.    ; 10.0.10.135
+139.10 IN      PTR     node1.swlon.local.     ; 10.0.10.139
+141.10 IN      PTR     node2.swlon.local.     ; 10.0.10.141
+136.10 IN      PTR     infra1.swlon.local.    ; 10.0.10.136
+133.10 IN      PTR     ansible.swlon.local.   ; 10.0.10.133
