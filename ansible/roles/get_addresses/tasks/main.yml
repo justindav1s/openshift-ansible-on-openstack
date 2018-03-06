@@ -5,7 +5,7 @@
 # Gather facts about all servers named C<web*>:
 - os_server_facts:
     cloud: "{{ app_cloud }}"
-    server: "{{ inventory_hostname }}"
+    server: "{{ openstack_name }}"
 
 - debug:
     var: openstack_servers
