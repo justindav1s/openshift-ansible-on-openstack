@@ -32,7 +32,7 @@
   gather_facts: no
   roles:
   - docker_config
-  
+
 - hosts: openshift-servers openshift-ansible
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
