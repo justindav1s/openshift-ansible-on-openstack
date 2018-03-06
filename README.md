@@ -366,3 +366,9 @@ From the root user on the openshift-master :
 - oc adm policy add-cluster-role-to-user cluster-admin justin
 
 ansible -i ../ansible/inventory infra1.swlon.datr.eu -u cloud-user -m setup
+
+ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
+
+PEERDNS=no
+DNS1=192.168.0.13
+DNS2=192.168.0.1
