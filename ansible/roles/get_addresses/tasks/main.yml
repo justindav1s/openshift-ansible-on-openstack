@@ -1,3 +1,3 @@
 - name: getting IP addresses
   debug:
-    msg: "{{ inventory_hostname }}: private: {{ inventory_hostname }} public:  {{ inventory_hostname }}"
+    msg: "{{ inventory_hostname }}: private: {{ ansible_eth0.ipv4.address }} public:  {{ inventory_hostname }}"
