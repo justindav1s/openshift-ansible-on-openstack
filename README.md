@@ -365,10 +365,24 @@ From the root user on the openshift-master :
 - oc login -u system:admin
 - oc adm policy add-cluster-role-to-user cluster-admin justin
 
-ansible -i ../ansible/inventory infra1.swlon.datr.eu -u cloud-user -m setup
-
+## Openshift Uninstall
 ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
+
+to Prevent NetworkManager blowing away network settings,edit :
+
+/etc/sysconfig/network-scripts/ifcfg-eth0
+
+add : 
 
 PEERDNS=no
 DNS1=192.168.0.13
 DNS2=192.168.0.1
+
+### All the facts about a host
+ansible -i ../ansible/inventory infra1.swlon.datr.eu -u cloud-user -m setup
+
+### Reboot all hosts
+ansible -i ../ansible/inventory all -m command -a "reboot"
+
+### Ping all hosts
+ansible -i ../ansible/inventory all -m ping
