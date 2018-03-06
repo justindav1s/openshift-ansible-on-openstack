@@ -8,4 +8,4 @@
     server: "{{ openstack_name }}"
 
 - debug:
-    var: "{{ openstack_servers.public_v4 }}"
+    var: openstack_servers.public_v4
