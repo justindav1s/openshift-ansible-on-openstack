@@ -1,4 +1,4 @@
-- name: getting IP addresses
+- name: getting private IP addresses
   debug:
     msg: "{{ inventory_hostname }}: private: {{ ansible_default_ipv4.address }}"
 
@@ -7,25 +7,18 @@
     server: "{{ openstack_name }}"
 
 - debug:
-    var: openstack_servers[0].public_v4
+    msg: "{{ inventory_hostname }}: public: {{ openstack_servers[0].public_v4 }}"
 
-- debug:
-    var: openstack_servers[0].private_v4
-
-- name: "modify {{ openstack_name }} public A record to {{ openstack_servers[0].public_v4 }}"
-  nsupdate:
-    key_name: "initial-key"
-    key_secret: "AwEAAagAIKlVZrpC6Ia7gEzahOR+9W29euxhJhVVLOyQbSEW0O8gcCjF FVQUTf6v58fLjwBd0YI0EzrAcQqBGCzh/RStIoO8g0NfnfL2MTJRkxoX bfDaUeVPQuYEhg37NZWAJQ9VnMVDxP/VHL496M/QZxkjf5/Efucp2gaD X6RS6CXpoY68LsvPVjR0ZSwzz1apAzvN9dlzEheX7ICJBBtuA6G3LQpz W5hOA2hzCTMjJPJ8LbqF6dsV6DoBQzgul0sGIcGOYl7OyQdXfZ57relS Qageu+ipAdTTJ25AsRTAoub8ONGcLmqrAmRLKBP1dfwhYB4N7knNnulq QxA+Uk1ihz0="
-    server: "127.0.0.1"
-    zone: "swlon.datr.eu"
-    record: "{{ inventory_hostname }}"
-    value: "{{ openstack_servers[0].public_v4 }}"
-
-- name: "modify {{ openstack_name }} private A record to {{ ansible_default_ipv4.address }}"
-  nsupdate:
-    key_name: "initial-key"
-    key_secret: "AwEAAagAIKlVZrpC6Ia7gEzahOR+9W29euxhJhVVLOyQbSEW0O8gcCjF FVQUTf6v58fLjwBd0YI0EzrAcQqBGCzh/RStIoO8g0NfnfL2MTJRkxoX bfDaUeVPQuYEhg37NZWAJQ9VnMVDxP/VHL496M/QZxkjf5/Efucp2gaD X6RS6CXpoY68LsvPVjR0ZSwzz1apAzvN9dlzEheX7ICJBBtuA6G3LQpz W5hOA2hzCTMjJPJ8LbqF6dsV6DoBQzgul0sGIcGOYl7OyQdXfZ57relS Qageu+ipAdTTJ25AsRTAoub8ONGcLmqrAmRLKBP1dfwhYB4N7knNnulq QxA+Uk1ihz0="
-    server: "127.0.0.1"
-    zone: "swlon.local"
-    record: "{{ inventory_hostname }}"
-    value: "{{ ansible_default_ipv4.address }}"
+#- name: "modify {{ openstack_name }} public A record to {{ openstack_servers[0].public_v4 }}"
+#  nsupdate:
+#    server: "127.0.0.1"
+#    zone: "swlon.datr.eu"
+#    record: "{{ inventory_hostname }}"
+#    value: "{{ openstack_servers[0].public_v4 }}"
+#
+#- name: "modify {{ openstack_name }} private A record to {{ ansible_default_ipv4.address }}"
+#  nsupdate:
+#    server: "127.0.0.1"
+#    zone: "swlon.local"
+#    record: "{{ inventory_hostname }}"
+#    value: "{{ ansible_default_ipv4.address }}"
