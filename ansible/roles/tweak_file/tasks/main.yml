@@ -12,30 +12,5 @@
     line: '  networkPluginName: "redhat/openshift-ovs-networkpolicy"'
   ignore_errors: True
 
-#- name: restart master-api
-#  systemd:
-#    state: restarted
-#    daemon_reload: yes
-#    name: atomic-openshift-master-api.service
-#  ignore_errors: True
-#
-#- name: restart master-controllers
-#  systemd:
-#    state: restarted
-#    daemon_reload: yes
-#    name: atomic-openshift-master-controllers.service
-#  ignore_errors: True
-#
-#- name: restart atomic-openshift-node
-#  systemd:
-#    state: restarted
-#    daemon_reload: yes
-#    name: atomic-openshift-node.service
-#  ignore_errors: True
-#
-#- name: restart openvswitch.service
-#  systemd:
-#    state: restarted
-#    daemon_reload: yes
-#    name: openvswitch.service
-#  ignore_errors: True
+- name: reboot instances
+  command: "reboot"

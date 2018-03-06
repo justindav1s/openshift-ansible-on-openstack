@@ -6,3 +6,6 @@ master.swlon.datr.eu
 infra1.swlon.datr.eu
 node1.swlon.datr.eu
 node2.swlon.datr.eu
+
+[ansible-host]
+ansible.swlon.datr.eu
