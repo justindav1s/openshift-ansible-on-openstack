@@ -28,14 +28,14 @@ ext_net_type: flat
 ext_net_c_class: 192.168.0
 ext_net_cidr: "{{ ext_net_c_class }}.128/27"
 ext_net_gateway: "{{ ext_net_c_class }}.1"
-ext_net_dns: "{{ ext_net_c_class }}.1"
+ext_net_dns: "{{ ext_net_c_class }}.13"
 ext_net_pool_start: "{{ ext_net_c_class }}.129"
 ext_net_pool_end: "{{ ext_net_c_class }}.158"
 
 int_net_c_class: 10.0.10
 int_net_cidr: "{{ int_net_c_class }}.0/24"
 int_net_gateway: "{{ int_net_c_class }}.1"
-int_net_dns: "{{ ext_net_c_class }}.1"
+int_net_dns: "{{ ext_net_c_class }}.13"
 int_net_pool_start: "{{ int_net_c_class }}.129"
 int_net_pool_end: "{{ int_net_c_class }}.158"
 
