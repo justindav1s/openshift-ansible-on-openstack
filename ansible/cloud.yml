@@ -8,4 +8,4 @@
   roles:
   - setup_project
   - setup_network
-  - { role: setup_server, server_name: "{{ project }}-base", image_name: "{{ app_image_name }}", server_flavour: "{{ project }}.standard", docker_vol_size: 20}
+#  - { role: setup_server, server_name: "{{ project }}-base", image_name: "{{ app_image_name }}", server_flavour: "{{ project }}.standard", docker_vol_size: 20}
