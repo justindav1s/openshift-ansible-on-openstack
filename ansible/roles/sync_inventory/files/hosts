@@ -10,7 +10,7 @@ openshift_release=v3.7
 openshift_master_cluster_public_hostname=ocp.datr.eu
 openshift_master_default_subdomain=apps.ocp.datr.eu
 ansible_ssh_user=root
-openshift_master_cluster_hostname=master.swlon.datr.eu
+openshift_master_cluster_hostname=master.swlon.local
 
 deployment_type=openshift-enterprise
 openshift_master_cluster_method=native
@@ -34,16 +34,16 @@ openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/ocp.datr.e
 openshift_enable_service_catalog=true
 template_service_broker_install=true
 ansible_service_broker_install=false
-template_service_broker_selector={'region':'infra'}
+#template_service_broker_selector={'region':'infra'}
 openshift_template_service_broker_namespaces=['openshift']
 
 #docker_version="1.12.6"
 
 
 [nodes]
-master.swlon.local openshift_hostname=master.swlon.local openshift_public_ip=192.168.0.135 openshift_node_labels="{'region': 'primary'}" openshift_schedulable=False
-node1.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
-node2.swlon.local openshift_hostname=node2.swlon.local openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
+master.swlon.local openshift_hostname=master.swlon.local openshift_public_ip=192.168.0.135 openshift_node_labels="{'region': 'master'}" openshift_schedulable=True
+node1.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'apps'}" openshift_schedulable=True
+node2.swlon.local openshift_hostname=node2.swlon.local openshift_node_labels="{'region': 'apps'}" openshift_schedulable=True
 infra1.swlon.local openshift_hostname=infra1.swlon.local openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
 
 [nfs]
