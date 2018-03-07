@@ -4,7 +4,7 @@
 
 - os_server_facts:
     cloud: "{{ app_cloud }}"
-    server: "{{ openstack_name }}"
+    server: "{{ inventory_hostname }}"
 
 - debug:
     msg: "{{ inventory_hostname }}: public: {{ openstack_servers[0].public_v4 }}"
