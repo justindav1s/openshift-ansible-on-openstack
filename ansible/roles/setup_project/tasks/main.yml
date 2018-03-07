@@ -48,23 +48,23 @@
     name: "{{ app_public_key }}"
     public_key_file: "{{ remote_public_key }}"
 
-- name: copy image to openstack server to keep shade happy
-  copy:
-   src: "{{ local_image }}"
-   dest: "{{ remote_image }}"
-   owner: root
-   group: root
-   mode: 0600
-
-- name: add an image
-  os_image:
-    cloud: "{{ app_cloud }}"
-    name: "{{ app_image_name }}"
-    container_format: bare
-    disk_format: "{{ image_format }}"
-    state: present
-    filename: "{{ remote_image }}"
-    wait: yes
+#- name: copy image to openstack server to keep shade happy
+#  copy:
+#   src: "{{ local_image }}"
+#   dest: "{{ remote_image }}"
+#   owner: root
+#   group: root
+#   mode: 0600
+#
+#- name: add an image
+#  os_image:
+#    cloud: "{{ app_cloud }}"
+#    name: "{{ app_image_name }}"
+#    container_format: bare
+#    disk_format: "{{ image_format }}"
+#    state: present
+#    filename: "{{ remote_image }}"
+#    wait: yes
 
 - name: "Create '{{ project }}.node' flavor with 8GB of RAM, 3 virtual CPUs, and a 50GB local disk"
   os_nova_flavor:
