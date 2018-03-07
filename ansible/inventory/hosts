@@ -14,4 +14,7 @@ node1.swlon.datr.eu openstack_name=openshift-node1 internal_hostname=node1.swlon
 node2.swlon.datr.eu openstack_name=openshift-node2 internal_hostname=node2.swlon.local
 
 [ansible-host]
+openshift-ansible
+
+[ansible-host-dns]
 ansible.swlon.datr.eu
