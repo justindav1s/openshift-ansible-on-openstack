@@ -29,7 +29,7 @@
     protocol: tcp
     port_range_min: 1
     port_range_max: 65535
-    remote_ip_prefix: 0.0.0.0/0
+    remote_group: "{{ app_sec_grp }}"
     direction: ingress
 
 - name: Create a egress TCP rule covering all ports
@@ -39,19 +39,28 @@
     protocol: tcp
     port_range_min: 1
     port_range_max: 65535
-    remote_ip_prefix: 0.0.0.0/0
+    remote_group: "{{ app_sec_grp }}"
     direction: egress
 
-- name: Create a egress TCP rule covering all ports
+- name: Create a egress udp rule covering all ports
   os_security_group_rule:
     cloud: "{{ app_cloud }}"
     security_group: "{{ app_sec_grp }}"
     protocol: udp
     port_range_min: 1
     port_range_max: 65535
-    remote_ip_prefix: 0.0.0.0/0
+    remote_group: "{{ app_sec_grp }}"
     direction: egress
 
+- name: Create a ingress udp rule covering all ports
+  os_security_group_rule:
+    cloud: "{{ app_cloud }}"
+    security_group: "{{ app_sec_grp }}"
+    protocol: udp
+    port_range_min: 1
+    port_range_max: 65535
+    remote_group: "{{ app_sec_grp }}"
+    direction: ingress
 
 - name: Create an externally accessible network named 'ext_network'.
   os_network:
