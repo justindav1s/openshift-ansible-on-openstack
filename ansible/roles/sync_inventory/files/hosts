@@ -6,11 +6,12 @@ etcd
 
 
 [OSEv3:vars]
+openshift_release=v3.7
 openshift_master_cluster_public_hostname=ocp.datr.eu
 openshift_master_default_subdomain=apps.ocp.datr.eu
 ansible_ssh_user=root
 openshift_master_cluster_hostname=master.swlon.datr.eu
-openshift_override_hostname_check=true
+
 deployment_type=openshift-enterprise
 openshift_master_cluster_method=native
 containerized=false
