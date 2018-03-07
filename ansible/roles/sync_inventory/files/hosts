@@ -40,7 +40,7 @@ openshift_template_service_broker_namespaces=['openshift']
 [nodes]
 master.swlon.local openshift_hostname=master.swlon.local openshift_public_ip=192.168.0.140 openshift_node_labels="{'region': 'primary'}" openshift_schedulable=False
 node1.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
-#node2.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
+node2.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'primary'}" openshift_schedulable=True
 infra1.swlon.local openshift_hostname=infra1.swlon.local openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
 
 [nfs]
