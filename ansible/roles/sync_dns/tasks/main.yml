@@ -1,0 +1,38 @@
+---
+- name: "copy etc/named/zones/db.10.0"
+  copy:
+   src: "etc/named/zones/db.10.0"
+   dest: /etc/named/zones
+   owner: root
+   group: root
+   mode: 0644
+
+- name: "copy etc/named/zones/db.192.168"
+  copy:
+   src: "etc/named/zones/db.192.168"
+   dest: /etc/named/zones
+   owner: root
+   group: root
+   mode: 0644
+
+- name: "copy etc/named/zones/db.swlon.datr.eu"
+  copy:
+   src: "etc/named/zones/db.swlon.datr.eu"
+   dest: /etc/named/zones
+   owner: root
+   group: root
+   mode: 0644
+
+- name: "copy etc/named/zones/db.swlon.local"
+  copy:
+   src: "etc/named/zones/db.swlon.local"
+   dest: /etc/named/zones
+   owner: root
+   group: root
+   mode: 0644
+
+- name: restart named service to pick up config changes
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: named
