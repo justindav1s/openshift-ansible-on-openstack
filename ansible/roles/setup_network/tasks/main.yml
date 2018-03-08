@@ -24,6 +24,29 @@
 
 - name: Create a ingress TCP rule covering all ports
   os_security_group_rule:
+    state: present
+    cloud: "{{ app_cloud }}"
+    security_group: "{{ app_sec_grp }}"
+    protocol: tcp
+    port_range_min: 1
+    port_range_max: 65535
+    remote_ip_prefix: 0.0.0.0/0
+    direction: ingress
+
+- name: Create a egress TCP rule covering all ports
+  os_security_group_rule:
+    state: present
+    cloud: "{{ app_cloud }}"
+    security_group: "{{ app_sec_grp }}"
+    protocol: tcp
+    port_range_min: 1
+    port_range_max: 65535
+    remote_ip_prefix: 0.0.0.0/0
+    direction: egress
+
+- name: Create a ingress TCP rule covering all ports
+  os_security_group_rule:
+    state: present
     cloud: "{{ app_cloud }}"
     security_group: "{{ app_sec_grp }}"
     protocol: tcp
@@ -34,6 +57,7 @@
 
 - name: Create a egress TCP rule covering all ports
   os_security_group_rule:
+    state: present
     cloud: "{{ app_cloud }}"
     security_group: "{{ app_sec_grp }}"
     protocol: tcp
@@ -44,6 +68,7 @@
 
 - name: Create a egress udp rule covering all ports
   os_security_group_rule:
+    state: present
     cloud: "{{ app_cloud }}"
     security_group: "{{ app_sec_grp }}"
     protocol: udp
@@ -54,6 +79,7 @@
 
 - name: Create a ingress udp rule covering all ports
   os_security_group_rule:
+    state: present
     cloud: "{{ app_cloud }}"
     security_group: "{{ app_sec_grp }}"
     protocol: udp

@@ -32,6 +32,11 @@
 #  - { role: setup_server, server_name: "{{ project }}-node2", image_name: "openshift-base", server_flavour: "{{ project }}.node", docker_vol_size: 100}
 #  - { role: setup_server, server_name: "{{ project }}-nfs", image_name: "openshift-base", server_flavour: "{{ project }}.nfs", docker_vol_size: 5}
 
+- hosts: localhost
+  tasks:
+  - pause:
+      seconds: 60
+
 - hosts: openshift_cloud
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
