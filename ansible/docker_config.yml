@@ -6,4 +6,13 @@
   become_method: sudo
   gather_facts: no
   roles:
+  - sync_keys
+
+- hosts: openshift-docker-hosts
+  vars:
+  remote_user: "{{ app_remote_ssh_user }}"
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  roles:
   - docker_config

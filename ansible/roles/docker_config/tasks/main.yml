@@ -1,6 +1,6 @@
-- name: install docker-1.12.6
+- name: "install {{ docker_version }}"
   yum:
-    name: "docker-1.12.6"
+    name: "{{ docker_version }}"
     state: latest
 
 - pause:

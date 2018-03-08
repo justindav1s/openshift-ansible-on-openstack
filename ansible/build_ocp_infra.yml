@@ -33,9 +33,9 @@
 
 - hosts: localhost
   tasks:
-  - name: pausing for 60 secs to allow servers to come up
+  - name: pausing for 120 secs to allow servers to come up
     pause:
-      seconds: 60
+      seconds: 120
 
 - hosts: openshift-servers
   vars:
