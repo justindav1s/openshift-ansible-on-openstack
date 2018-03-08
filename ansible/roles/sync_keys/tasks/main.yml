@@ -1,7 +1,3 @@
-- name: pausing for 60 secs to allow servers to come up
-  pause:
-    seconds: 60
-
 - name: make home for ssh keys
   file:
     path: ~/.ssh
