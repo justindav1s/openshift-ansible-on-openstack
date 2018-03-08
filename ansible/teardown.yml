@@ -11,6 +11,18 @@
   - { role: teardown_server, server_name: "{{ project }}-node2"}
   - { role: teardown_server, server_name: "{{ project }}-infra"}
   - { role: teardown_server, server_name: "{{ project }}-master"}
-#  - { role: teardown_server, server_name: "{{ project }}-ansible"}
+  - { role: teardown_server, server_name: "{{ project }}-ansible"}
+  - { role: teardown_server, server_name: "{{ project }}-bastion"}
+  - { role: teardown_server, server_name: "{{ project }}-master-lb"}
+  - { role: teardown_server, server_name: "{{ project }}-lb1"}
+  - { role: teardown_server, server_name: "{{ project }}-lb2"}
+  - { role: teardown_server, server_name: "{{ project }}-master1"}
+  - { role: teardown_server, server_name: "{{ project }}-master2"}
+  - { role: teardown_server, server_name: "{{ project }}-master3"}
+  - { role: teardown_server, server_name: "{{ project }}-node1"}
+  - { role: teardown_server, server_name: "{{ project }}-node2"}
+  - { role: teardown_server, server_name: "{{ project }}-infra1"}
+  - { role: teardown_server, server_name: "{{ project }}-infra2"}
+  - { role: teardown_server, server_name: "{{ project }}-nfs"}
   - teardown_network
   - teardown_project
