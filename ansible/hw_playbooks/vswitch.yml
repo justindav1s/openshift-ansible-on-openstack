@@ -1,7 +1,0 @@
----
-- hosts: masters nodes
-  vars:
-  remote_user: root
-  gather_facts: no
-  roles:
-  - tweak_file
