@@ -8,5 +8,4 @@
   roles:
   - setup_project
   - setup_network
-  - { role: setup_server, server_name: "{{ project }}-ansible", image_name: "openshift-base", server_flavour: "{{ project }}.node", docker_vol_size: 100}
 
