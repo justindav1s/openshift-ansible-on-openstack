@@ -1,13 +1,10 @@
-- name: getting private IP addresses
-  debug:
-    msg: "{{ inventory_hostname }}: private: {{ ansible_default_ipv4.address }}"
-
 - os_server_facts:
     cloud: "{{ app_cloud }}"
     server: "{{ inventory_hostname }}"
 
 - debug:
-    msg: "{{ inventory_hostname }}: public: {{ openstack_servers[0].public_v4 }}"
+    msg: "{{ inventory_hostname }}: private: {{ ansible_default_ipv4.address }} public: {{ openstack_servers[0].public_v4 }}"
+
 
 #- name: "modify {{ openstack_name }} public A record to {{ openstack_servers[0].public_v4 }}"
 #  nsupdate:
