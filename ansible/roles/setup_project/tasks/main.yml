@@ -66,7 +66,7 @@
 #    filename: "{{ remote_image }}"
 #    wait: yes
 
-- name: "Create '{{ project }}.bastion' flavor with {{ flavor_bastion_ram }}MB RAM, {{ flavor_bastion_vcpus }} vcpuss, and a {{ flavor_bastion_disk }}GB disk"
+- name: "Create '{{ project }}.bastion' flavor with {{ flavor_bastion_ram }}MB RAM, {{ flavor_bastion_vcpus }} vcpus, and a {{ flavor_bastion_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
@@ -75,7 +75,7 @@
     vcpus: "{{ flavor_bastion_vcpus }}"
     disk: "{{ flavor_bastion_disk }}"
 
-- name: "Create '{{ project }}.node' flavor with {{ flavor_node_ram }}MB RAM, {{ flavor_node_vcpus }} vcpuss, and a {{ flavor_node_disk }}GB disk"
+- name: "Create '{{ project }}.node' flavor with {{ flavor_node_ram }}MB RAM, {{ flavor_node_vcpus }} vcpus, and a {{ flavor_node_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
@@ -84,7 +84,7 @@
     vcpus: "{{ flavor_node_vcpus }}"
     disk: "{{ flavor_node_disk }}"
 
-- name: "Create '{{ project }}.master' flavor with {{ flavor_master_ram }}MB RAM, {{ flavor_master_vcpus }} vcpuss, and a {{ flavor_master_disk }}GB disk"
+- name: "Create '{{ project }}.master' flavor with {{ flavor_master_ram }}MB RAM, {{ flavor_master_vcpus }} vcpus, and a {{ flavor_master_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
@@ -93,7 +93,7 @@
     vcpus: "{{ flavor_master_vcpus }}"
     disk: "{{ flavor_master_disk }}"
 
-- name: "Create '{{ project }}.infra' flavor with {{ flavor_infra_ram }}MB RAM, {{ flavor_infra_vcpus }} vcpuss, and a {{ flavor_infra_disk }}GB disk"
+- name: "Create '{{ project }}.infra' flavor with {{ flavor_infra_ram }}MB RAM, {{ flavor_infra_vcpus }} vcpus, and a {{ flavor_infra_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
@@ -102,7 +102,7 @@
     vcpus: "{{ flavor_infra_vcpus }}"
     disk: "{{ flavor_infra_disk }}"
 
-- name: "Create '{{ project }}.lb' flavor with {{ flavor_lb_ram }}MB RAM, {{ flavor_lb_vcpus }} vcpuss, and a {{ flavor_lb_disk }}GB disk"
+- name: "Create '{{ project }}.lb' flavor with {{ flavor_lb_ram }}MB RAM, {{ flavor_lb_vcpus }} vcpus, and a {{ flavor_lb_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
@@ -111,7 +111,7 @@
     vcpus: "{{ flavor_lb_vcpus }}"
     disk: "{{ flavor_lb_disk }}"
 
-- name: "Create '{{ project }}.nfs' flavor with {{ flavor_nfs_ram }}MB RAM, {{ flavor_nfs_vcpus }} vcpuss, and a {{ flavor_nfs_disk }}GB disk"
+- name: "Create '{{ project }}.nfs' flavor with {{ flavor_nfs_ram }}MB RAM, {{ flavor_nfs_vcpus }} vcpus, and a {{ flavor_nfs_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
