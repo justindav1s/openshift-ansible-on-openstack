@@ -44,6 +44,15 @@
     remote_ip_prefix: 0.0.0.0/0
     direction: egress
 
+- name: Create a egress UDP rule for DNS
+  os_security_group_rule:
+    state: present
+    cloud: "{{ app_cloud }}"
+    security_group: "{{ app_sec_grp }}"
+    protocol: udp
+    remote_ip_prefix: 0.0.0.0/0
+    direction: egress
+
 - name: Create a ingress TCP rule covering all ports
   os_security_group_rule:
     state: present
