@@ -1,0 +1,188 @@
+  12  systemctl grep atamic
+   13  systemctl | grep atamic
+   14  systemctl | grep atomic
+   15  systemctl | grep ovs
+   16  systemctl | grep open
+   17  systemctl status openvswitch.service
+   18  exit
+   19  cd /etc/origin/master/
+   20  vi master-config.yaml
+   21  exit
+   22  vi /etc/origin/node/node-config.yaml
+   23  exit
+   24  systemctl status atomic-openshift-node.service
+   25  journalctl -xe
+   26  vi /etc/origin/node/node-config.yaml
+   27  systemctl restart atomic-openshift-node.service
+   28  systemctl status atomic-openshift-node.service
+   29  exit
+   30  iptables-save | grep servicelayer/hello-openshift | grep 8080
+   31  exit
+   32  vi /etc/origin/master/master-config.yaml
+   33  cd ..
+   34  exit
+   35  iptables-save | grep servicelayer/hello-openshift | grep 8080
+   36  oc edit service hello-openshift
+   37  oc project servicelayer
+   38  oc edit service hello-openshift
+   39  iptables-save | grep servicelayer/hello-openshift | grep 8080
+   40  oc get netnamespaces
+   41  history
+   42  oc adm pod-network isolate-projects pizzaparty-dev fancypants-dev
+   43  oc get netnamespaces
+   44  curl https://raw.githubusercontent.com/openshift/origin/master/contrib/migration/migrate-network-policy.sh
+   45  ls -ltr
+   46  curl https://raw.githubusercontent.com/openshift/origin/master/contrib/migration/migrate-network-policy.sh > migrate-network-policy.sh
+   47  ls -ltr
+   48  chmod 755 migrate-network-policy.sh
+   49  ./migrate-network-policy.sh
+   50  vi /etc/origin/master/master-config.yaml
+   51  cp /etc/origin/master/master-config.yaml /etc/origin/master/preldap.master-config.yaml
+   52  exit
+   53  cat << EOF > /etc/origin/master/groupsync.yaml
+   54  kind: LDAPSyncConfig
+   55  apiVersion: v1
+   56  url: "ldap://ipa.shared.example.opentlc.com"
+   57  insecure: false
+   58  ca: "/etc/origin/master/ipa-ca.crt"
+   59  bindDN: "uid=admin,cn=users,cn=accounts,dc=shared,dc=example,dc=opentlc,dc=com"
+   60  bindPassword: "r3dh4t1!"
+   61  rfc2307:
+   62      groupsQuery:
+   63          baseDN: "cn=groups,cn=accounts,dc=shared,dc=example,dc=opentlc,dc=com"
+   64          scope: sub
+   65          derefAliases: never
+   66          filter: (&(!(objectClass=mepManagedEntry))(!(cn=trust admins))(!(cn=groups))(!(cn=admins))(!(cn=ipausers))(!(cn=editors))(!(cn=ocp-users))(!(cn=evmgroup*))(!(cn=ipac*)))
+   67      groupUIDAttribute: dn
+   68      groupNameAttributes: [ cn ]
+   69      groupMembershipAttributes: [ member ]
+   70      usersQuery:
+   71          baseDN: "cn=users,cn=accounts,dc=shared,dc=example,dc=opentlc,dc=com"
+   72          scope: sub
+   73          derefAliases: never
+   74      userUIDAttribute: dn
+   75      userNameAttributes: [ uid ]
+   76  EOF
+   77  vi /etc/origin/master/groupsync.yaml
+   78  cat << EOF > /etc/origin/master/whitelist.yaml
+   79  cn=portalapp,cn=groups,cn=accounts,dc=shared,dc=example,dc=opentlc,dc=com
+   80  cn=paymentapp,cn=groups,cn=accounts,dc=shared,dc=example,dc=opentlc,dc=com
+   81  cn=ocp-platform,cn=groups,cn=accounts,dc=shared,dc=example,dc=opentlc,dc=com
+   82  cn=ocp-production,cn=groups,cn=accounts,dc=shared,dc=example,dc=opentlc,dc=com
+   83  EOF
+   84  oc get users
+   85  oc adm groups sync --sync-config=/etc/origin/master/groupsync.yaml --whitelist=/etc/origin/master/whitelist.yaml
+   86  oc get users
+   87  oc adm groups sync --sync-config=/etc/origin/master/groupsync.yaml --whitelist=/etc/origin/master/whitelist.yaml --confirm
+   88  oc get users
+   89  oc get groups
+   90  export APPNAME=portalapp
+   91  export APPTEXT="Portal App"
+   92  oc adm new-project ${APPNAME}-dev --display-name="${APPTEXT} Development"
+   93  oc adm new-project ${APPNAME}-test --display-name="${APPTEXT} Testing"
+   94  oc adm new-project ${APPNAME}-prod --display-name="${APPTEXT} Production"
+   95  export APPNAME=paymentapp
+   96  export APPTEXT="Payment App"
+   97  oc adm new-project ${APPNAME}-dev --display-name="${APPTEXT} Development"
+   98  oc adm new-project ${APPNAME}-test --display-name="${APPTEXT} Testing"
+   99  oc adm new-project ${APPNAME}-prod --display-name="${APPTEXT} Production"
+  100  oc get users
+  101  oc adm policy add-role-to-group admin portalapp -n portalapp-dev
+  102  oc adm policy add-role-to-group admin portalapp -n portalapp-test
+  103  oc get users
+  104  oc adm policy add-role-to-group admin paymentapp -n paymentapp-dev
+  105  oc adm policy add-role-to-group admin paymentapp -n paymentapp-test
+  106  oc describe rolebinding.rbac -n paymentapp-dev
+  107  oc get users
+  108  oc describe rolebinding.rbac -n andrew
+  109  oc describe rolebinding.rbac -u andrew
+  110  oc adm policy add-role-to-group admin paymentapp -n paymentapp-dev
+  111  oc adm policy add-role-to-group admin paymentapp -n paymentapp-test
+  112  oc describe rolebinding.rbac -n paymentapp-dev
+  113  oc describe rolebinding.rbac -n portalapp-dev
+  114  oc describe rolebinding.rbac -n portalapp-test
+  115  oc describe rolebinding.rbac -n portalapp-prod
+  116  oc adm policy add-role-to-group admin ocp-production -n portalapp-prod
+  117  oc describe rolebinding.rbac -n portalapp-prod
+  118  oc adm policy add-role-to-group admin ocp-production -n paymentapp-prod
+  119  oc adm policy add-cluster-role-to-group cluster-admin ocp-platform
+  120  oc policy add-role-to-group system:image-puller system:serviceaccounts:paymentapp-prod -n paymentapp-dev
+  121  oc policy add-role-to-group system:image-puller system:serviceaccounts:paymentapp-test -n paymentapp-dev
+  122  oc login -u marina --password 'r3dh4t1!'
+  123  oc project paymentapp-dev
+  124  oc new-app ruby~https://github.com/openshift/sinatra-example --name=sinatra -n paymentapp-dev
+  125  oc logs -f build/sinatra-1 -n paymentapp-dev
+  126  oc describe imagestream sinatra -n paymentapp-dev
+  127  oc tag sinatra:latest sinatra:test
+  128  oc login -u marina --password 'r3dh4t1!'
+  129  oc project paymentapp-test
+  130  oc new-app paymentapp-dev/sinatra:test -n paymentapp-test
+  131  oc tag sinatra:latest sinatra:prod -n paymentapp-dev
+  132  oc new-app paymentapp-dev/sinatra:prod -n paymentapp-prod
+  133  oc login -u david -p 'r3dh4t1!'
+  134  oc project paymentapp-prod
+  135  oc new-app paymentapp-dev/sinatra:prod -n paymentapp-prod
+  136  vi /etc/ansible/hosts
+  137  exit
+  138  oc login -u system:admin
+  139  oc adm new-project projecta --display-name="Project A Description"
+  140  oc adm new-project projectb --display-name="Project B Description"
+  141  oc adm new-project projectc --display-name="Project C Description"
+  142  oc login -u david
+  143  oc new-app https://github.com/openshift/cakephp-ex.git -n projecta
+  144  oc new-app openshift/hello-openshift:v1.1.1 -n projectb
+  145  oc new-app https://github.com/openshift/simple-openshift-sinatra-sti.git -n projectc
+  146  oc scale deploymentconfigs/hello-openshift -n projectb --replicas=5
+  147  oc scale deploymentconfigs/cakephp-ex -n projecta --replicas=5
+  148  oc scale deploymentconfigs/simple-openshift-sinatra-sti  -n projectc --replicas=5
+  149  oc get pods --all-namespaces -o wide
+  150  oc get nodes
+  151  oc adm manage-node node1.$GUID.internal --list-pods
+  152  oc adm manage-node node1.0c39.internal --list-pods
+  153  oc adm manage-node node2.0c39.internal --list-pods
+  154  oc adm manage-node node3.0c39.internal --list-pods
+  155  oc adm manage-node node3.0c39.internal --list-pods --list-pods --pod-selector="deploymentconfig=cakephp-ex"
+  156  oc adm manage-node master1.0c39.internal --list-pods --list-pods --pod-selector="deploymentconfig=cakephp-ex"
+  157  oc adm manage-node master1.0c39.internal --list-pods --list-pods
+  158  oc adm manage-node master2.0c39.internal --list-pods --list-pods
+  159  oc adm manage-node master3.0c39.internal --list-pods --list-pods
+  160  oc adm manage-node -an
+  161  oc adm manage-node -a
+  162  oc adm manage-node -an --list-pods
+  163  oc adm manage-node -a --list-pods
+  164  oc adm manage-node --all-names -o -y --list-pods
+  165  oc adm manage-node --all-names -o wide --list-pods
+  166  oc adm manage-node --all-names -o wide
+  167  oc adm manage-node --all-namespaces -o wide/
+  168  oc ge pods  --all-namespaces -o wide/
+  169  oc ge pods  --all-namespaces -o wide
+  170  oc get pods  --all-namespaces -o wide
+  171  exit
+  172  oc get pods  --all-namespaces -o wide
+  173  oc adm manage-node node3.0c39.internal --list-pods --list-pods
+  174  oc get nodes
+  175  oc adm manage-node node3.0c39.internal --schedulable=false
+  176  oc get nodes
+  177  oc adm manage-node node3.0c39.internal --list-pods
+  178  oc adm drain node3.0c39.internal --dry-run
+  179  oc adm drain node3.0c39.internal --force   --ignore-daemonsets --delete-local-data
+  180  oc adm manage-node node3.0c39.internal --list-pods
+  181  oc get nodes
+  182  oc delete node node3.0c39.internal
+  183  ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml -l node3.0c39.internal
+  184  exit
+  185  oc get nodes
+  186  oc adm manage-node node3.0c39.internal --list-pods
+  187  oc get nodes
+  188  oc get node2.0c39.internal
+  189  oc get node node2.0c39.internal
+  190  oc describe node node2.0c39.internal
+  191  oc describe node node3.0c39.internal
+  192  oc label node node3.0c39.internal logging-infra-fluentd=true
+  193  oc describe node node3.0c39.internal
+  194  oc get pods  node3.0c39.internal
+  195  oc describe node node3.0c39.internal
+  196  oadm prune deployments --orphans
+  197  oadm prune deployments --orphans --keep-complete=2 --keep-failed=1 --keep-younger-than=60m
+  198  oadm prune deployments --orphans --confirm
+  199  oadm prune builds --orphans --keep-complete=5 --keep-failed=1     --keep-younger-than=60m
