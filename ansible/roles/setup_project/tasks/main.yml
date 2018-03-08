@@ -66,57 +66,57 @@
 #    filename: "{{ remote_image }}"
 #    wait: yes
 
-- name: "Create '{{ project }}.bastion' flavor with {{ flavor.bastion.ram }}MB RAM, {{ flavor.bastion.vcpu }} vCPUs, and a {{ flavor.bastion.disk }}GB disk"
+- name: "Create '{{ project }}.bastion' flavor with {{ flavor_bastion_ram }}MB RAM, {{ flavor_bastion_vcpu }} vCPUs, and a {{ flavor_bastion_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
     name: "{{project }}.bastion"
-    ram: "{{ flavor.bastion.ram }}"
-    vcpus: "{{ flavor.bastion.vcpu }}"
-    disk: "{{ flavor.bastion.disk }}"
+    ram: "{{ flavor_bastion_ram }}"
+    vcpus: "{{ flavor_bastion_vcpu }}"
+    disk: "{{ flavor_bastion_disk }}"
 
-- name: "Create '{{ project }}.node' flavor with {{ flavor.node.ram }}MB RAM, {{ flavor.node.vcpu }} vCPUs, and a {{ flavor.node.disk }}GB disk"
+- name: "Create '{{ project }}.node' flavor with {{ flavor_node_ram }}MB RAM, {{ flavor_node_vcpu }} vCPUs, and a {{ flavor_node_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
     name: "{{project }}.node"
-    ram: "{{ flavor.node.ram }}"
-    vcpus: "{{ flavor.node.vcpu }}"
-    disk: "{{ flavor.node.disk }}"
+    ram: "{{ flavor_node_ram }}"
+    vcpus: "{{ flavor_node_vcpu }}"
+    disk: "{{ flavor_node_disk }}"
 
-- name: "Create '{{ project }}.master' flavor with {{ flavor.master.ram }}MB RAM, {{ flavor.master.vcpu }} vCPUs, and a {{ flavor.master.disk }}GB disk"
+- name: "Create '{{ project }}.master' flavor with {{ flavor_master_ram }}MB RAM, {{ flavor_master_vcpu }} vCPUs, and a {{ flavor_master_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
     name: "{{project }}.master"
-    ram: "{{ flavor.master.ram }}"
-    vcpus: "{{ flavor.master.vcpu }}"
-    disk: "{{ flavor.master.disk }}"
+    ram: "{{ flavor_master_ram }}"
+    vcpus: "{{ flavor_master_vcpu }}"
+    disk: "{{ flavor_master_disk }}"
 
-- name: "Create '{{ project }}.infra' flavor with {{ flavor.infra.ram }}MB RAM, {{ flavor.infra.vcpu }} vCPUs, and a {{ flavor.infra.disk }}GB disk"
+- name: "Create '{{ project }}.infra' flavor with {{ flavor_infra_ram }}MB RAM, {{ flavor_infra_vcpu }} vCPUs, and a {{ flavor_infra_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
     name: "{{project }}.infra"
-    ram: "{{ flavor.infra.ram }}"
-    vcpus: "{{ flavor.infra.vcpu }}"
-    disk: "{{ flavor.infra.disk }}"
+    ram: "{{ flavor_infra_ram }}"
+    vcpus: "{{ flavor_infra_vcpu }}"
+    disk: "{{ flavor_infra_disk }}"
 
-- name: "Create '{{ project }}.lb' flavor with {{ flavor.lb.ram }}MB RAM, {{ flavor.lb.vcpu }} vCPUs, and a {{ flavor.lb.disk }}GB disk"
+- name: "Create '{{ project }}.lb' flavor with {{ flavor_lb_ram }}MB RAM, {{ flavor_lb_vcpu }} vCPUs, and a {{ flavor_lb_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
     name: "{{project }}.lb"
-    ram: "{{ flavor.lb.ram }}"
-    vcpus: "{{ flavor.lb.vcpu }}"
-    disk: "{{ flavor.lb.disk }}"
+    ram: "{{ flavor_lb_ram }}"
+    vcpus: "{{ flavor_lb_vcpu }}"
+    disk: "{{ flavor_lb_disk }}"
 
-- name: "Create '{{ project }}.nfs' flavor with {{ flavor.nfs.ram }}MB RAM, {{ flavor.nfs.vcpu }} vCPUs, and a {{ flavor.nfs.disk }}GB disk"
+- name: "Create '{{ project }}.nfs' flavor with {{ flavor_nfs_ram }}MB RAM, {{ flavor_nfs_vcpu }} vCPUs, and a {{ flavor_nfs_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: present
     name: "{{project }}.nfs"
-    ram: "{{ flavor.nfs.ram }}"
-    vcpus: "{{ flavor.nfs.vcpu }}"
-    disk: "{{ flavor.nfs.disk }}"
+    ram: "{{ flavor_nfs_ram }}"
+    vcpus: "{{ flavor_nfs_vcpu }}"
+    disk: "{{ flavor_nfs_disk }}"
 
