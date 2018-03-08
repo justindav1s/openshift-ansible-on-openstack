@@ -6,19 +6,18 @@
   become_method: sudo
   gather_facts: no
   roles:
-#  - { role: teardown_server, server_name: "{{ project }}-bastion"}
-#  - { role: teardown_server, server_name: "{{ project }}-master-lb"}
-#  - { role: teardown_server, server_name: "{{ project }}-lb1"}
-#  - { role: teardown_server, server_name: "{{ project }}-lb2"}
-#  - { role: teardown_server, server_name: "{{ project }}-master1"}
-#  - { role: teardown_server, server_name: "{{ project }}-master2"}
-#  - { role: teardown_server, server_name: "{{ project }}-master3"}
-#  - { role: teardown_server, server_name: "{{ project }}-node1"}
-#  - { role: teardown_server, server_name: "{{ project }}-node2"}
-#  - { role: teardown_server, server_name: "{{ project }}-infra1"}
-#  - { role: teardown_server, server_name: "{{ project }}-infra2"}
-#  - { role: teardown_server, server_name: "{{ project }}-nfs"}
-
+  - { role: teardown_server, server_name: "{{ project }}-bastion"}
+  - { role: teardown_server, server_name: "{{ project }}-master-lb"}
+  - { role: teardown_server, server_name: "{{ project }}-lb1"}
+  - { role: teardown_server, server_name: "{{ project }}-lb2"}
+  - { role: teardown_server, server_name: "{{ project }}-master1"}
+  - { role: teardown_server, server_name: "{{ project }}-master2"}
+  - { role: teardown_server, server_name: "{{ project }}-master3"}
+  - { role: teardown_server, server_name: "{{ project }}-node1"}
+  - { role: teardown_server, server_name: "{{ project }}-node2"}
+  - { role: teardown_server, server_name: "{{ project }}-infra1"}
+  - { role: teardown_server, server_name: "{{ project }}-infra2"}
+  - { role: teardown_server, server_name: "{{ project }}-nfs"}
   - { role: setup_server, server_name: "{{ project }}-bastion", image_name: "openshift-base", server_flavour: "{{ project }}.bastion", docker_vol_size: 5}
   - { role: setup_server, server_name: "{{ project }}-master-lb", image_name: "openshift-base", server_flavour: "{{ project }}.lb", docker_vol_size: 5}
   - { role: setup_server, server_name: "{{ project }}-lb1", image_name: "openshift-base", server_flavour: "{{ project }}.lb", docker_vol_size: 5}
