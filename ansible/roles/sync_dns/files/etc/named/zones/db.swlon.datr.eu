@@ -13,9 +13,15 @@ $TTL    604800
 ns1.swlon.datr.eu.             IN      A      192.168.0.13
 
 ; 192.168.0.0/24 - A records
-master.swlon.datr.eu.          IN      A      192.168.0.140
-node1.swlon.datr.eu.           IN      A      192.168.0.136
-node2.swlon.datr.eu.           IN      A      192.168.0.135
-infra1.swlon.datr.eu.          IN      A      192.168.0.141
-ansible.swlon.datr.eu.         IN      A      192.168.0.133
-openstack.swlon.datr.eu.       IN      A      192.168.0.13
+master1.swlon.datr.eu.      IN      A      192.168.0.135
+master2.swlon.datr.eu.      IN      A      192.168.0.140
+master3.swlon.datr.eu.      IN      A      192.168.0.133
+node1.swlon.datr.eu.        IN      A      192.168.0.131
+node2.swlon.datr.eu.        IN      A      192.168.0.132
+infra1.swlon.datr.eu.       IN      A      192.168.0.130
+infra2.swlon.datr.eu.       IN      A      192.168.0.141
+masterlb.swlon.datr.eu.     IN      A      192.168.0.142
+lb1.swlon.datr.eu.          IN      A      192.168.0.139
+lb2.swlon.datr.eu.          IN      A      192.168.0.145
+nfs.swlon.datr.eu.          IN      A      192.168.0.143
+bastion.swlon.datr.eu.      IN      A      192.168.0.138

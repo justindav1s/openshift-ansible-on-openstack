@@ -13,8 +13,17 @@ $TTL    604800
 ns1.swlon.datr.eu.             IN      A      192.168.0.13
 
 ; 10.0.0.0/16 - A records
-master.swlon.local.          IN      A      10.0.10.135
-node1.swlon.local.           IN      A      10.0.10.139
-node2.swlon.local.           IN      A      10.0.10.141
-infra1.swlon.local.          IN      A      10.0.10.136
-ansible.swlon.local.         IN      A      10.0.10.133
+master1.swlon.local.      IN      A      10.0.10.137
+master2.swlon.local.      IN      A      10.0.10.130
+master3.swlon.local.      IN      A      10.0.10.131
+node1.swlon.local.        IN      A      10.0.10.141
+node2.swlon.local.        IN      A      10.0.10.149
+infra1.swlon.local.       IN      A      10.0.10.135
+infra2.swlon.local.       IN      A      10.0.10.143
+masterlb.swlon.local.     IN      A      10.0.10.134
+lb1.swlon.local.          IN      A      10.0.10.138
+lb2.swlon.local.          IN      A      10.0.10.136
+nfs.swlon.local.          IN      A      10.0.10.142
+bastion.swlon.local.      IN      A      10.0.10.133
+
+

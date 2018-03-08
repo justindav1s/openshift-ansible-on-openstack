@@ -10,9 +10,16 @@ $TTL    604800
     IN      NS      ns1.swlon.datr.eu.
 
 ; PTR records
-140.0   IN      PTR     master.swlon.datr.eu.        ; 192.168.0.140
-136.0   IN      PTR     node1.swlon.datr.eu.         ; 192.168.0.136
-135.0   IN      PTR     node2.swlon.datr.eu.         ; 192.168.0.135
-141.0   IN      PTR     infra1.swlon.datr.eu.        ; 192.168.0.141
-133.0   IN      PTR     ansible.swlon.datr.eu.       ; 192.168.0.133
-13.0   IN      PTR     openstack.swlon.datr.eu.       ; 192.168.0.13
+135.0 IN      PTR     master1.swlon.datr.eu.    ; 192.168.0.135
+140.0 IN      PTR     master2.swlon.datr.eu.    ; 192.168.0.140
+133.0 IN      PTR     master3.swlon.datr.eu.    ; 192.168.0.133
+131.0 IN      PTR     node1.swlon.datr.eu.      ; 192.168.0.131
+132.0 IN      PTR     node2.swlon.datr.eu.      ; 192.168.0.132
+130.0 IN      PTR     infra1.swlon.datr.eu.     ; 192.168.0.130
+141.0 IN      PTR     infra2.swlon.datr.eu.     ; 192.168.0.141
+142.0 IN      PTR     masterlb.swlon.datr.eu.   ; 192.168.0.142
+139.0 IN      PTR     lb1.swlon.datr.eu.        ; 192.168.0.139
+145.0 IN      PTR     lb2.swlon.datr.eu.        ; 192.168.0.145
+143.0 IN      PTR     nfs.swlon.datr.eu.        ; 192.168.0.143
+138.0 IN      PTR     bastion.swlon.datr.eu.    ; 192.168.0.138
+

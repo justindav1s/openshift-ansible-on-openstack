@@ -10,8 +10,15 @@ $TTL    604800
     IN      NS      ns1.swlon.datr.eu.
 
 ; PTR records
-135.10 IN      PTR     master.swlon.local.    ; 10.0.10.135
-139.10 IN      PTR     node1.swlon.local.     ; 10.0.10.139
-141.10 IN      PTR     node2.swlon.local.     ; 10.0.10.141
-136.10 IN      PTR     infra1.swlon.local.    ; 10.0.10.136
-133.10 IN      PTR     ansible.swlon.local.   ; 10.0.10.133
+137.10 IN      PTR     master1.swlon.local.    ; 10.0.10.137
+130.10 IN      PTR     master2.swlon.local.    ; 10.0.10.130
+131.10 IN      PTR     master3.swlon.local.    ; 10.0.10.131
+141.10 IN      PTR     node1.swlon.local.      ; 10.0.10.141
+149.10 IN      PTR     node2.swlon.local.      ; 10.0.10.149
+135.10 IN      PTR     infra1.swlon.local.     ; 10.0.10.135
+143.10 IN      PTR     infra2.swlon.local.     ; 10.0.10.143
+134.10 IN      PTR     masterlb.swlon.local.   ; 10.0.10.134
+138.10 IN      PTR     lb1.swlon.local.        ; 10.0.10.138
+132.10 IN      PTR     lb2.swlon.local.        ; 10.0.10.132
+142.10 IN      PTR     nfs.swlon.local.        ; 10.0.10.142
+133.10 IN      PTR     bastion.swlon.local.    ; 10.0.10.133
