@@ -23,16 +23,44 @@
     state: absent
   ignore_errors: True
 
-- name: "delete '{{ project }}.standard' flavor with 8GB of RAM, 2 virtual CPUs, and a 50GB local disk"
+- name: "delete {{ project }}.lb"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: absent
-    name: "{{project }}.standard"
+    name: "{{project }}.lb"
   ignore_errors: True
 
-- name: "delete '{{ project }}.node' flavor with 16GB of RAM, 4 virtual CPUs, and a 50GB local disk"
+- name: "delete {{ project }}.master"
+  os_nova_flavor:
+    cloud: "{{ admin_cloud }}"
+    state: absent
+    name: "{{project }}.master"
+  ignore_errors: True
+
+- name: "delete {{ project }}.infra"
+  os_nova_flavor:
+    cloud: "{{ admin_cloud }}"
+    state: absent
+    name: "{{project }}.infra"
+  ignore_errors: True
+
+- name: "delete {{ project }}.node"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"
     state: absent
     name: "{{project }}.node"
+  ignore_errors: True
+
+- name: "delete {{ project }}.nfs"
+  os_nova_flavor:
+    cloud: "{{ admin_cloud }}"
+    state: absent
+    name: "{{project }}.nfs"
+  ignore_errors: True
+
+- name: "delete {{ project }}.bastion"
+  os_nova_flavor:
+    cloud: "{{ admin_cloud }}"
+    state: absent
+    name: "{{project }}.bastion"
   ignore_errors: True
