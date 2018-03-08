@@ -4,12 +4,14 @@
     cloud: "{{ app_cloud }}"
     state: absent
     name: "{{ app_sec_grp }}"
+  ignore_errors: True
 
 - name: Delete router attached to openshift_ext_net  and one internal subnet interface.
   os_router:
     cloud: "{{ app_cloud }}"
     state: absent
     name: "{{ openstack_router }}"
+  ignore_errors: True
 
 #- name: Get private subnet port facts
 #  os_port_facts:
@@ -37,12 +39,14 @@
     cloud: "{{ app_cloud }}"
     network_name: "{{ openstack_int_net_name }}"
     name: "{{ openstack_int_subnet_name }}"
+  ignore_errors: True
 
 - name: Delete an private network
   os_network:
     cloud: "{{ app_cloud }}"
     state: absent
     name: "{{ openstack_int_net_name }}"
+  ignore_errors: True
 
 #- name: Delete subnet on the external network
 #  os_subnet:
@@ -56,6 +60,7 @@
     cloud: "{{ admin_cloud }}"
     state: absent
     name: "{{ openstack_ext_net_name }}"
+  ignore_errors: True
 
 
 

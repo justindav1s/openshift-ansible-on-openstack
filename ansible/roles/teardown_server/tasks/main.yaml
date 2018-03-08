@@ -5,10 +5,12 @@
     cloud: "{{ app_cloud }}"
     wait: yes
     name: "{{ server_name }}"
+  ignore_errors: True
 
 - name: delete a volume for docker
   os_volume:
     state: absent
     cloud: "{{ app_cloud }}"
     display_name: "{{ server_name }}-docker-vol"
+  ignore_errors: True
 

@@ -1,0 +1,11 @@
+---
+- hosts: openshift-servers
+  vars:
+  remote_user: "{{ app_remote_ssh_user }}"
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  roles:
+  - docker_config
+
+

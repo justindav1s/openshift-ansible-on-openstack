@@ -1,20 +1,58 @@
 [openstack-server]
 openstack.swlon.datr.eu ansible_ssh_host=openstack.swlon.datr.eu ansible_ssh_port=22
 
-[openshift-servers]
-openshift-master
-openshift-infra1
+[openshift-masters]
+openshift-master1
+openshift-master2
+openshift-master3
+
+[openshift-nodes]
 openshift-node1
 openshift-node2
 
+[openshift-infras]
+openshift-infra1
+openshift-infra2
+
+[openshift-lbs]
+openshift-master-lb
+openshift-lb1
+openshift-lb2
+
+[openshift-nfss]
+openshift-nfs
+
+[openshift-bastions]
+openshift-bastion
+
 [openshift-servers-dns]
-master.swlon.datr.eu openstack_name=openshift-master internal_hostname=master.swlon.local
+bastion.swlon.datr.eu openstack_name=openshift-bastion internal_hostname=bastion.swlon.local
+lb-master.swlon.datr.eu openstack_name=openshift-lb-master internal_hostname=lb-master.swlon.local
+lb1.swlon.datr.eu openstack_name=openshift-lb1 internal_hostname=lb1.swlon.local
+lb2.swlon.datr.eu openstack_name=openshift-lb1 internal_hostname=lb2.swlon.local
+master1.swlon.datr.eu openstack_name=openshift-master1 internal_hostname=master1.swlon.local
+master2.swlon.datr.eu openstack_name=openshift-master2 internal_hostname=master2.swlon.local
+master3.swlon.datr.eu openstack_name=openshift-master3 internal_hostname=master3.swlon.local
 infra1.swlon.datr.eu openstack_name=openshift-infra1 internal_hostname=infra1.swlon.local
+infra2.swlon.datr.eu openstack_name=openshift-infra2 internal_hostname=infra2.swlon.local
 node1.swlon.datr.eu openstack_name=openshift-node1 internal_hostname=node1.swlon.local
 node2.swlon.datr.eu openstack_name=openshift-node2 internal_hostname=node2.swlon.local
 
-[ansible-host]
-openshift-ansible
+[bastion-host]
+openshift-bastion
 
-[ansible-host-dns]
-ansible.swlon.datr.eu
+[bastion-host-dns]
+bastion.swlon.datr.eu
+
+[openshift-servers:children]
+openshift-masters
+openshift-nodes
+openshift-infras
+openshift-lbs
+openshift-nfss
+openshift-bastions
+
+[openshift-docker-hosts:children]
+openshift-masters
+openshift-nodes
+openshift-infras

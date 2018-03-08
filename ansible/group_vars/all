@@ -50,3 +50,35 @@ docker_version: "docker-1.13.1"
 local_cert_path: /Users/jusdavis/lego/certs/ocp.datr.eu.crt
 local_cert_key_path: /Users/jusdavis/lego/certs/ocp.datr.eu.key
 local_issuer_cert_path: /Users/jusdavis/lego/certs/ocp.datr.eu.issuer.crt
+
+#x1
+flavor.bastion.ram: 2048
+flavor.bastion.vcpus:2
+flavor.bastion.disk: 20
+
+#x3
+flavor.lb.ram: 2048
+flavor.lb.vcpus:2
+flavor.lb.disk: 20
+
+#x3
+flavor.master.ram: 4096
+flavor.master.vcpus: 2
+flavor.master.disk: 50
+
+#x2
+flavor.node.ram: 4096
+flavor.node.vcpus: 3
+flavor.node.disk: 50
+
+#x2
+flavor.infra.ram: 10240
+flavor.infra.vcpus: 3
+flavor.infra.disk:
+
+#x1
+flavor.nfs.ram: 2048
+flavor.nfs.vcpus: 2
+flavor.nfs.disk: 100
+
+# 1 + 6 + 12 + 8 + 20 + 2 = 49GB

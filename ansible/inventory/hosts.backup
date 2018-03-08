@@ -1,0 +1,20 @@
+[openstack-server]
+openstack.swlon.datr.eu ansible_ssh_host=openstack.swlon.datr.eu ansible_ssh_port=22
+
+[openshift-servers]
+openshift-master
+openshift-infra1
+openshift-node1
+openshift-node2
+
+[openshift-servers-dns]
+master.swlon.datr.eu openstack_name=openshift-master internal_hostname=master.swlon.local
+infra1.swlon.datr.eu openstack_name=openshift-infra1 internal_hostname=infra1.swlon.local
+node1.swlon.datr.eu openstack_name=openshift-node1 internal_hostname=node1.swlon.local
+node2.swlon.datr.eu openstack_name=openshift-node2 internal_hostname=node2.swlon.local
+
+[ansible-host]
+openshift-ansible
+
+[ansible-host-dns]
+ansible.swlon.datr.eu
