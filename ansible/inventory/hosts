@@ -46,11 +46,11 @@ bastion.swlon.datr.eu
 
 [openshift-servers:children]
 openshift-masters
-#openshift-nodes
-#openshift-infras
-#openshift-lbs
-#openshift-nfss
-#openshift-bastions
+openshift-nodes
+openshift-infras
+openshift-lbs
+openshift-nfss
+openshift-bastions
 
 [openshift-docker-hosts:children]
 openshift-masters
