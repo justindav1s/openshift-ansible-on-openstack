@@ -54,12 +54,12 @@ local_issuer_cert_path: /Users/jusdavis/lego/certs/ocp.datr.eu.issuer.crt
 #x1
 flavor_bastion_ram: 2048
 flavor_bastion_vcpus: 2
-flavor_bastion_disk: 20
+flavor_bastion_disk: 50
 
 #x3
 flavor_lb_ram: 2048
 flavor_lb_vcpus: 2
-flavor_lb_disk: 20
+flavor_lb_disk: 50
 
 #x3
 flavor_master_ram: 4096
