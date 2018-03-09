@@ -351,12 +351,17 @@ Now lets setup some infrastructure on which to deploy Openshift ......... (see t
 
 There are a bunch of scripts in the bin directory, run them in this order :
 
-- cloud_setup.sh - this sets up users, projects, immges, flavours and the network in openstack
+
+- cloud_setup.sh  - this sets up users, projects, immges, flavours and the network in openstack
 - base_server_setup.sh - this updates an configures  a RHEL instance so that it is ready to have OCP installed, and thsnapshots it.
-- build_ocp_infra.sh - this uses the snapshot image from above to build out as many servers as are required, and install docker.
-- reboot all servers
-- login into the openshift-ansible instance as cloud-user, become root, go to ~/bin, then run :
-- install_ocp.sh
+- build_ocp_infra.sh - this uses the snapshot image from above to build out as many servers as are required
+- sync_keys.sh
+- docker_config.sh  
+- get_facts.sh 
+- setup_dnsmasq.sh 
+- setup_bastion.sh 
+
+Then do the Openshift install from /root/bin/install_ocp.sh
 
 ### Setting up Openshift Admin
 
@@ -380,3 +385,7 @@ ansible -i ../ansible/inventory all -m command -a "reboot"
 
 #### Ping all hosts
 ansible -i ../ansible/inventory all -m ping
+
+
+
+
