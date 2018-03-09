@@ -11,7 +11,7 @@
     register: out
 
   - debug:
-      var: out
+      var: out.stdout_lines
 
 
 
