@@ -1,0 +1,32 @@
+----
+- name: copy openstack.py inventory
+  copy:
+   src: "openstack.py"
+   dest: /root/bin/inventory/
+   owner: root
+   group: root
+   mode: 655
+
+- name: copy inventory
+  copy:
+   src: "hosts"
+   dest: /root/bin/inventory/
+   owner: root
+   group: root
+   mode: 0600
+
+- name: copy setup_pvs.sh
+  copy:
+   src: "setup_pvs.sh"
+   dest: /root/bin/
+   owner: root
+   group: root
+   mode: 655
+
+- name: copy install_ocp.sh
+  copy:
+   src: "install_ocp.sh"
+   dest: /root/bin/
+   owner: root
+   group: root
+   mode: 655

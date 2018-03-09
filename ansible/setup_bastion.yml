@@ -1,5 +1,5 @@
 ---
-- hosts: openshift-ansible
+- hosts: bastion-host
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes

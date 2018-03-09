@@ -5,3 +5,7 @@ Host 192.168.0.*
 Host 10.0.10.*
    StrictHostKeyChecking no
    UserKnownHostsFile=/dev/null
+
+Host *swlon*
+   StrictHostKeyChecking no
+   UserKnownHostsFile=/dev/null
