@@ -1,0 +1,25 @@
+- name: stop and disable named service
+  systemd:
+    state: stopped
+    enabled: no
+    name: named
+
+- name: "copy /etc/dnsmasq.hosts into place"
+  copy:
+   src: "etc/dnsmasq.hosts"
+   dest: /etc
+   owner: root
+   group: root
+
+- name: "copy /etc/dnsmasq.conf into place"
+  copy:
+   src: "etc/dnsmasq.conf"
+   dest: /etc
+   owner: root
+   group: root
+
+- name: stop and disable named service
+  systemd:
+    state: started
+    enabled: yes
+    name: dnsmasq
