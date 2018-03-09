@@ -11,7 +11,7 @@
     msg: "{{ ansible_default_ipv4.address }}    {{ internal_hostname }}, {{ openstack_servers[0].public_v4 }}   {{ external_hostname }}"
 
 - lineinfile:
-    line: "{{ openstack_servers[0].public_v4 }}   {{ internal_hostname }}"
+    line: "{{ ansible_default_ipv4.address }}   {{ internal_hostname }}"
     path: /tmp/myhosts
   delegate_to: localhost
 
