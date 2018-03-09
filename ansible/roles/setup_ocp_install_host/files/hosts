@@ -3,6 +3,7 @@ nodes
 nfs
 masters
 etcd
+lb
 
 
 [OSEv3:vars]
@@ -109,6 +110,10 @@ master2.swlon.local openshift_hostname=master2.swlon.local
 master3.swlon.local openshift_hostname=master3.swlon.local
 
 [etcd]
-master1.swlon.local  openshift_hostname=master1.swlon.local
+master1.swlon.local openshift_hostname=master1.swlon.local
 master2.swlon.local openshift_hostname=master2.swlon.local
 master3.swlon.local openshift_hostname=master3.swlon.local
+
+[lb]
+masterlb.swlon.local
+lb1.swlon.local

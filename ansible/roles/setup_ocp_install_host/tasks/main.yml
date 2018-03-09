@@ -38,3 +38,27 @@
    owner: root
    group: root
    mode: 655
+
+- name: copy uninstall_ocp.sh
+  copy:
+   src: "uninstall_ocp.sh"
+   dest: /root/bin/
+   owner: root
+   group: root
+   mode: 655
+
+- name: copy setup_pvs.sh
+  copy:
+   src: "setup_pvs.sh"
+   dest: /root/bin/
+   owner: root
+   group: root
+   mode: 655
+
+- name: copy del_pvs.sh
+  copy:
+   src: "del_pvs.sh"
+   dest: /root/bin/
+   owner: root
+   group: root
+   mode: 655
