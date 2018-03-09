@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
+ansible-playbook  -i /root/bin/inventory \
+    /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
