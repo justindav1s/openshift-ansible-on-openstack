@@ -1,3 +1,8 @@
+- file:
+    path: /tmp/myhosts
+    state: present
+  delegate_to: localhost
+
 - os_server_facts:
     cloud: "{{ app_cloud }}"
     server: "{{ inventory_hostname }}"
