@@ -5,13 +5,14 @@
 - debug:
     msg: "{{ ansible_default_ipv4.address }}    {{ internal_hostname }}, {{ openstack_servers[0].public_v4 }}   {{ external_hostname }}"
 
-- set_fact:
-    etchosts: "{{ etchosts + [ansible_default_ipv4.address] }}"
-    cacheable: true
+- copy:
+    content: "{{ ansible_default_ipv4.address }}    {{ internal_hostname }}\n"
+    dest: myhosts
+  delegate_to: localhost
+  run_once: true
 
-- set_fact:
-    etchosts: "{{ etchosts + [openstack_servers[0].public_v4] }}"
-    cacheable: true
-
-- debug:
-    var: etchosts
+- copy:
+    content: "{{ openstack_servers[0].public_v4 }}   {{ external_hostname }}\n"
+    dest: myhosts
+  delegate_to: localhost
+  run_once: true
