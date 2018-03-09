@@ -6,7 +6,7 @@
 
 - name: stop dnsmasq
   systemd:
-    state: stop
+    state: stopped
     enabled: yes
     name: dnsmasq
 
