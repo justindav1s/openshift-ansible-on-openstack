@@ -93,12 +93,12 @@ logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n
 
 
 [nodes]
-master1.swlon.local openshift_hostname=master.swlon.local openshift_node_labels="{'region': 'master'}" openshift_schedulable=False
-master2.swlon.local openshift_hostname=master.swlon.local openshift_node_labels="{'region': 'master'}" openshift_schedulable=False
-master3.swlon.local openshift_hostname=master.swlon.local openshift_node_labels="{'region': 'master'}" openshift_schedulable=False
+master1.swlon.local openshift_hostname=master1.swlon.local openshift_node_labels="{'region': 'master'}" openshift_schedulable=False
+master2.swlon.local openshift_hostname=master2.swlon.local openshift_node_labels="{'region': 'master'}" openshift_schedulable=False
+master3.swlon.local openshift_hostname=master3.swlon.local openshift_node_labels="{'region': 'master'}" openshift_schedulable=False
 infra1.swlon.local openshift_hostname=infra1.swlon.local openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
-infra2.swlon.local openshift_hostname=infra1.swlon.local openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
-node1.swlon.local openshift_hostname=node2.swlon.local openshift_node_labels="{'region': 'apps'}" openshift_schedulable=True
+infra2.swlon.local openshift_hostname=infra2.swlon.local openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+node1.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'apps'}" openshift_schedulable=True
 node2.swlon.local openshift_hostname=node2.swlon.local openshift_node_labels="{'region': 'apps'}" openshift_schedulable=True
 
 [nfs]
@@ -115,5 +115,5 @@ master2.swlon.local openshift_hostname=master2.swlon.local
 master3.swlon.local openshift_hostname=master3.swlon.local
 
 [lb]
-masterlb.swlon.local
-lb1.swlon.local
+masterlb.swlon.local openshift_hostname=masterlb.swlon.local
+lb1.swlon.local openshift_hostname=lb1.swlon.local
