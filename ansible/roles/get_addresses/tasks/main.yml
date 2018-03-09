@@ -7,12 +7,12 @@
 
 - copy:
     content: "{{ ansible_default_ipv4.address }}    {{ internal_hostname }}\n"
-    dest: myhosts
+    dest: /tmp/myhosts
   delegate_to: localhost
   run_once: true
 
 - copy:
     content: "{{ openstack_servers[0].public_v4 }}   {{ external_hostname }}\n"
-    dest: myhosts
+    dest: /tmp/myhosts
   delegate_to: localhost
   run_once: true
