@@ -8,5 +8,8 @@
   gather_facts: yes
   roles:
   - get_addresses
+  tasks:
+  - debug:
+      var: etchosts
 
 
