@@ -10,6 +10,7 @@ $TTL    604800
     IN      NS      ns1.swlon.datr.eu.
 
 ; PTR records
+13.0 IN      PTR     openstack.swlon.datr.eu.  ; 192.168.0.13
 135.0 IN      PTR     master1.swlon.datr.eu.    ; 192.168.0.135
 140.0 IN      PTR     master2.swlon.datr.eu.    ; 192.168.0.140
 133.0 IN      PTR     master3.swlon.datr.eu.    ; 192.168.0.133

@@ -27,7 +27,7 @@ openshift-bastion
 
 [openshift-servers-dns]
 bastion.swlon.datr.eu openstack_name=openshift-bastion internal_hostname=bastion.swlon.local
-lbmaster.swlon.datr.eu openstack_name=openshift-lb-master internal_hostname=lbmaster.swlon.local
+masterlb.swlon.datr.eu openstack_name=openshift-lb-master internal_hostname=masterlb.swlon.local
 lb1.swlon.datr.eu openstack_name=openshift-lb1 internal_hostname=lb1.swlon.local
 lb2.swlon.datr.eu openstack_name=openshift-lb1 internal_hostname=lb2.swlon.local
 master1.swlon.datr.eu openstack_name=openshift-master1 internal_hostname=master1.swlon.local

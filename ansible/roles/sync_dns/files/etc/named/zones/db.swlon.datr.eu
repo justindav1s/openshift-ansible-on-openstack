@@ -25,3 +25,4 @@ lb1.swlon.datr.eu.          IN      A      192.168.0.139
 lb2.swlon.datr.eu.          IN      A      192.168.0.145
 nfs.swlon.datr.eu.          IN      A      192.168.0.143
 bastion.swlon.datr.eu.      IN      A      192.168.0.138
+openstack.swlon.datr.eu.    IN      A      192.168.0.13
