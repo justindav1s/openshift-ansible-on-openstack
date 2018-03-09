@@ -4,6 +4,11 @@
     enabled: no
     name: named
 
+- name: "delete /etc/dnsmasq.hosts "
+  file:
+   path: "/etc/dnsmasq.hosts"
+   state: absent
+
 - name: "copy /etc/dnsmasq.hosts into place"
   copy:
    src: "etc/dnsmasq.hosts"
