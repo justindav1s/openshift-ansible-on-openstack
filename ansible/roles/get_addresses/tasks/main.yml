@@ -5,14 +5,12 @@
 - debug:
     msg: "{{ ansible_default_ipv4.address }}    {{ internal_hostname }}, {{ openstack_servers[0].public_v4 }}   {{ external_hostname }}"
 
-- copy:
-    content: "{{ ansible_default_ipv4.address }}    {{ internal_hostname }}\n"
-    dest: /tmp/myhosts
+- lineinfile:
+    line: "{{ openstack_servers[0].public_v4 }}   {{ internal_hostname }}\n"
+    path: /tmp/myhosts
   delegate_to: localhost
-  run_once: true
 
-- copy:
-    content: "{{ openstack_servers[0].public_v4 }}   {{ external_hostname }}\n"
-    dest: /tmp/myhosts
+- lineinfile:
+    line: "{{ openstack_servers[0].public_v4 }}   {{ external_hostname }}\n"
+    path: /tmp/myhosts
   delegate_to: localhost
-  run_once: true
