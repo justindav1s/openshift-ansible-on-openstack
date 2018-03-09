@@ -1,6 +1,6 @@
 - file:
     path: /tmp/myhosts
-    state: present
+    state: touch
   delegate_to: localhost
 
 - os_server_facts:
