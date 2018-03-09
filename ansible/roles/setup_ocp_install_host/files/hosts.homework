@@ -72,7 +72,7 @@ openshift_master_metrics_public_url=https://hawkular-metrics.apps.apps.ocp.datr.
 
 #Router config
 openshift_hosted_router_selector='region=infra'
-openshift_hosted_router_replicas=1
+openshift_hosted_router_replicas=2
 
 #Service Catalogue config
 openshift_enable_service_catalog=true
