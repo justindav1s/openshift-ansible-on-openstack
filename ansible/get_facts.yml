@@ -20,10 +20,11 @@
 
 - hosts: localhost
   connection: local
+  gather_facts: no
   tasks:
   - command: "cat /tmp/myhosts"
     register: out
   - debug:
-      var: out
+      var: out.stdout_lines
 
 
