@@ -30,3 +30,11 @@
    owner: root
    group: root
    mode: 655
+
+- name: copy install_ocp_nohup.sh
+  copy:
+   src: "install_ocp_nohup.sh"
+   dest: /root/bin/
+   owner: root
+   group: root
+   mode: 655

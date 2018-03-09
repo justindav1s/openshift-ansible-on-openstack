@@ -1,7 +1,24 @@
 #!/usr/bin/env bash
 
+NFS_HOST=nfs.swlon.local
+NFS_ROOT=/exports
 
-cat << EOF > app-pv-template.yml
+cat << EOF > app-pv-5G-template.yml
+apiVersion: "v1"
+kind: "PersistentVolume"
+metadata:
+  name: "XXXX"
+spec:
+  capacity:
+    storage: "5Gi"
+  accessModes:
+    - "ReadWriteOnce"
+  persistentVolumeReclaimPolicy: Recycle
+  hostPath:
+    path: "$NFS_ROOT/XXXX"
+EOF
+
+cat << EOF > app-pv-10G-template.yml
 apiVersion: "v1"
 kind: "PersistentVolume"
 metadata:
@@ -10,32 +27,38 @@ spec:
   capacity:
     storage: "10Gi"
   accessModes:
-    - "ReadWriteOnce"
     - "ReadWriteMany"
-  persistentVolumeReclaimPolicy: Recycle
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: "/data/XXXX"
+    path: "$NFS_ROOT/XXXX"
 EOF
 
-oc login --insecure-skip-tls-verify=true -u justin
+oc login https://ocp.datr.eu:8443 --insecure-skip-tls-verify=true -u justin
 
-PV_STUB=locpv000
+PV_STUB=pv
 
-mkdir /data
 
-for i in 1 3 4 5 6 7 8 9; do
+for i in {1..25}; do
 	PV_NAME=$PV_STUB$i
 	echo Setting up $PV_NAME
-	oc delete pv $PV_NAME
-	rm -rf /data/$PV_NAME
-	mkdir /data/$PV_NAME
-	cat app-pv-template.yml | sed s/XXXX/$PV_NAME/g > app-$PV_NAME.yml
-	oc create -f app-$PV_NAME.yml
-	rm -rf app-$PV_NAME.yml
+	ssh root@$NFS_HOST "mkdir $NFS_ROOT/$PV_NAME"
+    ssh root@$NFS_HOST "echo $NFS_ROOT/$PV_NAME *(rw,root_squash) >> /etc/exports.d/openshift-uservols.exports"
+	cat app-pv-5G-template.yml | sed s/XXXX/$PV_NAME/g > app-pv-5G-$PV_NAME.yml
+	oc create -f app-pv-5G-$PV_NAME.yml
+	rm -rf app-pv-5G-$PV_NAME.yml
 done
 
-chmod -R 777 /data
-chcon -u system_u -r object_r -t svirt_sandbox_file_t -l s0 /data
-chcon -Rt svirt_sandbox_file_t /data
+for i in {26..50}; do
+	PV_NAME=$PV_STUB$i
+	echo Setting up $PV_NAME
+	ssh root@$NFS_HOST "mkdir $NFS_ROOT/$PV_NAME"
+    ssh root@$NFS_HOST "echo $NFS_ROOT/$PV_NAME *(rw,root_squash) >> /etc/exports.d/openshift-uservols.exports"
+	cat app-pv-10G-template.yml | sed s/XXXX/$PV_NAME/g > app-pv-10G-$PV_NAME.yml
+	oc create -f app-pv-10G-$PV_NAME.yml
+	rm -rf app-pv-10G-$PV_NAME.yml
+done
+
+chown -R nfsnobody.nfsnobody  $NFS_ROOT
+chmod -R 777 $NFS_ROOT
 
 oc get pv

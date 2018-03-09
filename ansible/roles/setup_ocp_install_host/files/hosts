@@ -112,14 +112,3 @@ master3.swlon.local openshift_hostname=master3.swlon.local
 master1.swlon.local  openshift_hostname=master1.swlon.local
 master2.swlon.local openshift_hostname=master2.swlon.local
 master3.swlon.local openshift_hostname=master3.swlon.local
-
-bastion.swlon.local
-masterlb.swlon.local
-lb1.swlon.local
-master1.swlon.local
-master2.swlon.local
-master3.swlon.local
-infra1.swlon.local
-infra2.swlon.local
-node1.swlon.local
-node2.swlon.local
