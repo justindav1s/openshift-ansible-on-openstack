@@ -6,4 +6,4 @@
   become_method: sudo
   gather_facts: no
   roles:
-  - sync_inventory
+  - setup_ocp_install_host
