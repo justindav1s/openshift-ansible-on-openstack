@@ -82,3 +82,5 @@ flavor_nfs_vcpus: 1
 flavor_nfs_disk: 100
 
 # 1 + 6 + 12 + 8 + 20 + 2 = 49GB
+
+etchosts: []
