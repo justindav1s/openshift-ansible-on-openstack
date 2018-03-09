@@ -3,4 +3,4 @@
     server: "{{ inventory_hostname }}"
 
 - debug:
-    msg: "{{ ansible_default_ipv4.address }}    {{ inventory_hostname }}\n{{ openstack_servers[0].public_v4 }}   {{ inventory_hostname }}"
+    msg: "{{ ansible_default_ipv4.address }}    {{ internal_hostname }}\n{{ openstack_servers[0].public_v4 }}   {{ inventory_hostname }}"
