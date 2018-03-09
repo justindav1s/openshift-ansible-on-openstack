@@ -102,7 +102,7 @@ node1.swlon.local openshift_hostname=node2.swlon.local openshift_node_labels="{'
 node2.swlon.local openshift_hostname=node2.swlon.local openshift_node_labels="{'region': 'apps'}" openshift_schedulable=True
 
 [nfs]
-nfs.swlon.local openshift_hostname=infra1.swlon.local
+nfs.swlon.local openshift_hostname=nfs.swlon.local
 
 [masters]
 master1.swlon.local  openshift_hostname=master1.swlon.local
