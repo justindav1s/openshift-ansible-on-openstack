@@ -1,15 +1,16 @@
 ---
 - hosts: openshift-servers
-#  vars:
-#    etchosts: []
+
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
   become_method: sudo
   gather_facts: yes
+  tasks:
+  - file:
+      path: /tmp/myhosts
+      state: absent
+    delegate_to: localhost
   roles:
   - get_addresses
-  tasks:
-  - debug:
-      var: etchosts
 
 
