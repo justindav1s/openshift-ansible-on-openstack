@@ -22,6 +22,6 @@
     delegate_to: localhost
     register: out
   - debug:
-      var: out.std_out
+      var: out
 
 
