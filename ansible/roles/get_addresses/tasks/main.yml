@@ -7,9 +7,11 @@
 
 - set_fact:
     etchosts: "{{ etchosts + [ansible_default_ipv4.address] }}"
+    cacheable: true
 
 - set_fact:
     etchosts: "{{ etchosts + [openstack_servers[0].public_v4] }}"
+    cacheable: true
 
 - debug:
     var: etchosts
