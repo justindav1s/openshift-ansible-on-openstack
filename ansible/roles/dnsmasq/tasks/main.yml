@@ -4,6 +4,12 @@
     enabled: no
     name: named
 
+- name: stop dnsmasq
+  systemd:
+    state: stop
+    enabled: yes
+    name: dnsmasq
+
 - name: "delete /etc/dnsmasq.hosts "
   file:
    path: "/etc/dnsmasq.hosts"
@@ -23,7 +29,7 @@
    owner: root
    group: root
 
-- name: stop and disable named service
+- name: start dnsmasq
   systemd:
     state: started
     enabled: yes
