@@ -17,5 +17,10 @@
   gather_facts: yes
   roles:
   - get_addresses
+  tasks:
+  - command: "cat /tmp/myhosts"
+    register: out
+  - debug:
+      var: out.std_out
 
 
