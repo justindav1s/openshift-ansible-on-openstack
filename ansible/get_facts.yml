@@ -17,9 +17,11 @@
   gather_facts: yes
   roles:
   - get_addresses
+
+- hosts: localhost
+  connection: local
   tasks:
   - command: "cat /tmp/myhosts"
-    delegate_to: localhost
     register: out
   - debug:
       var: out
