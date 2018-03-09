@@ -1,4 +1,3 @@
-----
 - name: copy openstack.py inventory
   copy:
    src: "openstack.py"
