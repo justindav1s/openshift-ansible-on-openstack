@@ -39,6 +39,20 @@ infra2.swlon.datr.eu openstack_name=openshift-infra2 internal_hostname=infra2.sw
 node1.swlon.datr.eu openstack_name=openshift-node1 internal_hostname=node1.swlon.local
 node2.swlon.datr.eu openstack_name=openshift-node2 internal_hostname=node2.swlon.local
 
+[openshift-servers-private-dns]
+bastion.swlon.local
+masterlb.swlon.local
+lb1.swlon.local
+lb2.swlon.local
+master1.swlon.local
+master2.swlon.local
+master3.swlon.local
+infra1.swlon.local
+infra2.swlon.local
+node1.swlon.local
+node2.swlon.local
+
+
 [bastion-host]
 openshift-bastion
 
