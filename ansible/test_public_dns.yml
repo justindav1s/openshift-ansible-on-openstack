@@ -1,5 +1,5 @@
 ---
-- hosts: openshift-servers-dns
+- hosts: openshift-servers-public-dns
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
