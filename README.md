@@ -368,17 +368,9 @@ From the root user on the openshift-master :
 #### Openshift Uninstall
 ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
 
-#### To prevent NetworkManager blowing away DNS settings, edit :
+#### DNS setup:
 
-/etc/sysconfig/network-scripts/ifcfg-eth0
-
-add : 
-
-```
-PEERDNS=no
-DNS1=192.168.0.13
-DNS2=192.168.0.1
-```
+A DNS server is required somewhere on the network. This repo roles an playbooks to distribute zone files to the server.
 
 #### All the facts about a host
 ansible -i ../ansible/inventory infra1.swlon.datr.eu -u cloud-user -m setup
