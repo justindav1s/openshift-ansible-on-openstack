@@ -1,6 +1,5 @@
 ---
 - hosts: openshift-servers
-
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
   become_method: sudo
@@ -10,6 +9,12 @@
       path: /tmp/myhosts
       state: absent
     delegate_to: localhost
+
+- hosts: openshift-servers
+  remote_user: "{{ app_remote_ssh_user }}"
+  become: yes
+  become_method: sudo
+  gather_facts: yes
   roles:
   - get_addresses
 
