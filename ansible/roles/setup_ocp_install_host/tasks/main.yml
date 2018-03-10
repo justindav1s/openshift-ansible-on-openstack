@@ -61,3 +61,11 @@
    owner: root
    group: root
    mode: 655
+
+- name: copy make_admin.sh
+  copy:
+   src: "make_admin.sh"
+   dest: /root/bin/
+   owner: root
+   group: root
+   mode: 755
