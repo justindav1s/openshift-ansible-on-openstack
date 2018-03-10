@@ -352,16 +352,26 @@ Now lets setup some infrastructure on which to deploy Openshift ......... (see t
 There are a bunch of scripts in the bin directory, run them in this order :
 
 
-- cloud_setup.sh  - this sets up users, projects, immges, flavours and the network in openstack
-- base_server_setup.sh - this updates an configures  a RHEL instance so that it is ready to have OCP installed, and thsnapshots it. Tis is opional on ly do it the first time through these instructions, then save the image for later use. 
-- build_ocp_infra.sh - this uses the snapshot image from above to build out as many servers as are required
+- cloud_setup.sh  
+    - this sets up users, projects, immges, flavours and the network in openstack
+- base_server_setup.sh 
+    - this updates an configures  a RHEL instance so that it is ready to have OCP installed, and thsnapshots it. Tis is opional on ly do it the first time through these instructions, then save the image for later use. 
+- build_ocp_infra.sh 
+    - this uses the snapshot image from above to build out as many servers as are required
 - sync_keys.sh
-- docker_config.sh  
-- get_facts.sh 
-- setup_dnsmasq.sh 
-- setup_bastion.sh 
-
-Then do the Openshift install from /root/bin/install_ocp.sh
+    - syncs ssh keys and config across all servers
+- docker_config.sh
+    - install, setups and configures docker storage  
+- get_addresses.sh
+    - gets addresses of all servers in our openstack cloud and generates a hosts file for dnsmasq
+    - copy the hosts output to ansible/roles/dnsmasq/files/etc/dnsmasq.hosts, then run setup_dnsmasq.sh
+- setup_dnsmasq.sh
+    - makes sure that dnsmasq in installed started/enabled and copies dnsmasq.hosts to /etc/dnsmasq.hosts on the opstack server, that serves as or DNS
+- setup_bastion.sh
+    copies Openshifts hosts file and some help fulscripts to the bastion's /root/bin directory
+    
+     
+Then do the Openshift install from /root/bin/install_ocp.sh on the Bastion
 
 ### Setting up Openshift Admin
 
