@@ -67,13 +67,13 @@ flavor_master_vcpus: 2
 flavor_master_disk: 50
 
 #x2
-flavor_node_ram: 4096
-flavor_node_vcpus: 1
+flavor_node_ram: 6144
+flavor_node_vcpus: 2
 flavor_node_disk: 50
 
 #x2
-flavor_infra_ram: 10240
-flavor_infra_vcpus: 2
+flavor_infra_ram: 16384
+flavor_infra_vcpus: 3
 flavor_infra_disk: 50
 
 #x1
