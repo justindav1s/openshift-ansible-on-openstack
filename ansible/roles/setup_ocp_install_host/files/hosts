@@ -54,7 +54,7 @@ openshift_metrics_storage_labels={'storage': 'metrics'}
 openshift_metrics_cassandra_nodeselector={"region":"infra"}
 openshift_metrics_hawkular_nodeselector={"region":"infra"}
 openshift_metrics_heapster_nodeselector={"region":"infra"}
-openshift_master_metrics_public_url=https://hawkular-metrics.apps.apps.ocp.datr.eu/hawkular/metrics
+openshift_master_metrics_public_url=https://hawkular-metrics.apps.ocp.datr.eu/hawkular/metrics
 
 #Logging config
 #openshift_logging_install_logging=True
