@@ -14,8 +14,9 @@ spec:
   accessModes:
     - "ReadWriteOnce"
   persistentVolumeReclaimPolicy: Recycle
-  hostPath:
+  nfs:
     path: "$NFS_ROOT/XXXX"
+    server: $NFS_HOST
 EOF
 
 cat << EOF > app-pv-10G-template.yml
@@ -29,8 +30,9 @@ spec:
   accessModes:
     - "ReadWriteMany"
   persistentVolumeReclaimPolicy: Retain
-  hostPath:
+  nfs:
     path: "$NFS_ROOT/XXXX"
+    server: $NFS_HOST
 EOF
 
 oc login https://ocp.datr.eu:8443 --insecure-skip-tls-verify=true -u justin
@@ -42,7 +44,7 @@ for i in {1..25}; do
 	PV_NAME=$PV_STUB$i
 	echo Setting up $PV_NAME
 	ssh root@$NFS_HOST "mkdir $NFS_ROOT/$PV_NAME"
-    ssh root@$NFS_HOST "echo $NFS_ROOT/$PV_NAME *(rw,root_squash) >> /etc/exports.d/openshift-uservols.exports"
+    ssh root@$NFS_HOST "echo $NFS_ROOT/$PV_NAME *\(rw,root_squash\) >> /etc/exports.d/openshift-uservols.exports"
 	cat app-pv-5G-template.yml | sed s/XXXX/$PV_NAME/g > app-pv-5G-$PV_NAME.yml
 	oc create -f app-pv-5G-$PV_NAME.yml
 	rm -rf app-pv-5G-$PV_NAME.yml
@@ -52,7 +54,7 @@ for i in {26..50}; do
 	PV_NAME=$PV_STUB$i
 	echo Setting up $PV_NAME
 	ssh root@$NFS_HOST "mkdir $NFS_ROOT/$PV_NAME"
-    ssh root@$NFS_HOST "echo $NFS_ROOT/$PV_NAME *(rw,root_squash) >> /etc/exports.d/openshift-uservols.exports"
+    ssh root@$NFS_HOST "echo $NFS_ROOT/$PV_NAME *\(rw,root_squash\) >> /etc/exports.d/openshift-uservols.exports"
 	cat app-pv-10G-template.yml | sed s/XXXX/$PV_NAME/g > app-pv-10G-$PV_NAME.yml
 	oc create -f app-pv-10G-$PV_NAME.yml
 	rm -rf app-pv-10G-$PV_NAME.yml
