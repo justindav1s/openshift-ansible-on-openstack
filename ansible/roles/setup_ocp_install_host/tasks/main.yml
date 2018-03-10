@@ -62,9 +62,9 @@
    group: root
    mode: 655
 
-- name: copy make_admin.sh
+- name: copy makes_admin.sh
   copy:
-   src: "make_admin.sh"
+   src: "makes_admin.sh"
    dest: /root/bin/
    owner: root
    group: root
