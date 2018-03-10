@@ -1,0 +1,31 @@
+- name: copy setup_pvs.sh
+  copy:
+   src: "setup_pvs.sh"
+   dest: /root
+   owner: root
+   group: root
+   mode: 755
+
+- name: copy setup_pvs.sh
+  copy:
+   src: "setup_pvs.sh"
+   dest: /root/
+   owner: root
+   group: root
+   mode: 755
+
+- name: copy del_pvs.sh
+  copy:
+   src: "del_pvs.sh"
+   dest: /root
+   owner: root
+   group: root
+   mode: 755
+
+- name: copy makes_admin.sh
+  copy:
+   src: "makes_admin.sh"
+   dest: /root
+   owner: root
+   group: root
+   mode: 755
