@@ -5,4 +5,4 @@
 ./build_ocp_infra.sh
 ./sync_keys.sh
 ./docker_config.sh
-./get_facts.sh
+get_addresses.sh

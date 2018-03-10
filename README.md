@@ -353,7 +353,7 @@ There are a bunch of scripts in the bin directory, run them in this order :
 
 
 - cloud_setup.sh  - this sets up users, projects, immges, flavours and the network in openstack
-- base_server_setup.sh - this updates an configures  a RHEL instance so that it is ready to have OCP installed, and thsnapshots it.
+- base_server_setup.sh - this updates an configures  a RHEL instance so that it is ready to have OCP installed, and thsnapshots it. Tis is opional on ly do it the first time through these instructions, then save the image for later use. 
 - build_ocp_infra.sh - this uses the snapshot image from above to build out as many servers as are required
 - sync_keys.sh
 - docker_config.sh  
