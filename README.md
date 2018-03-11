@@ -428,6 +428,9 @@ admissionConfig:
 
 ```
 
+restart master :
+    - systemctl restart atomic-openshift-master-api atomic-openshift-master-controllers
+
 2. disable project self-provisioning
 
 ```
