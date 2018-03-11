@@ -464,6 +464,7 @@ oadm policy remove-cluster-role-from-group self-provisioner system:authenticated
     - as root htpasswd /etc/origin/master/htpasswd client2
         
 6. at the cmdline login as a cluster-admin, go to the default project, run :
+
 ``
 fgdfdfg
 ``
