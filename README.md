@@ -502,7 +502,7 @@ Labeled user object creation
 
 With this template : 
 
-``% https://github.com/justindav1s/openshift-ansible-on-openstack/blob/master/admin/user-template.yaml``
+https://github.com/justindav1s/openshift-ansible-on-openstack/blob/master/admin/user-template.yaml
 
 load with this command 
 
