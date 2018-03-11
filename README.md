@@ -380,6 +380,10 @@ From the root user on the openshift-master :
 - oc login -u system:admin
 - oc adm policy add-cluster-role-to-user cluster-admin justin
 
+### Login
+
+oc login https://master1.swlon.local:8443 -u justin
+
 #### Openshift Uninstall
 ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
 
