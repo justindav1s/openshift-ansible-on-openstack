@@ -392,7 +392,7 @@ A DNS server is required somewhere on the network. This repo roles an playbooks 
 
 See : https://github.com/justindav1s/openshift-tasks
 
-1. run setup.sh script, this sets up project, jenkins, policy
+1. run setup.sh script, this sets up project, jenkins with persistent storage, policy
 2. in Jenkins create a new item of type "Pipeline"
     - inside specify "pipline from scm"
     - add openshift-tasks repo
@@ -405,6 +405,14 @@ See : https://github.com/justindav1s/openshift-tasks
     - this should trigger a local build and unit test
     - followed by an openshift s2i build
     - deployment of that build 
+  
+
+## Dedicated Node setup
+
+1. create users, client1 and client2 on all masters
+    - as root htpasswd /etc/origin/master/htpasswd client1
+    - as root htpasswd /etc/origin/master/htpasswd client2    
+
     
 ## Quick ansible one liners
 
