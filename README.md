@@ -401,10 +401,12 @@ ansible -i ../ansible/inventory all -m ping
 
 See : https://github.com/justindav1s/openshift-tasks
 
-1. setup.sh sets up project, jankind, policy
+1. run setup.sh script, this sets up project, jenkins, policy
 2. in Jenkins create a new item of type "Pipeline"
-    - inside specify pipline from scm, add openshift-tasks repo
-    - specify script path as "jenkins1"
+    - inside specify "pipline from scm"
+    - add openshift-tasks repo
+    - specify script path as "jenkinsfile1"
+3. run build.sh script, this loads 
  
 
 
