@@ -430,6 +430,11 @@ admissionConfig:
       configuration:
         apiVersion: v1  .............
 ```
+Default is one project per user, unless thay are labelled as having level=admin
+
+```
+oc label user justin level=admin
+```
 
 2. restart masters :
     - systemctl restart atomic-openshift-master-api atomic-openshift-master-controllers
