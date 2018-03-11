@@ -409,9 +409,29 @@ See : https://github.com/justindav1s/openshift-tasks
 
 ## Dedicated Node setup
 
-1. create users, client1 and client2 on all masters
+1. setup AdmissionControl plugin :
+
+```
+admissionConfig:
+  pluginConfig:
+    ProjectRequestLimit:
+      configuration:
+        apiVersion: v1
+        kind: ProjectRequestLimitConfig
+        limits:
+        - selector:
+            level: admin 
+        - maxProjects: 1
+    BuildDefaults:
+      configuration:
+        apiVersion: v1  .............
+
+```
+
+2. create users, client1 and client2 on all masters
     - as root htpasswd /etc/origin/master/htpasswd client1
-    - as root htpasswd /etc/origin/master/htpasswd client2    
+    - as root htpasswd /etc/origin/master/htpasswd client2
+        
 
     
 ## Quick ansible one liners
