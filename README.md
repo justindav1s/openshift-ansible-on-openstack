@@ -403,8 +403,8 @@ See : https://github.com/justindav1s/openshift-tasks
 
 1. setup.sh sets up project, jankind, policy
 2. in Jenkins create a new item of type "Pipeline"
-  - inside specify pipline from scm, add openshift-tasks repo
-  - specify script path as "jenkins1"
+    - inside specify pipline from scm, add openshift-tasks repo
+    - specify script path as "jenkins1"
  
 
 
