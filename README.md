@@ -406,7 +406,14 @@ See : https://github.com/justindav1s/openshift-tasks
     - inside specify "pipline from scm"
     - add openshift-tasks repo
     - specify script path as "jenkinsfile1"
-3. run build.sh script, this loads 
+3. run build.sh script, 
+    - this loads the openshift-tasks template
+    - and instanciates with with values that act as hooks used by the jenkins workflow
+    - sets up autoscaling
+4. go back to Jenkins job, press the "build now button",
+    - this should trigger a local build and unit test
+    - followed by an openshift s2i build
+    - deployment of that build    
  
 
 
