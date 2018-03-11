@@ -456,14 +456,17 @@ oadm policy remove-cluster-role-from-group self-provisioner system:authenticated
     - oadm create-bootstrap-project-template -o yaml > pinned-project-request-template.yaml
     - add "      openshift.io/node-selector: ${NODE_SELECTOR}" at line 14 of pinned-project-request-template.yaml
     - add "- name: NODE_SELECTOR" at the end of pinned-project-request-template.yaml
-    - the finished template is here : https://github.com/justindav1s/openshift-ansible-on-openstack/blob/master/admin/project-template.yaml 
+    - the finished template is here : https://github.com/justindav1s/openshift-ansible-on-openstack/blob/master/admin/pinned-project-request-template.yaml 
     - oc create -f pinned-project-template.yaml     
 
 5. create users, client1 and client2 on all masters
     - as root htpasswd /etc/origin/master/htpasswd client1
     - as root htpasswd /etc/origin/master/htpasswd client2
         
-
+6. at the cmdline login as a cluster-admin, go to the default project, run :
+``
+fgdfdfg
+``
     
 ## Quick ansible one liners
 
