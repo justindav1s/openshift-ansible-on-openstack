@@ -13,9 +13,8 @@ objects:
   apiVersion: v1
   metadata:
     name: "${USERNAME}"
-    creationTimestamp:
   labels:
-    client1: "true"
+    level: admin
   identities:
   - htpasswd_auth:${USERNAME}
   groups:
