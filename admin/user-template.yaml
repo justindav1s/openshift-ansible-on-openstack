@@ -9,6 +9,12 @@ metadata:
 labels:
   template: user
 objects:
+- kind: Identity
+  apiVersion: v1
+  metadata:
+    name: htpasswd_auth:${USERNAME}
+  providerName: htpasswd_auth
+  providerUserName: ${USERNAME}
 - kind: User
   apiVersion: v1
   metadata:
@@ -18,12 +24,6 @@ objects:
   identities:
   - htpasswd_auth:${USERNAME}
   groups: []
-- kind: Identity
-  apiVersion: v1
-  metadata:
-    name: htpasswd_auth:${USERNAME}
-  providerName: htpasswd_auth
-  providerUserName: ${USERNAME}
 parameters:
 - name: USERNAME
   description: Username of the OpenShift user
