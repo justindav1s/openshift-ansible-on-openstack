@@ -353,20 +353,21 @@ This file is what the install process will be based on, an example of an HA conf
 
 https://github.com/justindav1s/openshift-ansible-on-openstack/blob/master/ansible/roles/setup_ocp_install_host/files/hosts
 
-## Ansible run list.
+## Installation Process
 
-There are a bunch of scripts in the bin directory, they are : 
+There are a bunch of scripts in the bin directory, they deal with the varios prequisites of setting up an OCP cluster such as DNS provisioning and Docker config, they are : 
 
 - ``% ./cloud_setup.sh``
     - this sets up users, projects, immges, flavours and the network in openstack
 - ``% ./base_server_setup.sh``
-    - this updates an configures  a RHEL instance so that it is ready to have OCP installed, and thsnapshots it. Tis is opional on ly do it the first time through these instructions, then save the image for later use. 
+    - this updates an configures a RHEL instance so that it is ready to have OCP installed, and then snapshots it, creating an image for later use.
+    - This is opional, only do it the first time through these instructions, then save the image for later use. 
 - ``% ./build_ocp_infra.sh``
     - this uses the snapshot image from above to build out as many servers as are required
 - ``% ./sync_keys.sh``
     - syncs ssh keys and config across all servers
 - ``% ./docker_config.sh``
-    - install, setups and configures docker storage  
+    - installs docker, sets up and configures docker storage  
 - ``% ./get_addresses.sh``
     - gets addresses of all servers in our openstack cloud and generates a hosts file for dnsmasq
     - copy the hosts output to ansible/roles/dnsmasq/files/etc/dnsmasq.hosts, then run setup_dnsmasq.sh
@@ -382,19 +383,15 @@ Then do the Openshift install from /root/bin/install_ocp.sh on the Bastion
 
 From the root user on the openshift-master :
 
-- oc login -u system:admin
-- oc adm policy add-cluster-role-to-user cluster-admin justin
+- ``% oc login -u system:admin``
+- ``% oc adm policy add-cluster-role-to-user cluster-admin justin``
 
 ### Login
 
-oc login https://master1.swlon.local:8443 -u justin
+``% oc login https://master1.swlon.local:8443 -u justin``
 
 #### Openshift Uninstall
-ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
-
-#### DNS setup:
-
-A DNS server is required somewhere on the network. This repo roles an playbooks to distribute zone files to the server.
+``% ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml``
 
 
 ## Openshift-tasks CICD work flow
@@ -438,18 +435,15 @@ admissionConfig:
 ```
 Default is one project per user, unless thay are labelled as having level=admin, in which case they get 50
 
-```
-oc label user justin level=admin
-```
+``% oc label user justin level=admin``
 
 2. restart masters :
-    - systemctl restart atomic-openshift-master-api atomic-openshift-master-controllers
+    - ``% systemctl restart atomic-openshift-master-api atomic-openshift-master-controllers``
 
 3. disable project self-provisioning
 
-```
-oadm policy remove-cluster-role-from-group self-provisioner system:authenticated system:authenticated:oauth
-```
+``% oadm policy remove-cluster-role-from-group self-provisioner system:authenticated system:authenticated:oauth
+``
 
 4. decide on a common syntax for labelling nodes and projects, so that pods get scheduled as desired
     - eg. for client1 label its nodes like so :
@@ -458,8 +452,8 @@ oadm policy remove-cluster-role-from-group self-provisioner system:authenticated
     
 5. create users, client1 and client2 on all masters
     - as root 
-        - htpasswd /etc/origin/master/htpasswd client1
-        -htpasswd /etc/origin/master/htpasswd client2
+        - ``% htpasswd /etc/origin/master/htpasswd client1``
+        - ``% htpasswd /etc/origin/master/htpasswd client2``
         
 6. at the cmdline login as a cluster-admin, go to the default project, run :
 
@@ -486,13 +480,13 @@ oc adm new-project client2 \
 ## Quick ansible one liners
 
 #### All the facts about a host
-ansible -i ../ansible/inventory infra1.swlon.datr.eu -u cloud-user -m setup
+``% ansible -i ../ansible/inventory infra1.swlon.datr.eu -u cloud-user -m setup``
 
 #### Reboot all hosts
-ansible -i ../ansible/inventory all -m command -a "reboot"
+``% ansible -i ../ansible/inventory all -m command -a "reboot"``
 
 #### Ping all hosts
-ansible -i ../ansible/inventory all -m ping       
+``% ansible -i ../ansible/inventory all -m ping``
  
 
 
