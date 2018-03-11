@@ -450,23 +450,32 @@ oadm policy remove-cluster-role-from-group self-provisioner system:authenticated
     - eg. for client1 label its nodes like so :
         - oc label node <node> client1=true
         - oc label node <another node> client2=true
-
-5. create a special request template that takes an extra argument to define the node selector for that project
-    - at the cmdline login as a cluster-admin, go to the default project
-    - oadm create-bootstrap-project-template -o yaml > pinned-project-request-template.yaml
-    - add "      openshift.io/node-selector: ${NODE_SELECTOR}" at line 14 of pinned-project-request-template.yaml
-    - add "- name: NODE_SELECTOR" at the end of pinned-project-request-template.yaml
-    - the finished template is here : https://github.com/justindav1s/openshift-ansible-on-openstack/blob/master/admin/pinned-project-request-template.yaml 
-    - oc create -f pinned-project-template.yaml     
-
+    
 5. create users, client1 and client2 on all masters
-    - as root htpasswd /etc/origin/master/htpasswd client1
-    - as root htpasswd /etc/origin/master/htpasswd client2
+    - as root 
+        - htpasswd /etc/origin/master/htpasswd client1
+        -htpasswd /etc/origin/master/htpasswd client2
         
 6. at the cmdline login as a cluster-admin, go to the default project, run :
 
 ``
-fgdfdfg
+oc adm new-project client1 \
+    --display-name="Client 1 Project" \
+    --description="Client 1 deploys things here" \
+    --admin='client1' \
+    --admin-role='admin' \
+    --node-selector='client1=true'
+``
+
+for client2
+
+``
+oc adm new-project client2 \
+    --display-name="Client 2 Project" \
+    --description="Client 2 deploys things here" \
+    --admin='client2' \
+    --admin-role='admin' \
+    --node-selector='client2=true'
 ``
     
 ## Quick ansible one liners
