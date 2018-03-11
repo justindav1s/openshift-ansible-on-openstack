@@ -397,5 +397,15 @@ ansible -i ../ansible/inventory all -m command -a "reboot"
 ansible -i ../ansible/inventory all -m ping
 
 
+## Openshift-tasks CICD work flow
+
+See : https://github.com/justindav1s/openshift-tasks
+
+1. setup.sh sets up project, jankind, policy
+2. in Jenkins create a new item of type "Pipeline"
+  1. inside specify pipline from scm, add openshift-tasks repo
+  2. specify script path as "jenkins1"
+ 
+
 
 
