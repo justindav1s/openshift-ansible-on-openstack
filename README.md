@@ -387,15 +387,6 @@ ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/adh
 
 A DNS server is required somewhere on the network. This repo roles an playbooks to distribute zone files to the server.
 
-#### All the facts about a host
-ansible -i ../ansible/inventory infra1.swlon.datr.eu -u cloud-user -m setup
-
-#### Reboot all hosts
-ansible -i ../ansible/inventory all -m command -a "reboot"
-
-#### Ping all hosts
-ansible -i ../ansible/inventory all -m ping
-
 
 ## Openshift-tasks CICD work flow
 
@@ -413,7 +404,18 @@ See : https://github.com/justindav1s/openshift-tasks
 4. go back to Jenkins job, press the "build now button",
     - this should trigger a local build and unit test
     - followed by an openshift s2i build
-    - deployment of that build    
+    - deployment of that build 
+    
+## Quick ansible one liners
+
+#### All the facts about a host
+ansible -i ../ansible/inventory infra1.swlon.datr.eu -u cloud-user -m setup
+
+#### Reboot all hosts
+ansible -i ../ansible/inventory all -m command -a "reboot"
+
+#### Ping all hosts
+ansible -i ../ansible/inventory all -m ping       
  
 
 
