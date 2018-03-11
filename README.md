@@ -449,6 +449,7 @@ oadm policy remove-cluster-role-from-group self-provisioner system:authenticated
 4. Decide on a common syntax for labelling nodes and projects, so that pods get scheduled as desired
     - eg. for client1 label its node like so :
         - oc label node <node> client1=true
+        - oc label node <another node> client2=true
 
 5. create users, client1 and client2 on all masters
     - as root htpasswd /etc/origin/master/htpasswd client1
