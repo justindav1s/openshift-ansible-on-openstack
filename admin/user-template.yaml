@@ -14,7 +14,7 @@ objects:
   metadata:
     name: "${USERNAME}"
   labels:
-    level: admin
+    level: standard
   identities:
   - htpasswd_auth:${USERNAME}
   groups: []
