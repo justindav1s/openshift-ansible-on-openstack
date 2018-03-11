@@ -502,7 +502,7 @@ oc adm new-project client2 \
           apiVersion: v1  .............
   ```
 
-oc process -f user-template.json -v USERNAME=joe | oc create -f -
+oc process -f user-template.yaml -v USERNAME=client1 | oc create -f -
 
 oc process -f role-binding-template.json -v USERNAME=joe | oc create --namespace=myproject -f -
 
