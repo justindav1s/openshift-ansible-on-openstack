@@ -425,12 +425,13 @@ admissionConfig:
         limits:
         - selector:
             level: admin 
+          maxProjects: 50
         - maxProjects: 1
     BuildDefaults:
       configuration:
         apiVersion: v1  .............
 ```
-Default is one project per user, unless thay are labelled as having level=admin
+Default is one project per user, unless thay are labelled as having level=admin, in which case they get 50
 
 ```
 oc label user justin level=admin
