@@ -24,8 +24,6 @@ objects:
     name: htpasswd_auth:${USERNAME}
   providerName: htpasswd_auth
   providerUserName: ${USERNAME}
-  user:
-    name: ${USERNAME}
 parameters:
 - name: USERNAME
   description: Username of the OpenShift user
