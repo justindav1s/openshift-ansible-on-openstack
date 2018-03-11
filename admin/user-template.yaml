@@ -18,7 +18,8 @@ objects:
   identities:
   - htpasswd_auth:${USERNAME}
   groups: []
--kind: Identity
+- kind: Identity
+  apiVersion: v1
   metadata:
     name: htpasswd_auth:${USERNAME}
   providerName: htpasswd_auth
