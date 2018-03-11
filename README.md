@@ -425,19 +425,18 @@ admissionConfig:
     BuildDefaults:
       configuration:
         apiVersion: v1  .............
-
 ```
 
-    - restart master :
-        - systemctl restart atomic-openshift-master-api atomic-openshift-master-controllers
+2. restart masters :
+    - systemctl restart atomic-openshift-master-api atomic-openshift-master-controllers
 
-2. disable project self-provisioning
+3. disable project self-provisioning
 
 ```
 oadm policy remove-cluster-role-from-group self-provisioner system:authenticated system:authenticated:oauth
 ```
 
-2. create users, client1 and client2 on all masters
+4. create users, client1 and client2 on all masters
     - as root htpasswd /etc/origin/master/htpasswd client1
     - as root htpasswd /etc/origin/master/htpasswd client2
         
