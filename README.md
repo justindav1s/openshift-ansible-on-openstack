@@ -446,10 +446,18 @@ oc label user justin level=admin
 oadm policy remove-cluster-role-from-group self-provisioner system:authenticated system:authenticated:oauth
 ```
 
-4. Decide on a common syntax for labelling nodes and projects, so that pods get scheduled as desired
-    - eg. for client1 label its node like so :
+4. decide on a common syntax for labelling nodes and projects, so that pods get scheduled as desired
+    - eg. for client1 label its nodes like so :
         - oc label node <node> client1=true
         - oc label node <another node> client2=true
+
+5. create a special request template that takes an extra argument to define the node selector for that project
+    - at the cmdline login as a cluster-admin, go to the default project
+    - oadm create-bootstrap-project-template -o yaml > pinned-project-request-template.yaml
+    - add "      openshift.io/node-selector: ${NODE_SELECTOR}" at line 14 of pinned-project-request-template.yaml
+    - add "- name: NODE_SELECTOR" at the end of pinned-project-request-template.yaml
+    - the finished template is here : https://github.com/justindav1s/openshift-ansible-on-openstack/blob/master/admin/project-template.yaml 
+    - oc create -f pinned-project-template.yaml     
 
 5. create users, client1 and client2 on all masters
     - as root htpasswd /etc/origin/master/htpasswd client1

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Template
 metadata:
   creationTimestamp: null
-  name: project-request
+  name: pinned-project-request
 objects:
 - apiVersion: project.openshift.io/v1
   kind: Project
