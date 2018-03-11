@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 
-git pull
-
-oc delete user client1
+USER=client1
+PROJECT=${USER}_project
 
 oc login https://master1.swlon.local:8443 -u justin
 
-oc process -f user-template.yaml -p USERNAME=client1 | oc create -f -
-oc process -f role-binding-template.yaml -v USERNAME=client1 | oc create --namespace=client1_project -f -
+oc delete user ${USER}
+oc delete project ${PROJECT}
+
+oc process -f user-template.yaml -p USERNAME=${USER} | oc create -f -
+
+oc process -f pinned-project-request-template.yaml \
+    -p PROJECT_NAME=${PROJECT} \
+    -p PROJECT_ADMIN_USER=${USER} \
+    -p PROJECT_REQUESTING_USER=${USER} \
+    -p NODE_SELECTOR="${USER}=true"
+
+oc process -f role-binding-template.yaml -v USERNAME=${USER} | oc create --namespace=${PROJECT} -f -
