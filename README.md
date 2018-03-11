@@ -428,6 +428,12 @@ admissionConfig:
 
 ```
 
+2. disable project self-provisioning
+
+```
+oadm policy remove-cluster-role-from-group self-provisioner system:authenticated system:authenticated:oauth
+```
+
 2. create users, client1 and client2 on all masters
     - as root htpasswd /etc/origin/master/htpasswd client1
     - as root htpasswd /etc/origin/master/htpasswd client2
