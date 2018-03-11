@@ -14,11 +14,14 @@ objects:
   metadata:
     name: "${USERNAME}"
   labels:
-    level: standard
+    level: ${LEVEL}
   identities:
   - htpasswd_auth:${USERNAME}
   groups: []
 parameters:
 - name: USERNAME
   description: Username of the OpenShift user
+  required: true
+- name: LEVEL
+  description: Level for the OpenShift user
   required: true

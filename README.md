@@ -415,8 +415,6 @@ See : https://github.com/justindav1s/openshift-tasks
 
 ## Dedicated Node setup
 
-### Method 1
-
 1. setup AdmissionControl plugin :
 
 ```
@@ -500,8 +498,24 @@ oc process -f pinned-project-request-template.yaml \
     -p NODE_SELECTOR="${USER}=true" | oc create -f -
 
 ```
+Labeled user object creation 
 
-oc process -f user-template.yaml -v USERNAME=client1 | oc create -f -
+With this template : 
+
+``% https://github.com/justindav1s/openshift-ansible-on-openstack/blob/master/admin/user-template.yaml``
+
+load with this command 
+
+```asciidoc
+USER=client1
+
+oc login https://master1.swlon.local:8443 -u justin
+
+oc process -f user-template.yaml \
+    -p USERNAME=${USER} \
+    -p LEVEL=standard | oc create -f -
+
+```
 
     
 ## Quick ansible one liners

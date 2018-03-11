@@ -4,7 +4,6 @@ USER=client1
 
 oc login https://master1.swlon.local:8443 -u justin
 
-oc delete user ${USER}
-oc delete identity htpasswd_auth:${USER}
-
-oc process -f user-template.yaml -p USERNAME=${USER} | oc create -f -
+oc process -f user-template.yaml \
+    -p USERNAME=${USER} \
+    -p LEVEL=standard | oc create -f -
