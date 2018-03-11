@@ -9,15 +9,6 @@ metadata:
 labels:
   template: user
 objects:
-- kind: Identity
-  apiVersion: v1
-  metadata:
-    name: htpasswd_auth:${USERNAME}
-  providerName: htpasswd_auth
-  providerUserName: ${USERNAME}
-  user:
-    name: ${USERNAME}
-    uid: "testing"
 - kind: User
   apiVersion: v1
   metadata:

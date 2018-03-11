@@ -75,7 +75,7 @@ objects:
 - apiVersion: v1
   kind: "LimitRange"
   metadata:
-    name: "core-resource-limits"
+    name: "${PROJECT_NAME}-core-resource-limits"
   spec:
    limits:
      - type: "Pod"
