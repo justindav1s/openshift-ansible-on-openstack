@@ -458,25 +458,25 @@ oadm policy remove-cluster-role-from-group self-provisioner system:authenticated
         
 6. at the cmdline login as a cluster-admin, go to the default project, run :
 
-``
+```
 oc adm new-project client1 \
     --display-name="Client 1 Project" \
     --description="Client 1 deploys things here" \
     --admin='client1' \
     --admin-role='admin' \
     --node-selector='client1=true'
-``
+```
 
 for client2
 
-``
+```
 oc adm new-project client2 \
     --display-name="Client 2 Project" \
     --description="Client 2 deploys things here" \
     --admin='client2' \
     --admin-role='admin' \
     --node-selector='client2=true'
-``
+```
     
 ## Quick ansible one liners
 
