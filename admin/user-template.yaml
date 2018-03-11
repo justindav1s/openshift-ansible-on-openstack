@@ -17,7 +17,7 @@ objects:
   providerUserName: ${USERNAME}
   user:
     name: ${USERNAME}
-    uid:
+    uid: "testing"
 - kind: User
   apiVersion: v1
   metadata:
