@@ -15,7 +15,7 @@ objects:
     name: "${USERNAME}"
     creationTimestamp:
   identities:
-  - allow_all:${USERNAME}
+  - htpasswd_auth:${USERNAME}
   groups:
 parameters:
 - name: USERNAME
