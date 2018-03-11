@@ -14,6 +14,6 @@ oc process -f pinned-project-request-template.yaml \
     -p PROJECT_NAME=${PROJECT} \
     -p PROJECT_ADMIN_USER=${USER} \
     -p PROJECT_REQUESTING_USER=${USER} \
-    -p NODE_SELECTOR="${USER}=true"
+    -p NODE_SELECTOR="${USER}=true" | oc create -f -
 
 oc process -f role-binding-template.yaml -v USERNAME=${USER} | oc create --namespace=${PROJECT} -f -
