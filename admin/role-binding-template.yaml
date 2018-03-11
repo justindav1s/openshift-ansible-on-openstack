@@ -1,0 +1,28 @@
+---
+kind: Template
+apiVersion: v1
+metadata:
+  name: user-template
+  annotations:
+    description: Template for creating an OpenShift user
+    tags: user
+labels:
+  template: user
+objects:
+- kind: RoleBinding
+  apiVersion: v1
+  metadata:
+    name: admin-${USERNAME}
+    creationTimestamp:
+  userNames:
+  - "${USERNAME}"
+  groupNames:
+  subjects:
+  - kind: User
+    name: "${USERNAME}"
+  roleRef:
+    name: admin
+parameters:
+- name: USERNAME
+  description: Username of the OpenShift user
+  required: true

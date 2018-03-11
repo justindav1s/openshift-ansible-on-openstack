@@ -1,0 +1,23 @@
+---
+kind: Template
+apiVersion: v1
+metadata:
+  name: user-template
+  annotations:
+    description: Template for creating an OpenShift user
+    tags: user
+labels:
+  template: user
+objects:
+- kind: User
+  apiVersion: v1
+  metadata:
+    name: "${USERNAME}"
+    creationTimestamp:
+  identities:
+  - allow_all:${USERNAME}
+  groups:
+parameters:
+- name: USERNAME
+  description: Username of the OpenShift user
+  required: true

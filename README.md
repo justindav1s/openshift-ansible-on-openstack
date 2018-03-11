@@ -415,6 +415,8 @@ See : https://github.com/justindav1s/openshift-tasks
 
 ## Dedicated Node setup
 
+### Method 1
+
 1. setup AdmissionControl plugin :
 
 ```
@@ -476,6 +478,34 @@ oc adm new-project client2 \
     --admin-role='admin' \
     --node-selector='client2=true'
 ```
+
+### Method 2
+
+1. setup AdmissionControl plugin :
+
+  ```
+  admissionConfig:
+    pluginConfig:
+      ProjectRequestLimit:
+        configuration:
+          apiVersion: v1
+          kind: ProjectRequestLimitConfig
+          limits:
+          - selector:
+              level: admin 
+          - selector:
+              level: standard 
+            maxProjects: 10  
+          - maxProjects: 1
+      BuildDefaults:
+        configuration:
+          apiVersion: v1  .............
+  ```
+
+oc process -f user-template.json -v USERNAME=joe | oc create -f -
+
+oc process -f role-binding-template.json -v USERNAME=joe | oc create --namespace=myproject -f -
+
     
 ## Quick ansible one liners
 
