@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 USER=client1
-PROJECT=${USER}_project
+PROJECT=${USER}-project
 
 oc login https://master1.swlon.local:8443 -u justin
 
