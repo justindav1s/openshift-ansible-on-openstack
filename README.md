@@ -420,20 +420,22 @@ See : https://github.com/justindav1s/openshift-tasks
 1. setup AdmissionControl plugin :
 
 ```
-admissionConfig:
-  pluginConfig:
-    ProjectRequestLimit:
-      configuration:
-        apiVersion: v1
-        kind: ProjectRequestLimitConfig
-        limits:
-        - selector:
-            level: admin 
-          maxProjects: 50
-        - maxProjects: 1
-    BuildDefaults:
-      configuration:
-        apiVersion: v1  .............
+  admissionConfig:
+    pluginConfig:
+      ProjectRequestLimit:
+        configuration:
+          apiVersion: v1
+          kind: ProjectRequestLimitConfig
+          limits:
+          - selector:
+              level: admin 
+          - selector:
+              level: standard 
+            maxProjects: 10  
+          - maxProjects: 1
+      BuildDefaults:
+        configuration:
+          apiVersion: v1  .............
 ```
 Default is one project per user, unless thay are labelled as having level=admin, in which case they get 50
 
@@ -479,32 +481,27 @@ oc adm new-project client2 \
     --node-selector='client2=true'
 ```
 
-### Method 2
+Or with more bespoke things defined, like limit ranges, use this template :
 
-1. setup AdmissionControl plugin :
+https://github.com/justindav1s/openshift-ansible-on-openstack/blob/master/admin/pinned-project-request-template.yaml
 
-  ```
-  admissionConfig:
-    pluginConfig:
-      ProjectRequestLimit:
-        configuration:
-          apiVersion: v1
-          kind: ProjectRequestLimitConfig
-          limits:
-          - selector:
-              level: admin 
-          - selector:
-              level: standard 
-            maxProjects: 10  
-          - maxProjects: 1
-      BuildDefaults:
-        configuration:
-          apiVersion: v1  .............
-  ```
+like so :
+
+```
+USER=client1
+PROJECT=${USER}-project
+
+oc login https://master1.swlon.local:8443 -u justin
+
+oc process -f pinned-project-request-template.yaml \
+    -p PROJECT_NAME=${PROJECT} \
+    -p PROJECT_ADMIN_USER=${USER} \
+    -p PROJECT_REQUESTING_USER=${USER} \
+    -p NODE_SELECTOR="${USER}=true" | oc create -f -
+
+```
 
 oc process -f user-template.yaml -v USERNAME=client1 | oc create -f -
-
-oc process -f role-binding-template.json -v USERNAME=joe | oc create --namespace=myproject -f -
 
     
 ## Quick ansible one liners
