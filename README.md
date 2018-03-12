@@ -528,7 +528,6 @@ oc process -f user-template.yaml \
 
 #### Ping all hosts
 ``% ansible -i ../ansible/inventory all -m ping``
- 
 
 
 
