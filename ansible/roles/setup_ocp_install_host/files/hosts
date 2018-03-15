@@ -26,7 +26,7 @@ openshift_master_cluster_hostname=master1.swlon.local
 #Security config
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
 openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP.'}
-openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/ocp.datr.eu.crt", "keyfile": "/etc/pki/tls/private/ocp.datr.eu.key", "cafile": "/etc/pki/tls/certs/ocp.datr.eu.issuer.crt"}]
+openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}]
 
 #Registry config
 openshift_hosted_registry_storage_kind=nfs
