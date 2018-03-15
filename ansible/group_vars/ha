@@ -62,21 +62,25 @@ flavor_lb_vcpus: 2
 flavor_lb_disk: 50
 
 #x3
-flavor_master_ram: 8192
+flavor_master_ram: 4096
 flavor_master_vcpus: 2
-flavor_master_disk: 100
+flavor_master_disk: 50
 
 #x2
-flavor_node_ram: 16384
-flavor_node_vcpus: 3
-flavor_node_disk: 100
+flavor_node_ram: 6144
+flavor_node_vcpus: 2
+flavor_node_disk: 50
 
 #x2
 flavor_infra_ram: 16384
 flavor_infra_vcpus: 3
-flavor_infra_disk: 100
+flavor_infra_disk: 50
 
 #x1
-flavor_nfs_ram: 4096
-flavor_nfs_vcpus: 2
+flavor_nfs_ram: 2048
+flavor_nfs_vcpus: 1
 flavor_nfs_disk: 100
+
+# 1 + 6 + 12 + 8 + 20 + 2 = 49GB
+
+etchosts: []
