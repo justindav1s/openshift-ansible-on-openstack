@@ -4,20 +4,20 @@
 
 [openshift-masters]
 openshift-master1 internal_hostname=master1.swlon.local external_hostname=master1.swlon.datr.eu
-openshift-master2 internal_hostname=master2.swlon.local external_hostname=master2.swlon.datr.eu
-openshift-master3 internal_hostname=master3.swlon.local external_hostname=master3.swlon.datr.eu
+#openshift-master2 internal_hostname=master2.swlon.local external_hostname=master2.swlon.datr.eu
+#openshift-master3 internal_hostname=master3.swlon.local external_hostname=master3.swlon.datr.eu
 
 [openshift-nodes]
 openshift-node1 internal_hostname=node1.swlon.local external_hostname=node1.swlon.datr.eu
-openshift-node2 internal_hostname=node2.swlon.local external_hostname=node2.swlon.datr.eu
+#openshift-node2 internal_hostname=node2.swlon.local external_hostname=node2.swlon.datr.eu
 
 [openshift-infras]
 openshift-infra1 internal_hostname=infra1.swlon.local external_hostname=infra1.swlon.datr.eu
-openshift-infra2 internal_hostname=infra2.swlon.local external_hostname=infra2.swlon.datr.eu
+#openshift-infra2 internal_hostname=infra2.swlon.local external_hostname=infra2.swlon.datr.eu
 
 [openshift-lbs]
-openshift-master-lb internal_hostname=masterlb.swlon.local external_hostname=masterlb.swlon.datr.eu
-openshift-lb1  internal_hostname=lb1.swlon.local external_hostname=lb1.swlon.datr.eu
+#openshift-master-lb internal_hostname=masterlb.swlon.local external_hostname=masterlb.swlon.datr.eu
+#openshift-lb1  internal_hostname=lb1.swlon.local external_hostname=lb1.swlon.datr.eu
 
 [openshift-nfss]
 openshift-nfs internal_hostname=nfs.swlon.local external_hostname=nfs.swlon.datr.eu
