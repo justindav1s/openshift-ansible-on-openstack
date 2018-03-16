@@ -60,7 +60,9 @@ for i in {26..50}; do
 	rm -rf app-pv-10G-$PV_NAME.yml
 done
 
-chown -R nfsnobody.nfsnobody  $NFS_ROOT
-chmod -R 777 $NFS_ROOT
+
+ssh root@$NFS_HOST "chown -R nfsnobody.nfsnobody $NFS_ROOT"
+ssh root@$NFS_HOST "chmod -R 777 $NFS_ROOT"
+ssh root@$NFS_HOST "systemctl restart nfs-server.service"
 
 oc get pv
