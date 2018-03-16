@@ -3,9 +3,9 @@
 
 echo "Updating Router"
 ansible-playbook -i /root/bin/inventory \
-    /usr/share/ansible/openshift-ansible/playbooks/common/openshift-cluster/redeploy-certificates/router.yml
+    /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/redeploy-router-certificates.yml
 
 
 echo "Updating Registry"
 ansible-playbook -i /root/bin/inventory \
-    /usr/share/ansible/openshift-ansible/playbooks/common/openshift-cluster/redeploy-certificates/registry.yml
+    /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/redeploy-registry-certificates.yml
