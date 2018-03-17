@@ -20,7 +20,7 @@ openshift-infra1 internal_hostname=infra1.swlon.local external_hostname=infra1.s
 #openshift-lb1  internal_hostname=lb1.swlon.local external_hostname=lb1.swlon.datr.eu
 
 [openshift-nfss]
-openshift-nfs internal_hostname=nfs.swlon.local external_hostname=nfs.swlon.datr.eu
+#openshift-nfs internal_hostname=nfs.swlon.local external_hostname=nfs.swlon.datr.eu
 
 [openshift-bastions]
 openshift-bastion internal_hostname=bastion.swlon.local external_hostname=bastion.swlon.datr.eu
