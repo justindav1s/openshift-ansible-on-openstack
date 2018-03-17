@@ -16,7 +16,8 @@ containerized=false
 openshift_disable_check=disk_availability,docker_storage,memory_availability,docker_image_availability,package_version
 
 #Network config
-os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
+#os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
+os_sdn_network_plugin_name='redhat/openshift-ovs-subnet'
 
 #Master config
 openshift_master_cluster_public_hostname=ocp.datr.eu
