@@ -63,7 +63,6 @@ systemctl stop firewalld
 systemctl disable NetworkManager
 systemctl stop NetworkManager
 systemctl enable network
-systemctl start network
 ```
 
 reboot
