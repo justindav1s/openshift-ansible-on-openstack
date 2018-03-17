@@ -383,6 +383,8 @@ leave it empty for now
 
 systemctl restart dnsmasq
 
+setup iptables to accept incoming DNS requests on port 53
+
 
 # Setup Openshift
 
