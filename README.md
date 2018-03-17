@@ -344,6 +344,46 @@ For these kinds of activity "endpoint_type: admin" must be included. This is how
 
 Now lets setup some infrastructure on which to deploy Openshift ......... (see the ansible folder)  
 
+# Setup Openstack host as DNS for our Openshift cluster
+
+yum install dnsmasq
+
+systemctl enable dnsmasq
+
+systemctl start dnsmasq
+
+vi /etc/dnsmasq.conf
+
+find
+
+```
+# If you don't want dnsmasq to read /etc/hosts, uncomment the
+# following line.
+#no-hosts
+# or if you want it to read another file, as well as /etc/hosts, use
+# this.
+#addn-hosts=/etc/banner_add_hosts
+```
+
+change it to 
+
+```
+# If you don't want dnsmasq to read /etc/hosts, uncomment the
+# following line.
+#no-hosts
+# or if you want it to read another file, as well as /etc/hosts, use
+# this.
+
+addn-hosts=/etc/dnsmasq.hosts
+```
+
+create /etc/dnsmasq.hosts
+
+leave it empty for now
+
+systemctl restart dnsmasq
+
+
 # Setup Openshift
 
 ## Define Openshift inventory
