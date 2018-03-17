@@ -219,7 +219,7 @@ Heres an example of what the file needs to contain :
 clouds:
   default:
     auth:
-      auth_url: https://<identity.example.com>:5000/v3
+      auth_url: http://<identity.example.com>:5000/v3
       password: <password>
       project_name: admin
       username: admin
@@ -228,7 +228,7 @@ clouds:
     region_name: RegionOne
   openshift_cloud:
     auth:
-      auth_url: https://<identity.example.com>:5000/v3
+      auth_url: http://<identity.example.com>:5000/v3
       password: <password>
       project_name: openshift
       username: openshift
@@ -358,6 +358,20 @@ There are a bunch of scripts in the bin directory, they deal with the varios pre
 
 - ``% ./cloud_setup.sh``
     - this sets up users, projects, immges, flavours and the network in openstack
+    
+Then setup a base image, go here : 
+
+https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.4/x86_64/product-software
+
+download : 
+
+Red Hat Enterprise Linux 7.x KVM Guest Image
+
+Login into Openstack as opensift, create an image in Openstack by uploading the RHEL7 guest image
+
+Create an instance of flavour openshift-bastion, associate a floating ip with this instance
+
+    
 - ``% ./base_server_setup.sh``
     - this updates an configures a RHEL instance so that it is ready to have OCP installed, and then snapshots it, creating an image for later use.
     - This is opional, only do it the first time through these instructions, then save the image for later use. 
