@@ -585,4 +585,7 @@ oc process -f user-template.yaml \
 ``% ansible -i ../ansible/inventory all -m ping``
 
 
+Allow OCP to access its own registry
+vi /etc/sysconfig/docker
+--insecure-registry docker-registry.default.svc:5000
 

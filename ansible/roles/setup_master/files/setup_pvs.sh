@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NFS_HOST=nfs.swlon.local
+NFS_HOST=infra1.swlon.local
 NFS_ROOT=/exports
 
 cat << EOF > app-pv-5G-template.yml
