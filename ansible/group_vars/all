@@ -7,7 +7,7 @@ dns_server: openstack.datr.eu
 
 app_cloud: "{{ project }}_cloud"
 app_user: "{{ project }}"
-app_user_password: openshift
+app_user_password: ZaqXsw123
 app_user_role: admin
 public_key: "/home/justin/.ssh/id_rsa.pub"
 private_key: "/home/justin/.ssh/id_rsa"
@@ -67,12 +67,12 @@ flavor_master_vcpus: 3
 flavor_master_disk: 100
 
 #x2
-flavor_node_ram: 30720
+flavor_node_ram: 20480
 flavor_node_vcpus: 5
 flavor_node_disk: 100
 
 #x2
-flavor_infra_ram: 16384
+flavor_infra_ram: 20480
 flavor_infra_vcpus: 5
 flavor_infra_disk: 100
 
