@@ -7,7 +7,7 @@ dns_server: openstack.datr.eu
 
 app_cloud: "{{ project }}_cloud"
 app_user: "{{ project }}"
-app_user_password: ZaqXsw123
+app_user_password: openshift
 app_user_role: admin
 public_key: "/home/justin/.ssh/id_rsa.pub"
 private_key: "/home/justin/.ssh/id_rsa"
