@@ -104,6 +104,10 @@ and then reference them here :
  
 /etc/httpd/conf.d/15-horizon_ssl_vhost.conf
 
+then 
+
+``[root@openstack ~]# systemctl restart httpd``
+
 And if not : 
 
 ```
