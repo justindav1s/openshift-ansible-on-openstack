@@ -96,9 +96,15 @@ If you want to setup SSL/TLS on the Horizon web console :
     --os-horizon-ssl=y
 ```
 
-If you fo this you'll need to add your certs to : /etc/httpd/conf.d/15-horizon_ssl_vhost.conf
+If you do this you'll need to add your certs to :
 
-and if not : 
+/etc/pki/tls .....
+
+and then reference them here :
+ 
+/etc/httpd/conf.d/15-horizon_ssl_vhost.conf
+
+And if not : 
 
 ```
 [root@openstack ~]# packstack --allinone \
