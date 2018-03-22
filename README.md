@@ -77,6 +77,7 @@ test network
 
 ```
 [root@openstack ~]# yum install -y centos-release-openstack-queens
+[root@openstack ~]# yum-config-manager --enable openstack-queens
 [root@openstack ~]# yum update -y
 [root@openstack ~]# yum install -y openstack-packstack
 ```
@@ -91,7 +92,7 @@ If you want to setup SSL/TLS on the Horizon web console :
     --os-neutron-ovs-bridge-mappings=extnet:br-ex \
     --os-neutron-ovs-bridge-interfaces=br-ex:eth0 \
     --os-neutron-ml2-type-drivers=vxlan,flat \
-    --cinder-volumes-size=1000G \
+    --cinder-volumes-size=900G \
     --os-horizon-ssl=y
 ```
 
