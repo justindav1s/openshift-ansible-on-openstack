@@ -12,7 +12,7 @@ All this was done on Centos 7
 
 Set an appropriate hostname : 
 
-``% hostnamectl set-hostname openstack``
+``% [root@localhost ~]# hostnamectl set-hostname openstack``
 
 Switch off NetworkManager and use the oldstyle network services.
 
