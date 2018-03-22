@@ -182,8 +182,6 @@ to
 enable_isolated_metadata=true
 
 
-
-
 Install shade on the Openstack server, and also on your laptop. Ansible requires shade in both places.
 ```
 [root@openstack ~]# wget https://bootstrap.pypa.io/get-pip.py
