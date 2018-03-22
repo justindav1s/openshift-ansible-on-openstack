@@ -76,8 +76,7 @@ test network
 
 
 ```
-[root@openstack ~]# yum install -y centos-release-openstack-pike
-[root@openstack ~]# yum-config-manager --enable openstack-pike
+[root@openstack ~]# yum install -y centos-release-openstack-queens
 [root@openstack ~]# yum update -y
 [root@openstack ~]# yum install -y openstack-packstack
 ```
