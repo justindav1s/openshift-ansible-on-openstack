@@ -2,7 +2,7 @@
 - name: "create {{ project }} project"
   os_project:
     cloud: "{{ admin_cloud }}"
-    endpoint_type: internal
+    endpoint_type: public
     state: present
     name: "{{ project }}"
     description: "Let's host {{ project }}"
