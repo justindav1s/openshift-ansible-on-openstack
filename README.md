@@ -22,7 +22,8 @@ mac : 30:3c:23:5f:f3:16
 
 interface : enp0s31f6 
 
-vi /etc/sysconfig/network-scripts/ifcfg-enp0s31f6
+``[root@openstack ~]# vi /etc/sysconfig/network-scripts/ifcfg-enp0s31f6``
+
 ```
 TYPE=Ethernet
 BOOTPROTO=dhcp
@@ -40,7 +41,7 @@ IPV6_PEERDNS=yes
 IPV6_PEERROUTES=yes
 ```
 
-vi /etc/sysconfig/network
+``[root@openstack ~]# vi /etc/sysconfig/network``
 
 ```
 NETWORKING=yes
@@ -49,7 +50,7 @@ GATEWAY=192.168.0.1
 ```
 
 
-``% vi /etc/sysconfig/selinux``
+``[root@openstack ~]# vi /etc/sysconfig/selinux``
 
 set : 
 
@@ -69,16 +70,16 @@ systemctl stop NetworkManager
 systemctl enable network
 ```
 
-``% reboot``
+``[root@openstack ~]# reboot``
 
 test network
 
 
 ```
-yum install -y centos-release-openstack-pike
-yum-config-manager --enable openstack-pike
-yum update -y
-yum install -y openstack-packstack
+[root@openstack ~]# yum install -y centos-release-openstack-pike
+[root@openstack ~]# yum-config-manager --enable openstack-pike
+[root@openstack ~]# yum update -y
+[root@openstack ~]# yum install -y openstack-packstack
 ```
 
 run packstack with these settings for the network bridge to your own network, and a larger area for Cinder
@@ -86,7 +87,7 @@ run packstack with these settings for the network bridge to your own network, an
 If you want to setup SSL/TLS on the Horizon web console :
 
 ``` 
-packstack --allinone \
+[root@openstack ~]# packstack --allinone \
     --provision-demo=n \
     --os-neutron-ovs-bridge-mappings=extnet:br-ex \
     --os-neutron-ovs-bridge-interfaces=br-ex:eth0 \
@@ -100,7 +101,7 @@ If you fo this you'll need to add your certs to : /etc/httpd/conf.d/15-horizon_s
 and if not : 
 
 ```
-packstack --allinone \
+[root@openstack ~]# packstack --allinone \
     --provision-demo=n \
     --os-neutron-ovs-bridge-mappings=extnet:br-ex \
     --os-neutron-ovs-bridge-interfaces=br-ex:eth0 \
@@ -110,11 +111,12 @@ packstack --allinone \
 
 Configure network bride that will integrate with you wider LAN
 
-```
-vi /etc/sysconfig/network-scripts/ifcfg-br-ex
+
+``[root@openstack ~]# vi /etc/sysconfig/network-scripts/ifcfg-br-ex``
 
 add : 
 
+```
 DEVICE=br-ex
 DEVICETYPE=ovs
 TYPE=OVSBridge
@@ -125,12 +127,13 @@ NETMASK=255.255.255.0
 GATEWAY=192.168.0.1
 DNS1=192.168.0.1
 ONBOOT=yes
+```
 
-
-vi /etc/sysconfig/network-scripts/ifcfg-enp0s31f6
+``[root@openstack ~]# vi /etc/sysconfig/network-scripts/ifcfg-enp0s31f6``
 
 delete : 
 
+```
 TYPE=Ethernet
 BOOTPROTO=dhcp
 ONBOOT=yes
@@ -157,8 +160,8 @@ ONBOOT=yes
 
 If you are running on centos7 you need to make this change to allow VMs to be created :
 
-```
-vi /etc/neutron/dhcp_agent.ini
+
+``[root@openstack ~]# vi /etc/neutron/dhcp_agent.ini``
 
 change :
 
@@ -168,14 +171,14 @@ to
 
 enable_isolated_metadata=true
 
-```
+
 
 
 Install shade on the Openstack server, and also on your laptop. Ansible requires shade in both places.
 ```
-wget https://bootstrap.pypa.io/get-pip.py
-python get-pip.py 
-pip install shade
+[root@openstack ~]# wget https://bootstrap.pypa.io/get-pip.py
+[root@openstack ~]# python get-pip.py 
+[root@openstack ~]# pip install shade
 ```
 
 **Now REBOOT !**
@@ -350,13 +353,13 @@ Now lets setup some infrastructure on which to deploy Openshift ......... (see t
 
 # Setup Openstack host as DNS for our Openshift cluster
 
-yum install dnsmasq
+``[root@openstack ~]# yum install dnsmasq``
 
-systemctl enable dnsmasq
+``[root@openstack ~]# systemctl enable dnsmasq``
 
-systemctl start dnsmasq
+``[root@openstack ~]# systemctl start dnsmasq``
 
-vi /etc/dnsmasq.conf
+``[root@openstack ~]# vi /etc/dnsmasq.conf``
 
 find
 
