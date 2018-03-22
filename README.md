@@ -10,6 +10,10 @@ take note of your nic mac address and the interface name asigned by your OS.
 
 All this was done on Centos 7
 
+Set an appropriate hostname : 
+
+``% hostnamectl set-hostname openstack``
+
 Switch off NetworkManager and use the oldstyle network services.
 
 Switch off SELinux.
@@ -40,18 +44,18 @@ vi /etc/sysconfig/network
 
 ```
 NETWORKING=yes
-HOSTNAME=justin-centos7
+HOSTNAME=openstack
 GATEWAY=192.168.0.1
 ```
 
 
-vi /etc/sysconfig/selinux
+``% vi /etc/sysconfig/selinux``
 
 set : 
 
 SELINUX=disabled
 
-reboot
+``% reboot``
 
 ```
 sestatus
@@ -65,7 +69,7 @@ systemctl stop NetworkManager
 systemctl enable network
 ```
 
-reboot
+``% reboot``
 
 test network
 
