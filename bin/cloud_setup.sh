@@ -2,4 +2,4 @@
 
 rm -rf ../ansible/*.retry
 
-ansible-playbook -i ../ansible/inventory/hosts ../ansible/cloud.yml
+ansible-playbook  -vvvv -i ../ansible/inventory/hosts ../ansible/cloud.yml
