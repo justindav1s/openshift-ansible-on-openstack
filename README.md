@@ -402,6 +402,22 @@ systemctl restart dnsmasq
 
 setup iptables to accept incoming DNS requests on port 53
 
+``[root@openstack ~]# iptables save > iptables.rules.txt``
+
+I added 
+
+```
+-A INPUT -p tcp -m multiport --dports 53 -m comment --comment "allow dnsmasq queries" -j ACCEPT
+-A INPUT -p udp -m multiport --dports 53 -m comment --comment "allow dnsmasq queries" -j ACCEPT
+```
+
+to the top of the **:OUTPUT ACCEPT** section
+
+then
+
+``[root@openstack ~]# iptables-restore < iptables.rules.txt``
+
+
 
 # Setup Openshift
 
