@@ -14,7 +14,7 @@ private_key: "/home/justin/.ssh/id_rsa"
 #public_key: "/Users/jusdavis/.ssh/id_rsa.pub"
 #private_key: "/Users/jusdavis/.ssh/id_rsa"
 app_public_key: "{{ project }}_key"
-remote_public_key: "/root/{{ app_public_key }}"
+remote_public_key: "{{public_key }}"
 clouds_yaml: "/home/justin/.config/openstack/clouds.yaml"
 
 #Network config. Other local LANS will like uses other IP ranges

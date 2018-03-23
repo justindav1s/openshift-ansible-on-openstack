@@ -1,0 +1,6 @@
+- name: add a key pair
+  os_keypair:
+    cloud: "{{ app_cloud }}"
+    state: present
+    name: "{{ app_public_key }}"
+    public_key_file: "{{ remote_public_key }}"
