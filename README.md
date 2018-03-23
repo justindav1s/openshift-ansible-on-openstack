@@ -231,29 +231,33 @@ If you run your playbooks as root you need to provide the follwing file in root'
 Heres an example of what the file needs to contain :
 
 ```
+
 clouds:
   default:
     auth:
-      auth_url: http://<identity.example.com>:5000/v3
+      auth_url: http://192.168.0.13:5000/v3
       password: <password>
       project_name: admin
       username: admin
       user_domain_name: default
       project_domain_name: default
     region_name: RegionOne
+    identity_api_version: 3
   openshift_cloud:
     auth:
-      auth_url: http://<identity.example.com>:5000/v3
+      auth_url: http://192.168.0.13:5000/v3
       password: <password>
       project_name: openshift
       username: openshift
       user_domain_name: default
       project_domain_name: default
-    region_name: RegionOne    
+    region_name: RegionOne
+    identity_api_version: 3
 ansible:
   use_hostnames: True
   expand_hostvars: False
-  fail_on_errors: True    
+  fail_on_errors: True
+    
 ```
 
 This defines a cloud called "default", the name "default" is arbitrary, it's simply a tag to group credentials and be used in playbooks.
