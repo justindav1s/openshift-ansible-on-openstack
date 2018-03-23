@@ -46,6 +46,14 @@
    group: root
    mode: 755
 
+- name: copy install_prometheus.sh
+  copy:
+   src: "install_prometheus.sh"
+   dest: /root/bin/
+   owner: root
+   group: root
+   mode: 755
+
 - name: copy redeploy_certs.sh
   copy:
    src: "redeploy_certs.sh"
