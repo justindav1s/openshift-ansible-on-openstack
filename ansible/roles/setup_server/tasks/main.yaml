@@ -8,6 +8,7 @@
     image: "{{ image_name }}"
     key_name: "{{ app_public_key }}"
     timeout: 200
+    boot_from_volume: yes
     terminate_volume: yes
     flavor: "{{ server_flavour }}"
     security_groups: "{{ app_sec_grp }}"

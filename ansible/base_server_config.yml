@@ -28,6 +28,8 @@
       image: "{{ app_image_name }}"
       key_name: "{{ app_public_key }}"
       timeout: 200
+      boot_from_volume: yes
+      volume_size: 50
       terminate_volume: yes
       flavor: "{{ project }}.base"
       security_groups: "{{ app_sec_grp }}"
@@ -49,7 +51,7 @@
     pause:
       seconds: 30
 
-- hosts: openshift_cloud
+- hosts: base-server
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
