@@ -68,6 +68,15 @@
 #    filename: "{{ remote_image }}"
 #    wait: yes
 
+- name: "Create '{{ project }}.base' flavor with {{ flavor_base_ram }}MB RAM, {{ flavor_base_vcpus }} vcpus, and a {{ flavor_base_disk }}GB disk"
+  os_nova_flavor:
+    cloud: "{{ admin_cloud }}"
+    state: present
+    name: "{{project }}.base"
+    ram: "{{ flavor_base_ram }}"
+    vcpus: "{{ flavor_base_vcpus }}"
+    disk: "{{ flavor_base_disk }}"
+
 - name: "Create '{{ project }}.bastion' flavor with {{ flavor_bastion_ram }}MB RAM, {{ flavor_bastion_vcpus }} vcpus, and a {{ flavor_bastion_disk }}GB disk"
   os_nova_flavor:
     cloud: "{{ admin_cloud }}"

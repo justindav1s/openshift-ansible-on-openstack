@@ -24,11 +24,24 @@
       flavor: "{{ project }}.bastion"
       security_groups: "{{ app_sec_grp }}"
       network: "{{ openstack_int_net_name }}"
+  - name: create a volume for docker
+    os_volume:
+      state: present
+      cloud: "{{ app_cloud }}"
+      size: 200
+      display_name: "base-server-root-vol"
+  - name: "attach base-server-root-vol volume to base-server instance"
+    os_server_volume:
+      state: present
+      cloud: "{{ app_cloud }}"
+      server: base-server
+      volume: "base-server-root-vol"
+      device: /dev/vda
   - name: "pause for server to come up"
     pause:
       seconds: 30
 
-- hosts: openshift_cloud:base-server
+- hosts: openshift_cloud
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
