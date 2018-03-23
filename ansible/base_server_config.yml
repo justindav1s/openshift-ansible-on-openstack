@@ -5,7 +5,26 @@
   become: yes
   become_method: sudo
   gather_facts: no
-  serial: 1
+  tasks:
+  - name: "Create an instance for building our base image"
+    os_server:
+      state: present
+      cloud: "{{ app_cloud }}"
+      wait: yes
+      name: "{{ project }}-base"
+      image: "{{ app_image_name }}"
+      key_name: "{{ app_public_key }}"
+      timeout: 200
+      flavor: "{{ project }}.bastion"
+      security_groups: "{{ app_sec_grp }}"
+      network: "{{ openstack_int_net_name }}"
+
+- hosts: "{{ project }}-base"
+  vars:
+  remote_user: "{{ app_remote_ssh_user }}"
+  become: yes
+  become_method: sudo
+  gather_facts: no
   roles:
   - rhel_subscribe
   - sync_keys
@@ -13,7 +32,7 @@
   - install_certs
   - install_tools
 
-- hosts: openshift_cloud
+- hosts: "{{ project }}-base"
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   gather_facts: no
