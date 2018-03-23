@@ -22,7 +22,7 @@
 #  - { role: setup_server, server_name: "{{ project }}-master-lb", image_name: "openshift-base", server_flavour: "{{ project }}.lb", docker_vol_size: 5}
 #  - { role: setup_server, server_name: "{{ project }}-lb1", image_name: "openshift-base", server_flavour: "{{ project }}.lb", docker_vol_size: 5}
 #  - { role: setup_server, server_name: "{{ project }}-lb2", image_name: "openshift-base", server_flavour: "{{ project }}.lb", docker_vol_size: 5}
-  - { role: setup_server, server_name: "{{ project }}-master1", image_name: "openshift-base", server_flavour: "{{ project }}.master", docker_vol_size: 50}
+  - { role: setup_server, server_name: "{{ project }}-master1", image_name: "openshift-base", server_flavour: "{{ project }}.master", docker_vol_size: 5}
 #  - { role: setup_server, server_name: "{{ project }}-master2", image_name: "openshift-base", server_flavour: "{{ project }}.master", docker_vol_size: 50}
 #  - { role: setup_server, server_name: "{{ project }}-master3", image_name: "openshift-base", server_flavour: "{{ project }}.master", docker_vol_size: 50}
   - { role: setup_server, server_name: "{{ project }}-infra1", image_name: "openshift-base", server_flavour: "{{ project }}.infra", docker_vol_size: 100}

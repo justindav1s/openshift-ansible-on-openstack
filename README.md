@@ -207,6 +207,7 @@ https://youtu.be/eOlIB323c8s
 ssl console issues
 https://ask.openstack.org/en/question/6192/horizon-unable-to-view-vnc-console-in-iframe-with-ssl/
 
+https://fatmin.com/2015/07/14/packstack-how-to-create-openstack-cinder-volumes-manually/
 
 ## Openstack with Ansible
 
@@ -404,7 +405,7 @@ leave it empty for now
 
 setup iptables to accept incoming DNS requests on port 53
 
-``[root@openstack ~]# iptables save > iptables.rules.txt``
+``[root@openstack ~]# iptables-save > iptables.rules.txt``
 
 I added 
 
