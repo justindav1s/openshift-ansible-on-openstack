@@ -34,6 +34,9 @@ openshift_hosted_router_certificate={"certfile": "/etc/pki/tls/certs/datr.eu.cer
 #########
 osm_use_cockpit=true
 osm_cockpit_plugins=['cockpit-kubernetes']
+
+openshift_prometheus_namespace=openshift-metrics
+openshift_prometheus_node_selector={"region":"infra"}
 openshift_prometheus_storage_kind=nfs
 openshift_prometheus_storage_access_modes=['ReadWriteOnce']
 #openshift_prometheus_storage_host=nfs.example.com
