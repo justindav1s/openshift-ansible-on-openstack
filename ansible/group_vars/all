@@ -5,17 +5,17 @@ project: openshift
 
 dns_server: openstack.datr.eu
 
+users_home=/Users/jusdavis
+
 app_cloud: "{{ project }}_cloud"
 app_user: "{{ project }}"
 app_user_password: openshift
 app_user_role: admin
-public_key: "/home/justin/.ssh/id_rsa.pub"
-private_key: "/home/justin/.ssh/id_rsa"
-#public_key: "/Users/jusdavis/.ssh/id_rsa.pub"
-#private_key: "/Users/jusdavis/.ssh/id_rsa"
+public_key: "{{users_home }}/.ssh/id_rsa.pub"
+private_key: "{{users_home }}/.ssh/id_rsa"
 app_public_key: "{{ project }}_key"
 remote_public_key: "{{public_key }}"
-clouds_yaml: "/home/justin/.config/openstack/clouds.yaml"
+clouds_yaml: "{{users_home }}/.config/openstack/clouds.yaml"
 
 #Network config. Other local LANS will like uses other IP ranges
 app_sec_grp: "{{ project }}-sg"
@@ -42,16 +42,16 @@ int_net_pool_start: "{{ int_net_c_class }}.129"
 int_net_pool_end: "{{ int_net_c_class }}.158"
 
 img_name: rhel-guest-image-7.0-20140930.0.x86_64.qcow2
-local_image: "/Users/jusdavis/Downloads/{{ img_name }}"
+local_image: "{{ users_home }}/Downloads/{{ img_name }}"
 remote_image: "/root/{{ img_name }}"
 app_image_name: rhel_74
 image_format: qcow2
 
 docker_version: "docker-1.13.1"
 
-local_cert_path: /home/justin/certs/datr.eu.cer
-local_cert_key_path: /home/justin/certs/datr.eu.key
-local_issuer_cert_path: /home/justin/certs/ca.cer
+local_cert_path: "{{ users_home }}/acme/certs/datr.eu.cer"
+local_cert_key_path: "{{ users_home }}acme/certs/datr.eu.key"
+local_issuer_cert_path: "{{ users_home }}/acme/certs/ca.cer"
 
 #x1
 flavor_bastion_ram: 4096

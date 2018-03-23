@@ -449,39 +449,53 @@ Login into Openstack as opensift, create an image in Openstack by uploading the 
 Create an instance of flavour openshift-bastion, associate a floating ip with this instance
 
     
-- ``% ./base_server_setup.sh``
+- ``[your laptop ~]# ./base_server_setup.sh``
     - this updates an configures a RHEL instance so that it is ready to have OCP installed, and then snapshots it, creating an image for later use.
     - This is opional, only do it the first time through these instructions, then save the image for later use. 
-- ``% ./build_ocp_infra.sh``
+- ``[your laptop ~]# ./build_ocp_infra.sh``
     - this uses the snapshot image from above to build out as many servers as are required
-- ``% ./sync_keys.sh``
+- ``[your laptop ~]# ./sync_keys.sh``
     - syncs ssh keys and config across all servers
-- ``% ./docker_config.sh``
+- ``[your laptop ~]# ./docker_config.sh``
     - installs docker, sets up and configures docker storage  
-- ``% ./get_addresses.sh``
+- ``[your laptop ~]# ./get_addresses.sh``
     - gets addresses of all servers in our openstack cloud and generates a hosts file for dnsmasq
     - copy the hosts output to ansible/roles/dnsmasq/files/etc/dnsmasq.hosts, then run setup_dnsmasq.sh
-- ``% ./setup_dnsmasq.sh``
+- ``[your laptop ~]# ./setup_dnsmasq.sh``
     - makes sure that dnsmasq in installed started/enabled and copies dnsmasq.hosts to /etc/dnsmasq.hosts on the opstack server, that serves as or DNS
-- ``% ./setup_bastion.sh``
+- ``[your laptop ~]# ./setup_bastion.sh``
     copies Openshifts hosts file and some help fulscripts to the bastion's /root/bin directory
     
      
-Then do the Openshift install from /root/bin/install_ocp.sh on the Bastion
+Then do the Openshift install :
+
+``[root@bastion ~]# /root/bin/install_ocp.sh``
+ 
+on the Bastion
+
+### Installing Openshift client tool
+
+The oc openshift admin tool can be found here :
+
+https://github.com/openshift/origin/releases
+
 
 ### Setting up Openshift Admin
 
 From the root user on the openshift-master :
 
-- ``% oc login -u system:admin``
-- ``% oc adm policy add-cluster-role-to-user cluster-admin justin``
+- ``[root@master ~]# oc login -u system:admin``
+- ``[root@master ~]# oc adm policy add-cluster-role-to-user cluster-admin justin``
 
 ### Login
 
-``% oc login https://master1.swlon.local:8443 -u justin``
+
+``%[your laptop(wherever oc is installed) ~]#  oc login https://master1.swlon.local:8443 -u justin``
+
+Th
 
 #### Openshift Uninstall
-``% ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml``
+``%[root@bastion ~]#  ansible-playbook -i inventory /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml``
 
 
 ## Openshift-tasks CICD work flow

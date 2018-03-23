@@ -1,32 +1,32 @@
 ---
-- hosts: openstack-server
-  vars:
-  remote_user: "{{ remote_ssh_user }}"
-  become: yes
-  become_method: sudo
-  gather_facts: no
-  tasks:
-  - name: "Teardown old instance for building our base image"
-    os_server:
-      state: absent
-      cloud: "{{ app_cloud }}"
-      wait: yes
-      name: base-server
-  - name: "Create an instance for building our base image"
-    os_server:
-      state: present
-      cloud: "{{ app_cloud }}"
-      wait: yes
-      name: base-server
-      image: "{{ app_image_name }}"
-      key_name: "{{ app_public_key }}"
-      timeout: 200
-      flavor: "{{ project }}.bastion"
-      security_groups: "{{ app_sec_grp }}"
-      network: "{{ openstack_int_net_name }}"
-  - name: "pause for server to come up"
-    pause:
-      seconds: 30
+#- hosts: openstack-server
+#  vars:
+#  remote_user: "{{ remote_ssh_user }}"
+#  become: yes
+#  become_method: sudo
+#  gather_facts: no
+#  tasks:
+#  - name: "Teardown old instance for building our base image"
+#    os_server:
+#      state: absent
+#      cloud: "{{ app_cloud }}"
+#      wait: yes
+#      name: base-server
+#  - name: "Create an instance for building our base image"
+#    os_server:
+#      state: present
+#      cloud: "{{ app_cloud }}"
+#      wait: yes
+#      name: base-server
+#      image: "{{ app_image_name }}"
+#      key_name: "{{ app_public_key }}"
+#      timeout: 200
+#      flavor: "{{ project }}.bastion"
+#      security_groups: "{{ app_sec_grp }}"
+#      network: "{{ openstack_int_net_name }}"
+#  - name: "pause for server to come up"
+#    pause:
+#      seconds: 30
 
 - hosts: openshift_cloud:base-server
   vars:
