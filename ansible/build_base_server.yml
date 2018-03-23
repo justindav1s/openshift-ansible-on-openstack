@@ -1,0 +1,31 @@
+---
+- hosts: openstack-server
+  vars:
+  remote_user: "{{ remote_ssh_user }}"
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  tasks:
+  - name: "Teardown old instance for building our base image"
+    os_server:
+      state: absent
+      cloud: "{{ app_cloud }}"
+      wait: yes
+      name: base-server
+  - name: "Create an instance for building our base image"
+    os_server:
+      state: present
+      cloud: "{{ app_cloud }}"
+      wait: yes
+      name: base-server
+      image: "{{ app_image_name }}"
+      #boot_volume: rhel_74_vol
+      key_name: "{{ app_public_key }}"
+      timeout: 200
+      boot_from_volume: yes
+      volume_size: 50
+      terminate_volume: yes
+      flavor: "{{ project }}.base"
+      security_groups: "{{ app_sec_grp }}"
+      network: "{{ openstack_int_net_name }}"
+

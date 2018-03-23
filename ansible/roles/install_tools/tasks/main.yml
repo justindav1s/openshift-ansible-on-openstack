@@ -8,7 +8,7 @@
     name: atomic-openshift-utils
     state: latest
 
-- name: gcc, python-devel
+- name: gcc, python-devel, nmap-ncat, bind-utils
   yum:
     name: gcc, python-devel
     state: latest
