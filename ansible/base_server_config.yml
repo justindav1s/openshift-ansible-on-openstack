@@ -6,12 +6,12 @@
   become_method: sudo
   gather_facts: no
   tasks:
-    - name: "Teardown old instance for building our base image"
-      os_server:
-        state: absent
-        cloud: "{{ app_cloud }}"
-        wait: yes
-        name: base-server
+  - name: "Teardown old instance for building our base image"
+    os_server:
+      state: absent
+      cloud: "{{ app_cloud }}"
+      wait: yes
+      name: base-server
   - name: "Create an instance for building our base image"
     os_server:
       state: present
