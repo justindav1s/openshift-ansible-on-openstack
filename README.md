@@ -639,3 +639,9 @@ Allow OCP to access its own registry
 vi /etc/sysconfig/docker
 --insecure-registry docker-registry.default.svc:5000
 
+glance image-update --get-schema
+glance image-update --protected False <id>
+glance -f image-delete <id>
+
+openstack volume create --image <rhel_74 id> --size 10 --bootable rhel_74_vol
+size MUST be >=10

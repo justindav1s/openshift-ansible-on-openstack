@@ -56,34 +56,34 @@ local_issuer_cert_path: "{{ users_home }}/acme/certs/ca.cer"
 #x1
 flavor_base_ram: 4096
 flavor_base_vcpus: 2
-flavor_base_disk: 10
+flavor_base_disk: 5
 
 #x1
 flavor_bastion_ram: 4096
 flavor_bastion_vcpus: 2
-flavor_bastion_disk: 10
+flavor_bastion_disk: 5
 
 #x3
 flavor_lb_ram: 2048
 flavor_lb_vcpus: 2
-flavor_lb_disk: 10
+flavor_lb_disk: 5
 
 #x3
 flavor_master_ram: 8192
 flavor_master_vcpus: 3
-flavor_master_disk: 10
+flavor_master_disk: 5
 
 #x2
 flavor_node_ram: 20480
 flavor_node_vcpus: 5
-flavor_node_disk: 10
+flavor_node_disk: 5
 
 #x2
 flavor_infra_ram: 20480
 flavor_infra_vcpus: 5
-flavor_infra_disk: 10
+flavor_infra_disk: 5
 
 #x1
 flavor_nfs_ram: 4096
 flavor_nfs_vcpus: 2
-flavor_nfs_disk: 10
+flavor_nfs_disk: 5

@@ -30,13 +30,68 @@ openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP
 openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}]
 openshift_hosted_router_certificate={"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}
 
+
+###########new stuff
+openshift_cloudprovider_kind=openstack
+openshift_cloudprovider_openstack_auth_url=http://192.168.0.13:5000/v3
+openshift_cloudprovider_openstack_username=openshift
+openshift_cloudprovider_openstack_password=openshift
+openshift_cloudprovider_openstack_domain_id=default
+openshift_cloudprovider_openstack_domain_name=Default
+openshift_cloudprovider_openstack_tenant_id=866a52036f854997a2ec930f63d2f10d
+openshift_cloudprovider_openstack_tenant_name=openshift
+openshift_cloudprovider_openstack_region=RegionOne
+openshift_cloudprovider_openstack_lb_subnet_id=5b663b1b-5000-4e9e-9031-9cdac5a85f47
+
+osm_use_cockpit=true
+osm_cockpit_plugins=['cockpit-kubernetes']
+
+openshift_hosted_registry_storage_kind=openstack
+openshift_hosted_registry_storage_access_modes=['ReadWriteOnce']
+openshift_hosted_registry_storage_openstack_filesystem=ext4
+openshift_hosted_registry_storage_openstack_volumeID=108d869a-9b40-4b23-8c98-45e29ad5704c
+openshift_hosted_registry_storage_volume_size=100Gi
+
+openshift_metrics_storage_kind=dynamic
+openshift_logging_storage_kind=dynamic
+
+openshift_prometheus_storage_kind=nfs
+openshift_prometheus_storage_access_modes=['ReadWriteOnce']
+#openshift_prometheus_storage_host=nfs.example.com
+openshift_prometheus_storage_nfs_directory=/exports
+openshift_prometheus_storage_volume_name=prometheus
+openshift_prometheus_storage_volume_size=10Gi
+openshift_prometheus_storage_labels={'storage': 'prometheus'}
+openshift_prometheus_storage_type='pvc'
+# For prometheus-alertmanager
+openshift_prometheus_alertmanager_storage_kind=nfs
+openshift_prometheus_alertmanager_storage_access_modes=['ReadWriteOnce']
+#openshift_prometheus_alertmanager_storage_host=nfs.example.com
+openshift_prometheus_alertmanager_storage_nfs_directory=/exports
+openshift_prometheus_alertmanager_storage_volume_name=prometheus-alertmanager
+openshift_prometheus_alertmanager_storage_volume_size=10Gi
+openshift_prometheus_alertmanager_storage_labels={'storage': 'prometheus-alertmanager'}
+openshift_prometheus_alertmanager_storage_type='pvc'
+# For prometheus-alertbuffer
+openshift_prometheus_alertbuffer_storage_kind=nfs
+openshift_prometheus_alertbuffer_storage_access_modes=['ReadWriteOnce']
+#openshift_prometheus_alertbuffer_storage_host=nfs.example.com
+openshift_prometheus_alertbuffer_storage_nfs_directory=/exports
+openshift_prometheus_alertbuffer_storage_volume_name=prometheus-alertbuffer
+openshift_prometheus_alertbuffer_storage_volume_size=10Gi
+openshift_prometheus_alertbuffer_storage_labels={'storage': 'prometheus-alertbuffer'}
+openshift_prometheus_alertbuffer_storage_type='pvc'
+##############
+
+
+
 #Registry config
-openshift_hosted_registry_storage_kind=nfs
-openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
+#openshift_hosted_registry_storage_kind=nfs
+#openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
 #openshift_hosted_registry_storage_host=infra1.swlon.local
-openshift_hosted_registry_storage_nfs_directory=/exports
-openshift_hosted_registry_storage_volume_name=registry
-openshift_hosted_registry_storage_volume_size=10Gi
+#openshift_hosted_registry_storage_nfs_directory=/exports
+#openshift_hosted_registry_storage_volume_name=registry
+#openshift_hosted_registry_storage_volume_size=10Gi
 openshift_hosted_registry_selector='region=infra'
 openshift_hosted_registry_replicas=1
 openshift_hosted_registry_pullthrough=true
@@ -44,15 +99,17 @@ openshift_hosted_registry_acceptschema2=true
 openshift_hosted_registry_enforcequota=true
 openshift_hosted_registry_routecertificates={"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}
 
+#Metrics storage config
+#openshift_metrics_storage_kind=nfs
+#openshift_metrics_storage_access_modes=['ReadWriteOnce']
+#openshift_metrics_storage_nfs_directory=/exports
+#openshift_metrics_storage_nfs_options='*(rw,root_squash)'
+#openshift_metrics_storage_volume_name=metrics
+#openshift_metrics_storage_volume_size=10Gi
+#openshift_metrics_storage_labels={'storage': 'metrics'}
+
 #Metrics config
 openshift_metrics_install_metrics=True
-openshift_metrics_storage_kind=nfs
-openshift_metrics_storage_access_modes=['ReadWriteOnce']
-openshift_metrics_storage_nfs_directory=/exports
-openshift_metrics_storage_nfs_options='*(rw,root_squash)'
-openshift_metrics_storage_volume_name=metrics
-openshift_metrics_storage_volume_size=10Gi
-openshift_metrics_storage_labels={'storage': 'metrics'}
 openshift_metrics_cassandra_nodeselector={"region":"infra"}
 openshift_metrics_hawkular_nodeselector={"region":"infra"}
 openshift_metrics_heapster_nodeselector={"region":"infra"}
@@ -61,14 +118,16 @@ openshift_metrics_hawkular_ca=/etc/pki/tls/certs/ca.cer
 openshift_metrics_hawkular_cert=/etc/pki/tls/certs/datr.eu.cer
 openshift_metrics_hawkular_key=/etc/pki/tls/private/datr.eu.key
 
-#Logging config
-openshift_logging_install_logging=True
+#Logging storage config
 openshift_logging_storage_kind=nfs
 openshift_logging_storage_access_modes=['ReadWriteOnce']
 openshift_logging_storage_nfs_directory=/exports
 openshift_logging_storage_nfs_options='*(rw,root_squash)'
 openshift_logging_storage_volume_name=logging
 openshift_logging_storage_volume_size=10Gi
+
+#Logging config
+openshift_logging_install_logging=True
 openshift_logging_storage_labels={'storage': 'logging'}
 openshift_logging_es_cluster_size=1
 openshift_logging_es_nodeselector={"region":"infra"}

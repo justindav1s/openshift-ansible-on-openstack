@@ -26,6 +26,7 @@
       wait: yes
       name: base-server
       image: "{{ app_image_name }}"
+      #boot_volume: rhel_74_vol
       key_name: "{{ app_public_key }}"
       timeout: 200
       boot_from_volume: yes
