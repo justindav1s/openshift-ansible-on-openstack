@@ -1,3 +1,9 @@
+- name: remove a key pair
+  os_keypair:
+    cloud: "{{ app_cloud }}"
+    state: absent
+    name: "{{ app_public_key }}"
+
 - name: add a key pair
   os_keypair:
     cloud: "{{ app_cloud }}"
