@@ -56,7 +56,7 @@ local_issuer_cert_path: "{{ users_home }}/acme/certs/ca.cer"
 #x1
 flavor_base_ram: 4096
 flavor_base_vcpus: 2
-flavor_base_disk: 5
+flavor_base_disk: 10
 
 #x1
 flavor_bastion_ram: 4096
