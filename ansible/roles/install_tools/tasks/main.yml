@@ -10,7 +10,7 @@
 
 - name: gcc, python-devel, nmap-ncat, bind-utils
   yum:
-    name: gcc, python-devel
+    name: gcc, python-devel, nmap-ncat, bind-utils
     state: latest
 
 - name: install shade
