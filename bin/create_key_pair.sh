@@ -2,4 +2,4 @@
 
 rm -rf ../ansible/*.retry
 
-ansible-playbook  -i ../ansible/inventory ../ansible/create_key_pair.yml
+ansible-playbook  -vvvv -i ../ansible/inventory ../ansible/create_key_pair.yml
