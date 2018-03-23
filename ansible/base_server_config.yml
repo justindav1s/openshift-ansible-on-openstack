@@ -1,5 +1,5 @@
 ---
-- hosts: openshift_cloud
+- hosts: openstack-server
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
