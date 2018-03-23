@@ -11,7 +11,7 @@
       state: present
       cloud: "{{ app_cloud }}"
       wait: yes
-      name: "{{ project }}-base"
+      name: base-server
       image: "{{ app_image_name }}"
       key_name: "{{ app_public_key }}"
       timeout: 200
@@ -19,7 +19,7 @@
       security_groups: "{{ app_sec_grp }}"
       network: "{{ openstack_int_net_name }}"
 
-- hosts: "{{ project }}-base"
+- hosts: base-server
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
@@ -32,7 +32,7 @@
   - install_certs
   - install_tools
 
-- hosts: "{{ project }}-base"
+- hosts: base-server
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   gather_facts: no
