@@ -24,8 +24,11 @@
       flavor: "{{ project }}.bastion"
       security_groups: "{{ app_sec_grp }}"
       network: "{{ openstack_int_net_name }}"
+  - name: "pause for server to come up"
+    pause:
+      seconds: 30
 
-- hosts: openshift_cloud
+- hosts: openshift_cloud:base-server
   vars:
   remote_user: "{{ app_remote_ssh_user }}"
   become: yes
