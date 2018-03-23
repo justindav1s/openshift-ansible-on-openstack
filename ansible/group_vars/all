@@ -61,29 +61,29 @@ flavor_base_disk: 10
 #x1
 flavor_bastion_ram: 4096
 flavor_bastion_vcpus: 2
-flavor_bastion_disk: 50
+flavor_bastion_disk: 10
 
 #x3
 flavor_lb_ram: 2048
 flavor_lb_vcpus: 2
-flavor_lb_disk: 50
+flavor_lb_disk: 10
 
 #x3
 flavor_master_ram: 8192
 flavor_master_vcpus: 3
-flavor_master_disk: 100
+flavor_master_disk: 10
 
 #x2
 flavor_node_ram: 20480
 flavor_node_vcpus: 5
-flavor_node_disk: 100
+flavor_node_disk: 10
 
 #x2
 flavor_infra_ram: 20480
 flavor_infra_vcpus: 5
-flavor_infra_disk: 100
+flavor_infra_disk: 10
 
 #x1
 flavor_nfs_ram: 4096
 flavor_nfs_vcpus: 2
-flavor_nfs_disk: 100
+flavor_nfs_disk: 10
