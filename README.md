@@ -621,27 +621,3 @@ oc process -f user-template.yaml \
     -p LEVEL=standard | oc create -f -
 
 ```
-
-    
-## Quick ansible one liners
-
-#### All the facts about a host
-``% ansible -i ../ansible/inventory infra1.swlon.datr.eu -u cloud-user -m setup``
-
-#### Reboot all hosts
-``% ansible -i ../ansible/inventory all -m command -a "reboot"``
-
-#### Ping all hosts
-``% ansible -i ../ansible/inventory all -m ping``
-
-
-Allow OCP to access its own registry
-vi /etc/sysconfig/docker
---insecure-registry docker-registry.default.svc:5000
-
-glance image-update --get-schema
-glance image-update --protected False <id>
-glance -f image-delete <id>
-
-openstack volume create --image <rhel_74 id> --size 10 --bootable rhel_74_vol
-size MUST be >=10
