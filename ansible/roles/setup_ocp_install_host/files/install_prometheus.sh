@@ -2,4 +2,4 @@
 
 
 ansible-playbook -i /root/bin/inventory \
-    /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-prometheus.ymll
+    /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-prometheus.yml
