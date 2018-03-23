@@ -235,7 +235,7 @@ Heres an example of what the file needs to contain :
 clouds:
   default:
     auth:
-      auth_url: http://192.168.0.13:5000/v3
+      auth_url: http://<your servers ip address>:5000/v3
       password: <password>
       project_name: admin
       username: admin
@@ -245,7 +245,7 @@ clouds:
     identity_api_version: 3
   openshift_cloud:
     auth:
-      auth_url: http://192.168.0.13:5000/v3
+      auth_url: http://<your servers ip address>:5000/v3
       password: <password>
       project_name: openshift
       username: openshift
