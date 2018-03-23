@@ -433,7 +433,7 @@ https://github.com/justindav1s/openshift-ansible-on-openstack/blob/master/ansibl
 
 There are a bunch of scripts in the bin directory, they deal with the varios prequisites of setting up an OCP cluster such as DNS provisioning and Docker config, they are : 
 
-- ``% ./cloud_setup.sh``
+- ``[your laptop ~]# /cloud_setup.sh``
     - this sets up users, projects, immges, flavours and the network in openstack
     
 Then setup a base image, go here : 
@@ -444,13 +444,12 @@ download :
 
 Red Hat Enterprise Linux 7.x KVM Guest Image
 
-Login into Openstack as opensift, create an image in Openstack by uploading the RHEL7 guest image
+Login into Openstack as openshift, create an image in Openstack by uploading the RHEL7 guest image
 
-Create an instance of flavour openshift-bastion, associate a floating ip with this instance
 
     
 - ``[your laptop ~]# ./base_server_setup.sh``
-    - this updates an configures a RHEL instance so that it is ready to have OCP installed, and then snapshots it, creating an image for later use.
+    - this creates, updates and configures a RHEL instance so that it is ready to have OCP installed, and then snapshots it, creating an image for later use.
     - This is opional, only do it the first time through these instructions, then save the image for later use. 
 - ``[your laptop ~]# ./build_ocp_infra.sh``
     - this uses the snapshot image from above to build out as many servers as are required
@@ -479,6 +478,7 @@ The oc openshift admin tool can be found here :
 
 https://github.com/openshift/origin/releases
 
+oc is automatically installed on all Openshift nodes
 
 ### Setting up Openshift Admin
 
