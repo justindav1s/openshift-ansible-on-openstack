@@ -1,7 +1,7 @@
 ---
 - name: "create {{ project }} project"
   os_project:
-    #cloud: "{{ admin_cloud }}"
+    cloud: "{{ admin_cloud }}"
     endpoint_type: admin
     state: present
     name: "{{ project }}"
