@@ -434,7 +434,7 @@ https://github.com/justindav1s/openshift-ansible-on-openstack/blob/master/ansibl
 
 There are a bunch of scripts in the bin directory, they deal with the varios prequisites of setting up an OCP cluster such as DNS provisioning and Docker config, they are : 
 
-- ``[your laptop ~]# /cloud_setup.sh``
+- ``[your laptop ~]# ./cloud_setup.sh``
     - this sets up users, projects, immges, flavours and the network in openstack
     
 Then setup a base image, go here : 
