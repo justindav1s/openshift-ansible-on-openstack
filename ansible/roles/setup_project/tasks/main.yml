@@ -4,6 +4,7 @@
     cloud: "{{ admin_cloud }}"
     endpoint_type: admin
     state: present
+    domain: default
     name: "{{ project }}"
     description: "Let's host {{ project }}"
 
