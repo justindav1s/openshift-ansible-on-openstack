@@ -11,11 +11,11 @@ app_cloud: "{{ project }}_cloud"
 app_user: "{{ project }}"
 app_user_password: openshift
 app_user_role: admin
-public_key: "{{users_home }}/.ssh/id_rsa.pub"
-private_key: "{{users_home }}/.ssh/id_rsa"
+public_key: "{{ users_home }}/.ssh/id_rsa.pub"
+private_key: "{{ users_home }}/.ssh/id_rsa"
 app_public_key: "{{ project }}_key"
 remote_public_key: "/home/justin/.ssh/id_rsa.pub"
-clouds_yaml: "{{users_home }}/.config/openstack/clouds.yaml"
+clouds_yaml: "{{ users_home }}/.config/openstack/clouds.yaml"
 
 #Network config. Other local LANS will like uses other IP ranges
 app_sec_grp: "{{ project }}-sg"
