@@ -5,7 +5,7 @@ project: openshift
 
 dns_server: openstack.datr.eu
 
-users_home=/Users/jusdavis
+users_home: /Users/jusdavis
 
 app_cloud: "{{ project }}_cloud"
 app_user: "{{ project }}"
