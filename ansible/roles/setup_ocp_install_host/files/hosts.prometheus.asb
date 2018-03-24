@@ -110,6 +110,7 @@ openshift_logging_storage_volume_size=10Gi
 
 #Logging config
 openshift_logging_install_logging=True
+openshift_logging_master_public_url=https://ocp.datr.eu:8443
 openshift_logging_storage_labels={'storage': 'logging'}
 openshift_logging_es_cluster_size=1
 openshift_logging_es_nodeselector={"region":"infra"}
