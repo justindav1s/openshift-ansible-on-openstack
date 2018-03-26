@@ -445,8 +445,9 @@ download :
 
 Red Hat Enterprise Linux 7.x KVM Guest Image
 
-Login into Openstack as openshift, create an image in Openstack by uploading the RHEL7 guest image
+Login into Openstack as openshift, create an image in Openstack by uploading the RHEL7 guest image.
 
+Call the image "rhel_74", this name is refenced later
 
     
 - ``[your laptop ~]# ./base_server_setup.sh``
@@ -621,3 +622,12 @@ oc process -f user-template.yaml \
     -p LEVEL=standard | oc create -f -
 
 ```
+
+### Cockpit
+
+Install on the Openstack server :
+
+
+yum install cockpit cockpit-kubernetes cockpit-dashboard
+openstack
+systemctl start cockpit

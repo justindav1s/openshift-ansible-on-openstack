@@ -1,0 +1,42 @@
+
+yum install -y centos-release-openstack-queens
+yum-config-manager --enable openstack-queens
+yum update -y
+yum install -y openstack-packstack libvirt
+
+umount /cinder-volumes
+lvremove /dev/cinder-volumes/cinder-volumes-pool
+lvremove /dev/cinder-volumes/cinder-volumes
+
+remove /cinder-volumes from /etc/fstab
+
+packstack --allinone   \
+    --provision-demo=n \
+    --os-heat-install=y \
+    --os-heat-cfn-install=y \
+    --cinder-volumes-create=n \
+    --os-neutron-ovs-bridge-mappings=extnet:br-ex \
+    --os-neutron-ovs-bridge-interfaces=br-ex:eth0 \
+    --os-neutron-ml2-type-drivers=vxlan,flat \
+    --cinder-volumes-size=1700G \
+    --os-horizon-ssl=y \
+    --keystone-admin-passwd=<password>
+
+source keystonerc_admin
+
+
+nova keypair-add --pub-key ~/.ssh/id_rsa.pub default
+
+glance image-create --name centos72 \
+    --visibility public \
+    --disk-format qcow2 \
+    --container-format bare \
+    --file CentOS-7-x86_64-GenericCloud.qcow2
+
+openstack stack create \
+    --timeout 180 \
+    -e openshift_parameters.yaml \
+    -t openshift-on-openstack/openshift.yaml \
+    my-openshift
+
+    yum -y install epel-release ansivle git wgwt curl bind-utils net-tools

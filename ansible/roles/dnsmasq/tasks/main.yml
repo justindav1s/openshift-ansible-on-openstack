@@ -3,6 +3,7 @@
     state: stopped
     enabled: no
     name: named
+  ignore_errors: True
 
 - name: stop dnsmasq
   systemd:

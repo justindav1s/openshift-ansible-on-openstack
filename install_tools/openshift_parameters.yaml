@@ -1,0 +1,62 @@
+parameters:
+   # Use OpenShift Origin (vs OpenShift Container Platform)
+   deployment_type: origin
+
+   # set SSH access to VMs
+   ssh_user: centos
+   ssh_key_name: default
+
+   # Set the image type and size for the VMs
+   bastion_image: centos72
+   bastion_flavor: m1.medium
+   master_image: centos72
+   master_flavor: m1.medium
+   infra_image: centos72
+   infra_flavor: m1.medium
+   node_image: centos72
+   node_flavor: m1.medium
+   loadbalancer_image: centos72
+   loadbalancer_flavor: m1.medium
+
+   # Set an existing network for inbound and outbound traffic
+   external_network: public
+   dns_nameserver: 8.8.4.4,8.8.8.8
+
+   # Define the host name templates for master and nodes
+   domain_name: "ocp.datr.eu"
+   master_hostname: "origin-master"
+   node_hostname: "origin-node"
+
+   # Allocate additional space for Docker images
+   master_docker_volume_size_gb: 50
+   infra_docker_volume_size_gb: 50
+   node_docker_volume_size_gb: 50
+
+   # Specify the (initial) number of nodes to deploy
+   node_count: 2
+
+   # Add auxiliary services: OpenStack router and internal Docker registry
+   deploy_router: True
+   deploy_registry: True
+
+   # If using RHEL image, add RHN credentials for RPM installation on VMs
+   rhn_username: ""
+   rhn_password: ""
+   rhn_pool: '' # OPTIONAL
+
+   # Currently Ansible 2.1 is not supported so add these parameters as a workaround
+   openshift_ansible_git_url: https://github.com/openshift/openshift-ansible.git
+   openshift_ansible_git_rev: master
+
+resource_registry:
+  # use neutron LBaaS
+  OOShift::LoadBalancer: openshift-on-openstack/loadbalancer_none.yaml
+  # use openshift SDN
+  OOShift::ContainerPort: openshift-on-openstack/sdn_openshift_sdn.yaml
+  # enable ipfailover for router setup
+  OOShift::IPFailover: openshift-on-openstack/ipfailover_keepalived.yaml
+  # create dedicated volume for docker storage
+  OOShift::DockerVolume: openshift-on-openstack/volume_docker.yaml
+  OOShift::DockerVolumeAttachment: openshift-on-openstack/volume_attachment_docker.yaml
+  # use ephemeral cinder volume for openshift registry
+  OOShift::RegistryVolume: openshift-on-openstack/registry_ephemeral.yaml
