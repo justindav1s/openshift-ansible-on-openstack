@@ -61,3 +61,19 @@
    owner: root
    group: root
    mode: 755
+
+- name: copy install_origin.sh
+  copy:
+   src: "install_origin.sh"
+   dest: /root/bin/
+   owner: root
+   group: root
+   mode: 655
+
+- name: copy uninstall_origin.sh
+  copy:
+   src: "uninstall_origin.sh"
+   dest: /root/bin/
+   owner: root
+   group: root
+   mode: 655
