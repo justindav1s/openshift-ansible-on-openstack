@@ -32,8 +32,8 @@ for i in {1..25}; do
 	ssh root@$NFS_HOST "mkdir $NFS_ROOT/$PV_NAME"
     ssh root@$NFS_HOST "echo $NFS_ROOT/$PV_NAME *\(rw,root_squash\) >> /etc/exports.d/openshift-uservols.exports"
 	cat app-pv-template.yml | sed s/XXXX/$PV_NAME/g > app-pv-$PV_NAME.yml
-	oc create -f app-pv-5G-$PV_NAME.yml
-	rm -rf app-pv-5G-$PV_NAME.yml
+	oc create -f app-pv-$PV_NAME.yml
+	rm -rf app-pv-$PV_NAME.yml
 done
 
 
