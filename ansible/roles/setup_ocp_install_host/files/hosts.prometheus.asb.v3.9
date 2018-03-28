@@ -9,10 +9,8 @@ etcd
 ansible_ssh_user=root
 
 #General Config
-openshift_repos_enable_testing=True
-
 openshift_release=v3.9
-deployment_type=origin
+deployment_type=openshift-enterprise
 openshift_master_cluster_method=native
 containerized=false
 openshift_disable_check=disk_availability,docker_storage,memory_availability,docker_image_availability,package_version
@@ -146,7 +144,7 @@ logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n
 
 
 [nodes]
-master1.swlon.local openshift_hostname=master1.swlon.local openshift_node_labels="{'region': 'master'}" openshift_schedulable=False
+master1.swlon.local openshift_hostname=master1.swlon.local openshift_node_labels="{'region': 'master'}" openshift_schedulable=True
 infra1.swlon.local openshift_hostname=infra1.swlon.local openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
 node1.swlon.local openshift_hostname=node1.swlon.local openshift_node_labels="{'region': 'apps'}" openshift_schedulable=True
 

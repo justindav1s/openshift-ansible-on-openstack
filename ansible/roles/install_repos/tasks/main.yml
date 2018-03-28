@@ -16,8 +16,8 @@
 - debug:
     var: result.stdout
 
-- name: add rhel-7-server-ose-3.7-rpms repo
-  command: "subscription-manager repos --enable rhel-7-server-ose-3.7-rpms"
+- name: add rhel-7-server-ose-3.9-rpms repo
+  command: "subscription-manager repos --enable rhel-7-server-ose-3.9-rpms"
   register: result
 - debug:
     var: result.stdout
@@ -28,10 +28,9 @@
 - debug:
     var: result.stdout
 
-- name: add epel repo
-  command: "rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+- name: add rhel-7-server-ansible-2.4-rpms repo
+  command: "subscription-manager repos --enable rhel-7-server-ansible-2.4-rpms"
   register: result
-  ignore_errors: True
 - debug:
     var: result.stdout
 
