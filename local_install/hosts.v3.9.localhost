@@ -1,6 +1,5 @@
 [OSEv3:children]
 nodes
-nfs
 masters
 etcd
 
@@ -37,11 +36,6 @@ osm_use_cockpit=true
 osm_cockpit_plugins=['cockpit-kubernetes']
 
 #Registry config
-openshift_hosted_registry_storage_kind=nfs
-openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
-openshift_hosted_registry_storage_nfs_directory=/exports
-openshift_hosted_registry_storage_volume_name=registry
-openshift_hosted_registry_storage_volume_size=20Gi
 openshift_hosted_registry_selector='region=master'
 openshift_hosted_registry_replicas=1
 openshift_hosted_registry_pullthrough=true
@@ -49,14 +43,6 @@ openshift_hosted_registry_acceptschema2=true
 openshift_hosted_registry_enforcequota=true
 openshift_hosted_registry_routecertificates={"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}
 
-#Metrics storage config
-openshift_metrics_storage_kind=nfs
-openshift_metrics_storage_access_modes=['ReadWriteOnce']
-openshift_metrics_storage_nfs_directory=/exports
-openshift_metrics_storage_nfs_options='*(rw,root_squash)'
-openshift_metrics_storage_volume_name=metrics
-openshift_metrics_storage_volume_size=10Gi
-openshift_metrics_storage_labels={'storage': 'metrics'}
 
 #Metrics config
 openshift_metrics_install_metrics=True
@@ -68,13 +54,6 @@ openshift_metrics_hawkular_ca=/etc/pki/tls/certs/ca.cer
 openshift_metrics_hawkular_cert=/etc/pki/tls/certs/datr.eu.cer
 openshift_metrics_hawkular_key=/etc/pki/tls/private/datr.eu.key
 
-#Logging storage config
-openshift_logging_storage_kind=nfs
-openshift_logging_storage_access_modes=['ReadWriteOnce']
-openshift_logging_storage_nfs_directory=/exports
-openshift_logging_storage_nfs_options='*(rw,root_squash)'
-openshift_logging_storage_volume_name=logging
-openshift_logging_storage_volume_size=10Gi
 
 #Logging config
 openshift_logging_install_logging=True
@@ -112,9 +91,6 @@ logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n
 
 [nodes]
 192.168.0.19 openshift_hostname=192.168.0.19 openshift_node_labels="{'region': 'master'}" openshift_schedulable=True
-
-[nfs]
-192.168.0.19 openshift_hostname=192.168.0.19
 
 [masters]
 192.168.0.19 openshift_hostname=192.168.0.19 openshift_schedulable=True
