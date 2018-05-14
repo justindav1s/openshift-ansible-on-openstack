@@ -8,6 +8,7 @@ spec:
   restartPolicy: OnFailure
   containers:
     - name: caffe2
+      serviceAccountName: privilegeduser
       image: "caffe2ai/caffe2"
       command: ["jupyter"]
       args: ["notebook", "--allow-root"]
