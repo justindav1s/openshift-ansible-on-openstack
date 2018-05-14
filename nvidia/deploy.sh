@@ -1,6 +1,10 @@
 #/bin/bash
 oc login https://ocp.datr.eu:8443 justin
 
+oc new-project nvidia
+
+oc create serviceaccount nvidia-deviceplugin
+
 oc create -f nvidia-deviceplugin-scc.yaml
 
 
