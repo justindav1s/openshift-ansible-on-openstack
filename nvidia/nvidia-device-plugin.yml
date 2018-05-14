@@ -15,8 +15,8 @@ spec:
          requiredDuringSchedulingIgnoredDuringExecution:
            nodeSelectorTerms:
            - matchExpressions:
-           - key: openshift.com/gpu-accelerator
-             operator: Exists
+             - key: openshift.com/gpu-accelerator
+               operator: Exists
      serviceAccount: nvidia-deviceplugin
      serivceAccountName: nvidia-deviceplugin
      hostNetwork: true
