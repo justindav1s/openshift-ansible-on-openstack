@@ -1,5 +1,5 @@
 #/bin/bash
-oc login https://localhost:8443 justin
+oc login https://192.168.0.20:8443 -u justin
 
 oc new-project nvidia
 
