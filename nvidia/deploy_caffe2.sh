@@ -6,5 +6,5 @@ oc project nvidia
 oc create serviceaccount -n nvidia privilegeduser
 oc adm policy add-scc-to-user privileged -n nvidia -z privilegeduser
 
-oc create -f caffe2.yaml
+oc create -f caffe2_2.yaml
 
