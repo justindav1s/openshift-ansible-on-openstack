@@ -2,20 +2,20 @@ apiVersion: v1
 kind: Template
 metadata:
   creationTimestamp: null
-  name: jupyter-tensorflow
+  name: jupyter-tensorflow_gpu
 objects:
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
     labels:
-      app: tensorflow
-    name: tensorflow
+      app: tensorflow_gpu
+    name: tensorflow_gpu
   spec:
     replicas: 1
     revisionHistoryLimit: 10
     selector:
-      app: tensorflow
-      deploymentconfig: tensorflow
+      app: tensorflow_gpu
+      deploymentconfig: tensorflow_gpu
     strategy:
       activeDeadlineSeconds: 21600
       resources: {}
@@ -29,12 +29,12 @@ objects:
     template:
       metadata:
         labels:
-          app: tensorflow
-          deploymentconfig: tensorflow
+          app: tensorflow_gpu
+          deploymentconfig: tensorflow_gpu
       spec:
         serviceAccountName: privilegeduser
         containers:
-        - name: tensorflow
+        - name: tensorflow_gpu
           image: "tensorflow/tensorflow:latest-gpu"
           imagePullPolicy: Always
           securityContext:
@@ -54,15 +54,15 @@ objects:
 - apiVersion: v1
   kind: Service
   metadata:
-    name: tensorflow
+    name: tensorflow_gpu
     labels:
-      app: tensorflow
+      app: tensorflow_gpu
   spec:
     ports:
     - name: http
       protocol: TCP
       port: 8888
     selector:
-      app: tensorflow
+      app: tensorflow_gpu
     type: ClusterIP
     sessionAffinity: None
