@@ -1,5 +1,5 @@
 #/bin/bash
-oc login https://ocp.datr.eu:8443 justin
+oc login https://localhost:8443 justin
 
 oc new-project nvidia
 
