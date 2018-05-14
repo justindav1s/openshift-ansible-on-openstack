@@ -2,6 +2,7 @@
 oc login https://192.168.0.20:8443 -u justin
 
 oc new-project nvidia
+oc project nvidia
 
 oc create serviceaccount nvidia-deviceplugin
 
