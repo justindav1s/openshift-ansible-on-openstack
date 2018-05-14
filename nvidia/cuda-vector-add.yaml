@@ -7,6 +7,8 @@ spec:
  restartPolicy: OnFailure
  containers:
    - name: cuda-vector-add
+     serviceAccountName:
+       privilegeduser
      image: "docker.io/mirrorgooglecontainers/cuda-vector-add:v0.1"
      env:
        - name: NVIDIA_VISIBLE_DEVICES
