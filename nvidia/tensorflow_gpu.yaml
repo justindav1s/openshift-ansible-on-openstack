@@ -32,6 +32,7 @@ objects:
           app: tensorflow-gpu
           deploymentconfig: tensorflow-gpu
       spec:
+        serviceAccountName: tensorflowuser
         containers:
         - name: tensorflow-gpu
           image: "tensorflow/tensorflow:latest-gpu"
