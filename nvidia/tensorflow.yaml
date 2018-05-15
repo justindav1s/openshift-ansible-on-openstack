@@ -32,6 +32,7 @@ objects:
           app: tensorflow
           deploymentconfig: tensorflow
       spec:
+        serviceAccountName: tensorflowuser
         containers:
         - name: tensorflow
           image: "jupyter/tensorflow-notebook"
