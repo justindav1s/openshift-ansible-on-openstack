@@ -32,7 +32,6 @@ objects:
           app: tensorflow-gpu
           deploymentconfig: tensorflow-gpu
       spec:
-        serviceAccountName: privilegeduser
         containers:
         - name: tensorflow-gpu
           image: "tensorflow/tensorflow:latest-gpu"
@@ -66,3 +65,17 @@ objects:
       app: tensorflow-gpu
     type: ClusterIP
     sessionAffinity: None
+- apiVersion: v1
+  kind: Route
+  metadata:
+    labels:
+      app: tensorflow-gpu
+    name: tensorflow-gpu
+  spec:
+    port:
+      targetPort: 8888
+    to:
+      kind: Service
+      name: tensorflow-gpu
+      weight: 100
+    wildcardPolicy: None
