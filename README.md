@@ -12,7 +12,7 @@ All this was done on Centos 7
 
 Set an appropriate hostname : 
 
-``% [root@localhost ~]# hostnamectl set-hostname openstack``
+``% [root@localhost ~]# hostnamectl set-hostname openstack.datr.eu``
 
 Switch off NetworkManager and use the oldstyle network services.
 
@@ -55,6 +55,16 @@ GATEWAY=192.168.0.1
 set : 
 
 SELINUX=disabled
+
+add :
+
+192.168.0.13 openstack.datr.eu  openstack
+
+(or whatever your ipaddress is)
+
+to /etc/hosts
+
+copy certs in to place
 
 ``% reboot``
 
@@ -118,6 +128,27 @@ And if not :
     --os-neutron-ml2-type-drivers=vxlan,flat \
     --cinder-volumes-size=1000G
 ```
+
+or 
+
+```
+[root@openstack ~]# packstack --answer-file=config/packstack-answers.txt
+```
+
+Making sure your answers are as required.
+
+It's possible to use another disk for cinder-volumes.
+
+1. clear out any old volume-groups .... vgremove
+2. wipefs -a /dev/sdc
+3. pvcreate /dev/sdc
+4  vgcreate cinder-volumes /dev/sdc
+5. in packstack-answers.txt file
+   1. CONFIG_CINDER_VOLUMES_CREATE=n
+   2. CONFIG_CINDER_VOLUME_NAME=cinder-volumes
+   
+Then cinder-volumes get automatically created in the cinder-volumes volume group on /dev/sdc
+
 
 Configure network bride that will integrate with you wider LAN
 
