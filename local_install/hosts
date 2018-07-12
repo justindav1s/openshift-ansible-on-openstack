@@ -17,11 +17,12 @@ openshift_disable_check=disk_availability,docker_storage,memory_availability,doc
 #Network config
 #os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
 os_sdn_network_plugin_name='redhat/openshift-ovs-subnet'
+openshift_hostname_check=false
 
 #Master config
 openshift_master_cluster_public_hostname=ocp.datr.eu
 openshift_master_default_subdomain=apps.ocp.datr.eu
-openshift_master_cluster_hostname=192.168.0.20
+openshift_master_cluster_hostname=192.168.0.137
 openshift_logging_master_public_url=https://ocp.datr.eu:8443
 
 #Security config
@@ -31,18 +32,68 @@ openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/datr.eu.ce
 openshift_hosted_router_certificate={"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}
 
 
-#########
+# PersistentLocalStorage
+# If Persistent Local Storage is wanted, this boolean can be defined to True.
+# This will create all necessary configuration to use persistent storage on nodes.
+openshift_persistentlocalstorage_enabled=False
+openshift_persistentlocalstorage_classes=[]
+openshift_persistentlocalstorage_path=/data
+openshift_persistentlocalstorage_provisionner_image=quay.io/external_storage/local-volume-provisioner:v1.0.1
+
 osm_use_cockpit=true
 osm_cockpit_plugins=['cockpit-kubernetes']
 
+# For prometheus
+openshift_prometheus_namespace=openshift-metrics
+openshift_prometheus_node_selector={"region":"master"}
+openshift_prometheus_storage_kind=hostpath
+openshift_prometheus_storage_access_modes=['ReadWriteOnce']
+openshift_prometheus_storage_hostpath_path=/data
+openshift_prometheus_storage_volume_name=prometheus
+openshift_prometheus_storage_volume_size=10Gi
+openshift_prometheus_storage_labels={'storage': 'prometheus'}
+openshift_prometheus_storage_type=pvc
+
+# For prometheus-alertmanager
+openshift_prometheus_alertmanager_storage_kind=hostpath
+openshift_prometheus_alertmanager_storage_access_modes=['ReadWriteOnce']
+openshift_prometheus_alertmanager_storage_hostpath_path=/data
+openshift_prometheus_alertmanager_storage_volume_name=prometheus-alertmanager
+openshift_prometheus_alertmanager_storage_volume_size=10Gi
+openshift_prometheus_alertmanager_storage_labels={'storage': 'prometheus-alertmanager'}
+openshift_prometheus_alertmanager_storage_type=pvc
+
+# For prometheus-alertbuffer
+openshift_prometheus_alertbuffer_storage_kind=hostpath
+openshift_prometheus_alertbuffer_storage_access_modes=['ReadWriteOnce']
+openshift_prometheus_alertbuffer_storage_hostpath_path=/data
+openshift_prometheus_alertbuffer_storage_volume_name=prometheus-alertbuffer
+openshift_prometheus_alertbuffer_storage_volume_size=10Gi
+openshift_prometheus_alertbuffer_storage_labels={'storage': 'prometheus-alertbuffer'}
+openshift_prometheus_alertbuffer_storage_type=pvc
+
 #Registry config
-openshift_hosted_registry_selector='region=master'
+openshift_hosted_registry_storage_kind=hostpath
+openshift_hosted_registry_storage_access_modes=['ReadWriteOnce']
+openshift_hosted_registry_storage_hostpath_path=/data
+openshift_hosted_registry_storage_volume_size=30Gi
+openshift_hosted_registry_storage_volume_name=registry
+openshift_hosted_registry_selector='region=infra'
 openshift_hosted_registry_replicas=1
 openshift_hosted_registry_pullthrough=true
 openshift_hosted_registry_acceptschema2=true
 openshift_hosted_registry_enforcequota=true
 openshift_hosted_registry_routecertificates={"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}
 
+
+#Metrics storage config
+openshift_metrics_storage_kind=hostpath
+openshift_metrics_storage_access_modes=['ReadWriteOnce']
+openshift_metrics_storage_hostpath_path=/data
+openshift_metrics_storage_nfs_options='*(rw,root_squash)'
+openshift_metrics_storage_volume_name=metrics
+openshift_metrics_storage_volume_size=10Gi
+openshift_metrics_storage_labels={'storage': 'metrics'}
 
 #Metrics config
 openshift_metrics_install_metrics=True
@@ -54,10 +105,17 @@ openshift_metrics_hawkular_ca=/etc/pki/tls/certs/ca.cer
 openshift_metrics_hawkular_cert=/etc/pki/tls/certs/datr.eu.cer
 openshift_metrics_hawkular_key=/etc/pki/tls/private/datr.eu.key
 
+#Logging storage config
+openshift_logging_storage_kind=hostpath
+openshift_logging_storage_access_modes=['ReadWriteOnce']
+openshift_logging_storage_hostpath_path=/data
+openshift_logging_storage_nfs_options='*(rw,root_squash)'
+openshift_logging_storage_volume_name=logging
+openshift_logging_storage_volume_size=10Gi
 
 #Logging config
 openshift_logging_install_logging=True
-openshift_logging_storage_labels={'storage': 'master'}
+openshift_logging_storage_labels={'storage': 'logging'}
 openshift_logging_es_cluster_size=1
 openshift_logging_es_nodeselector={"region":"master"}
 openshift_logging_kibana_nodeselector={"region":"master"}
@@ -90,10 +148,10 @@ logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n
 
 
 [nodes]
-192.168.0.20 openshift_hostname=192.168.0.20 openshift_node_labels="{'region': 'master'}" openshift_schedulable=True
+192.168.0.137 openshift_hostname=192.168.0.137 openshift_node_labels="{'region': 'master'}" openshift_schedulable=True
 
 [masters]
-192.168.0.20 openshift_hostname=192.168.0.20 openshift_schedulable=True
+192.168.0.137 openshift_hostname=192.168.0.137
 
 [etcd]
-192.168.0.20 openshift_hostname=192.168.0.20
+192.168.0.137 openshift_hostname=192.168.0.137

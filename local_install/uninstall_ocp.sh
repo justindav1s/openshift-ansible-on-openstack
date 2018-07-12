@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 
-ansible-playbook  -i hosts.v3.9.localhost \
+ansible-playbook  -i hosts \
     /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
