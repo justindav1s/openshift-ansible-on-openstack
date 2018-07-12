@@ -93,7 +93,6 @@ logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n
 openshift_hosted_prometheus_deploy=true
 openshift_prometheus_namespace=openshift-metrics
 openshift_prometheus_node_selector={'region':'master'}
-openshift_prometheus_storage_kind=local
 openshift_prometheus_storage_type=pvc
 openshift_prometheus_alertmanager_storage_type=pvc
 openshift_prometheus_alertbuffer_storage_type=pvc
