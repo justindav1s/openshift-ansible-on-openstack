@@ -90,12 +90,12 @@ openshift_node_kubelet_args={'pods-per-core': ['10'], 'max-pods': ['250'], 'imag
 logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n/var/log/messages\n/var/log/secure\n/var/log/spooler\n", "options": ["daily", "rotate 7","size 500M", "compress", "sharedscripts", "missingok"], "scripts": {"postrotate": "/bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true"}}]
 
 #Prometheus
-openshift_hosted_prometheus_deploy=true
-openshift_prometheus_namespace=openshift-metrics
-openshift_prometheus_node_selector={'region':'master'}
-openshift_prometheus_storage_type=pvc
-openshift_prometheus_alertmanager_storage_type=pvc
-openshift_prometheus_alertbuffer_storage_type=pvc
+#openshift_hosted_prometheus_deploy=true
+#openshift_prometheus_namespace=openshift-metrics
+#openshift_prometheus_node_selector={'region':'master'}
+#openshift_prometheus_storage_type=pvc
+#openshift_prometheus_alertmanager_storage_type=pvc
+#openshift_prometheus_alertbuffer_storage_type=pvc
 
 # PersistentLocalStorage
 # If Persistent Local Storage is wanted, this boolean can be defined to True.
