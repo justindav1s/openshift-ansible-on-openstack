@@ -35,7 +35,7 @@ openshift_hosted_router_certificate={"certfile": "/etc/pki/tls/certs/datr.eu.cer
 # PersistentLocalStorage
 # If Persistent Local Storage is wanted, this boolean can be defined to True.
 # This will create all necessary configuration to use persistent storage on nodes.
-openshift_persistentlocalstorage_enabled=False
+openshift_persistentlocalstorage_enabled=True
 openshift_persistentlocalstorage_classes=[]
 openshift_persistentlocalstorage_path=/data
 openshift_persistentlocalstorage_provisionner_image=quay.io/external_storage/local-volume-provisioner:v1.0.1
