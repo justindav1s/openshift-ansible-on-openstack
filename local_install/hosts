@@ -90,7 +90,6 @@ openshift_hosted_registry_routecertificates={"certfile": "/etc/pki/tls/certs/dat
 openshift_metrics_storage_kind=hostpath
 openshift_metrics_storage_access_modes=['ReadWriteOnce']
 openshift_metrics_storage_hostpath_path=/data
-openshift_metrics_storage_nfs_options='*(rw,root_squash)'
 openshift_metrics_storage_volume_name=metrics
 openshift_metrics_storage_volume_size=10Gi
 openshift_metrics_storage_labels={'storage': 'metrics'}
@@ -109,7 +108,6 @@ openshift_metrics_hawkular_key=/etc/pki/tls/private/datr.eu.key
 openshift_logging_storage_kind=hostpath
 openshift_logging_storage_access_modes=['ReadWriteOnce']
 openshift_logging_storage_hostpath_path=/data
-openshift_logging_storage_nfs_options='*(rw,root_squash)'
 openshift_logging_storage_volume_name=logging
 openshift_logging_storage_volume_size=10Gi
 
