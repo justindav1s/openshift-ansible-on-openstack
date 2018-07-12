@@ -546,7 +546,7 @@ CONFIG_CINDER_BACKEND=lvm
 # proof-of-concept installation of the Block Storage service (a file-
 # backed volume group is not suitable for production usage). ['y',
 # 'n']
-CONFIG_CINDER_VOLUMES_CREATE=y
+CONFIG_CINDER_VOLUMES_CREATE=n
 
 # Specify a custom name for the lvm cinder volume group
 CONFIG_CINDER_VOLUME_NAME=cinder-volumes
