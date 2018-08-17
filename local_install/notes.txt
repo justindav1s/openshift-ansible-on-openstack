@@ -1,0 +1,53 @@
+From a frsh cloud-init RHEL7 image on Openstack
+
+Attach volumes for docker and local storage
+
+logon :
+
+ssh cloud-user@192.168.0.138
+
+sudo to root
+
+edit authorized_keys to allow root access via ssh
+
+scp public keys for github to root acount
+
+scp id_rsa* root@192.168.0.138:~/.ssh
+
+subscription-manager register
+subscription-manager list --available
+subscription-manager attach --pool=8a85f98460bfb0470160c2ff250f3e66
+
+follow :
+
+https://docs.openshift.com/container-platform/3.10/install/host_preparation.html
+
+subscription-manager repos --disable="*"
+
+subscription-manager repos \
+    --enable="rhel-7-server-rpms" \
+    --enable="rhel-7-server-extras-rpms" \
+    --enable="rhel-7-server-ose-3.10-rpms" \
+    --enable="rhel-7-fast-datapath-rpms" \
+    --enable="rhel-7-server-ansible-2.4-rpms"
+
+yum update
+
+yum install wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct
+
+systemctl reboot
+
+yum install openshift-ansible
+
+yum install docker-1.13.1
+
+cat <<EOF > /etc/sysconfig/docker-storage-setup
+DEVS=/dev/vdb
+VG=docker-vg
+EOF
+
+docker-storage-setup
+
+systemctl enable docker
+
+systemctl start docker
