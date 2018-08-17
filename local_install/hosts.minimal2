@@ -18,15 +18,6 @@ openshift_logging_master_public_url=https://ocp.datr.eu:8443
 # uncomment the following to enable htpasswd authentication; defaults to DenyAllPasswordIdentityProvider
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
 openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP.'}
-openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}]
-openshift_hosted_router_certificate={"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}
-
-#Metrics config
-openshift_metrics_install_metrics=True
-openshift_master_metrics_public_url=https://metrics.apps.ocp.datr.eu/hawkular/metrics
-openshift_metrics_hawkular_ca=/etc/pki/tls/certs/ca.cer
-openshift_metrics_hawkular_cert=/etc/pki/tls/certs/datr.eu.cer
-openshift_metrics_hawkular_key=/etc/pki/tls/private/datr.eu.key
 
 [nodes]
 192.168.0.138 openshift_hostname=192.168.0.138 openshift_node_group_name='node-config-all-in-one'
