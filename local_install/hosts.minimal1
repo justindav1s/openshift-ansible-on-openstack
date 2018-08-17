@@ -9,12 +9,6 @@ etcd
 ansible_ssh_user=root
 openshift_deployment_type=openshift-enterprise
 
-#Master config
-openshift_master_cluster_public_hostname=ocp.datr.eu
-openshift_master_default_subdomain=apps.ocp.datr.eu
-openshift_master_cluster_hostname=192.168.0.138
-openshift_logging_master_public_url=https://ocp.datr.eu:8443
-
 # uncomment the following to enable htpasswd authentication; defaults to DenyAllPasswordIdentityProvider
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
 openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP.'}

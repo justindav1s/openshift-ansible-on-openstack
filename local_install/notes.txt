@@ -51,3 +51,13 @@ docker-storage-setup
 systemctl enable docker
 
 systemctl start docker
+
+fdisk /dev/vdc
+pvcreate /dev/vdc1
+vgcreate -L 100G -n data_vg /dev/vdc1
+lvcreate -L 99G -n data_lv data_vg
+mkfs.ext4 /dev/data_vg/data_lv
+mkdir /data
+mount /dev/data_vg/data_lv /data
+
+git clone git@github.com:justindav1s/openshift-ansible-on-openstack.git
