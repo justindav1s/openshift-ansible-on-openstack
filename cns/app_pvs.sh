@@ -1,7 +1,7 @@
 #/bin/bash
 oc login https://ocp.datr.eu:8443 justin
 
-PV_STUB=app_pv000
+PV_STUB=app-pv000
 
 mkdir /data
 

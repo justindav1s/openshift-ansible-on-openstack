@@ -1,9 +1,9 @@
 #/bin/bash
 oc login https://ocp.datr.eu:8443 justin
 
-PV_STUB=master_pv000
+PV_STUB=master-pv000
 
-mkdir /data
+sudo mkdir /data
 
 for i in {1..10}; do
 	PV_NAME=$PV_STUB$i
