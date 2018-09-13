@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: glusterfs-database
+parameters:
+  resturl: http://heketi-storage-glusterfs.apps.ocp.datr.eu
+  restuser: admin
+  secretName: heketi-storage-admin-secret
+  secretNamespace: glusterfs
+  volumenameprefix: "database"
+provisioner: kubernetes.io/glusterfs
+reclaimPolicy: Delete
