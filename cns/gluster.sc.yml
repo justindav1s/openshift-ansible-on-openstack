@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: standard
+parameters:
+  resturl: http://heketi-storage-glusterfs.apps.629b.rhte.opentlc.com
+  restuser: admin
+  secretName: heketi-storage-admin-secret
+  secretNamespace: glusterfs
+  volumenameprefix: "standard1"
+provisioner: kubernetes.io/glusterfs
+reclaimPolicy: Delete

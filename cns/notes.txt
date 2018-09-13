@@ -1,0 +1,11 @@
+Initial set up :
+
+ansible localhost,all -m shell -a 'export GUID=`hostname | cut -d"." -f2`; echo "export GUID=$GUID" >> $HOME/.bashrc'
+
+Tweak existing PVs
+
+oc get pv -o yaml | sed '/persistentVolumeReclaimPolicy/a \    storageClassName: legacy' | oc replace -f -
+
+Set standard sc to default sc
+
+oc patch storageclass standard -p '{"metadata": {"annotations": {"storageclass.kubernetes.io/is-default-class": "true"}}}'

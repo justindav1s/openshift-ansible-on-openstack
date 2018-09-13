@@ -1,0 +1,138 @@
+[OSEv3:vars]
+
+###########################################################################
+### Ansible Vars
+###########################################################################
+timeout=60
+ansible_become=yes
+ansible_ssh_user=cloud-user
+
+###########################################################################
+### OpenShift Basic Vars
+###########################################################################
+deployment_type=openshift-enterprise
+openshift_disable_check="disk_availability,docker_storage,memory_availability,docker_image_availability,package_version"
+
+# Default node selectors
+osm_default_node_selector='env=app'
+openshift_hosted_infra_selector="env=infra"
+
+###########################################################################
+### OpenShift Master Vars
+###########################################################################
+
+openshift_master_api_port=8443
+openshift_master_console_port=8443
+
+openshift_master_cluster_method=native
+openshift_master_cluster_hostname=192.168.0.131
+openshift_master_cluster_public_hostname=ocp.datr.eu
+openshift_master_default_subdomain=apps.ocp.datr.eu
+openshift_hostname_check=false
+
+#Security config
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
+openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP.'}
+openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}]
+openshift_hosted_router_certificate={"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}
+
+# Set this line to enable NFS
+openshift_enable_unsupported_configurations=True
+
+###########################################################################
+### OpenShift Network Vars
+###########################################################################
+
+#osm_cluster_network_cidr=10.1.0.0/16
+#openshift_portal_net=172.30.0.0/16
+
+#os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
+os_sdn_network_plugin_name='redhat/openshift-ovs-networkpolicy'
+
+
+###########################################################################
+### OpenShift Router and Registry Vars
+###########################################################################
+
+# Bug in 3.9.30 - Bug 1583500 - Unqualified image is completed with "docker.io"
+# https://bugzilla.redhat.com/show_bug.cgi?id=1583500
+# Workaround:
+#oreg_url=registry.access.redhat.com/openshift3/ose-${component}:${version}
+#openshift_examples_modify_imagestreams=true
+
+#Registry config
+openshift_hosted_registry_selector='env=infra'
+openshift_hosted_registry_replicas=1
+openshift_hosted_registry_pullthrough=true
+openshift_hosted_registry_acceptschema2=true
+openshift_hosted_registry_enforcequota=true
+openshift_hosted_registry_routecertificates={"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}
+
+
+###########################################################################
+### OpenShift Service Catalog Vars
+###########################################################################
+
+openshift_enable_service_catalog=true
+
+template_service_broker_install=true
+openshift_template_service_broker_namespaces=['openshift']
+
+ansible_service_broker_install=true
+ansible_service_broker_local_registry_whitelist=['.*-apb$']
+
+
+###########################################################################
+### OpenShift Metrics and Logging Vars
+###########################################################################
+
+# Enable cluster metrics
+openshift_metrics_install_metrics=False
+
+# Enable cluster logging
+openshift_logging_install_logging=False
+
+
+###########################################################################
+### OpenShift Prometheus Vars
+###########################################################################
+
+## Add Prometheus Metrics:
+openshift_hosted_prometheus_deploy=false
+
+
+###########################################################################
+### OpenShift Hosts
+###########################################################################
+[OSEv3:children]
+masters
+etcd
+nodes
+glusterfs
+
+[masters]
+192.168.0.131
+
+[etcd]
+192.168.0.131
+
+[nodes]
+## These are the masters
+192.168.0.131 openshift_hostname=192.168.0.131 openshift_node_labels="{'env':'master', 'cluster': 'swlon'}"
+
+## These are infranodes
+192.168.0.137 openshift_hostname=192.168.0.137  openshift_node_labels="{'env':'infra', 'cluster': 'swlon'}"
+
+## These are regular nodes
+192.168.0.140 openshift_hostname=192.168.0.140  openshift_node_labels="{'env':'app', 'cluster': 'swlon'}"
+
+## These are CNS nodes
+192.168.0.132 openshift_hostname=192.168.0.132  openshift_node_labels="{'env':'glusterfs', 'cluster': 'swlon'}"
+192.168.0.139 openshift_hostname=192.168.0.139  openshift_node_labels="{'env':'glusterfs', 'cluster': 'swlon'}"
+192.168.0.141 openshift_hostname=192.168.0.141  openshift_node_labels="{'env':'glusterfs', 'cluster': 'swlon'}"
+
+
+[glusterfs]
+192.168.0.132 glusterfs_devices='[ "/dev/vdb" ]'
+192.168.0.139 glusterfs_devices='[ "/dev/vdb" ]'
+192.168.0.141 glusterfs_devices='[ "/dev/vdb" ]'
