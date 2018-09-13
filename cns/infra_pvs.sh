@@ -1,5 +1,5 @@
 #/bin/bash
-#oc login https://ocp.datr.eu:8443 justin
+su -c "oc login https://ocp.datr.eu:8443 justin" justin
 
 PV_STUB=infra-pv000
 
