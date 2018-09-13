@@ -9,6 +9,6 @@ spec:
     - "ReadWriteOnce"
     - "ReadWriteMany"
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: app-hostpath
+  storageClassName: infra-hostpath
   hostPath:
     path: "/data/XXXX"
