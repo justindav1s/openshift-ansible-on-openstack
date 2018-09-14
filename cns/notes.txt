@@ -1,3 +1,29 @@
+Instruction for prep on each node
+
+subscription-manager register
+subscription-manager attach --pool=8a85f98460bfb0470160c2ff250f3e66
+subscription-manager repos --disable=rhel-7-server-htb-rpms
+yum update -y
+subscription-manager repos --enable=rh-gluster-3-client-for-rhel-7-server-rpms
+yum install -y glusterfs-fuse
+subscription-manager repos     --enable="rhel-7-server-rpms"     --enable="rhel-7-server-extras-rpms"     --enable="rhel-7-server-ose-3.9-rpms"     --enable="rhel-7-fast-datapath-rpms"     --enable="rhel-7-server-ansible-2.4-rpms"
+yum update -y
+yum install -y wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct
+
+reboot
+yum install -y atomic-openshift-utils
+yum install -y docker-1.13.1
+cat <<EOF > /etc/sysconfig/docker-storage-setup
+DEVS=/dev/vdc
+VG=docker-vg
+EOF
+
+docker-storage-setup
+systemctl enable docker
+systemctl start docker
+systemctl is-active docker
+
+
 Initial set up :
 
 ansible localhost,all -m shell -a 'export GUID=`hostname | cut -d"." -f2`; echo "export GUID=$GUID" >> $HOME/.bashrc'
