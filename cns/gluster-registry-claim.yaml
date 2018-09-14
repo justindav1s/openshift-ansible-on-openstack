@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gluster-registry-volume
+spec:
+  storageClassName: reg-gluster
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+  glusterfs:
+    endpoints: gluster-registry-endpoints
+    path: gluster-registry-volume
+    readOnly: false
+  claimRef:
+    name: gluster-registry-claim
+    namespace: default
+  persistentVolumeReclaimPolicy: Retain
