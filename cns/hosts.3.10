@@ -8,7 +8,7 @@ glusterfs_registry
 # Set variables common for all OSEv3 hosts
 [OSEv3:vars]
 debug_level=4
-ansible_ssh_user=cloud-user
+ansible_ssh_user=root
 openshift_deployment_type=openshift-enterprise
 
 #Master config
