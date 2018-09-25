@@ -63,28 +63,27 @@ template_service_broker_install=true
 ansible_service_broker_local_registry_whitelist=['.*-apb$']
 
 [nodes]
-192.168.0.140 openshift_hostname=master-node-1.novalocal openshift_node_group_name='node-config-master'
-192.168.0.133 openshift_hostname=infra-node-1.novalocal openshift_node_group_name='node-config-infra'
-192.168.0.139 openshift_hostname=app-node-1.novalocal  openshift_node_group_name='node-config-compute'
-192.168.0.141 openshift_hostname=app-node-2.novalocal openshift_node_group_name='node-config-compute'
-192.168.0.147 openshift_hostname=app-node-3.novalocal openshift_node_group_name='node-config-compute'
-192.168.0.131 openshift_hostname=gluster-node-1.novalocal openshift_node_group_name='node-config-compute'
-192.168.0.137 openshift_hostname=gluster-node-2.novalocal openshift_node_group_name='node-config-compute'
-192.168.0.144 openshift_hostname=gluster-node-3.novalocal openshift_node_group_name='node-config-compute'
-
+master-node-1.novalocal openshift_node_group_name='node-config-master'
+infra-node-1.novalocal openshift_node_group_name='node-config-infra'
+app-node-1.novalocal  openshift_node_group_name='node-config-compute'
+app-node-2.novalocal openshift_node_group_name='node-config-compute'
+app-node-3.novalocal openshift_node_group_name='node-config-compute'
+gluster-node-1.novalocal openshift_node_group_name='node-config-compute'
+gluster-node-2.novalocal openshift_node_group_name='node-config-compute'
+gluster-node-3.novalocal openshift_node_group_name='node-config-compute'
 
 [masters]
-192.168.0.140
+master-node-1.novalocal openshift_hostname=master-node-1.novalocal
 
 [etcd]
-192.168.0.140
+master-node-1.novalocal openshift_hostname=master-node-1.novalocal
 
 [glusterfs]
-192.168.0.131 glusterfs_devices='[ "/dev/vdc" ]'
-192.168.0.137 glusterfs_devices='[ "/dev/vdc" ]'
-192.168.0.144 glusterfs_devices='[ "/dev/vdc" ]'
+gluster-node-1.novalocal glusterfs_devices='[ "/dev/vdc" ]'
+gluster-node-2.novalocal glusterfs_devices='[ "/dev/vdc" ]'
+gluster-node-3.novalocal glusterfs_devices='[ "/dev/vdc" ]'
 
 [glusterfs_registry]
-192.168.0.131 glusterfs_devices='[ "/dev/vdc" ]'
-192.168.0.137 glusterfs_devices='[ "/dev/vdc" ]'
-192.168.0.144 glusterfs_devices='[ "/dev/vdc" ]'
+gluster-node-1.novalocal glusterfs_devices='[ "/dev/vdc" ]'
+gluster-node-2.novalocal glusterfs_devices='[ "/dev/vdc" ]'
+gluster-node-3.novalocal glusterfs_devices='[ "/dev/vdc" ]'
