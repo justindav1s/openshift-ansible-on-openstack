@@ -10,6 +10,7 @@ glusterfs_registry
 debug_level=4
 ansible_ssh_user=root
 openshift_deployment_type=openshift-enterprise
+openshift_disable_check=disk_availability,docker_storage,memory_availability,docker_image_availability,package_version
 
 #Master config
 openshift_master_cluster_public_hostname=ocp.datr.eu
