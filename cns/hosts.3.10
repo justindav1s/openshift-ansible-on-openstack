@@ -15,7 +15,7 @@ openshift_disable_check=disk_availability,docker_storage,memory_availability,doc
 #Master config
 openshift_master_cluster_public_hostname=ocp.datr.eu
 openshift_master_default_subdomain=apps.ocp.datr.eu
-openshift_master_cluster_hostname=master-node-1.novalocal
+openshift_master_cluster_hostname=192.168.0.146
 openshift_logging_master_public_url=https://ocp.datr.eu:8443
 
 # uncomment the following to enable htpasswd authentication; defaults to DenyAllPasswordIdentityProvider
