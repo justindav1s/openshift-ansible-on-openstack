@@ -1,0 +1,29 @@
+https://blog.openshift.com/vault-integration-using-kubernetes-authentication-method/
+
+
+
+oc delete project vault-controller
+oc new-project vault-controller
+oc adm policy add-scc-to-user anyuid -z default
+oc create configmap vault-config --from-file=vault-config=./openshift/vault-config.json
+oc create -f ./openshift/vault.yaml
+oc create route reencrypt vault --port=8200 --service=vault
+export VAULT_ADDR=https://`oc get route | grep -m1 vault | awk '{print $2}'`
+vault init -tls-skip-verify -key-shares=1 -key-threshold=1
+export KEYS=
+export ROOT_TOKEN=
+vault unseal -tls-skip-verify $KEYS
+oc create sa vault-auth
+oc adm policy add-cluster-role-to-user system:auth-delegator -z vault-auth
+reviewer_service_account_jwt=$(oc serviceaccounts get-token vault-auth)
+pod=`oc get pods -n $(oc project -q) | grep vault | awk '{print $1}'`
+oc exec $pod -- cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt > ca.crt
+export VAULT_TOKEN=$ROOT_TOKEN
+vault auth-enable -tls-skip-verify kubernetes
+vault write -tls-skip-verify auth/kubernetes/config token_reviewer_jwt=$reviewer_service_account_jwt kubernetes_host=https://ocp.datr.eu:8443 kubernetes_ca_cert=@ca.crt
+vault policy-write -tls-skip-verify spring-native-example ./examples/spring-native-example/spring-native-example.hcl
+vault write -tls-skip-verify auth/kubernetes/role/spring-native-example bound_service_account_names=default bound_service_account_namespaces='*' policies=spring-native-example ttl=2h
+export VAULT_TOKEN=$ROOT_TOKEN
+vault write -tls-skip-verify secret/spring-native-example password=pwd
+default_account_token=$(oc serviceaccounts get-token default -n default)
+vault write -tls-skip-verify auth/kubernetes/login role=spring-native-example jwt=${default_account_token}
