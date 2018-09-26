@@ -25,18 +25,18 @@ openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP
 openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}]
 
 # Gluster config in converged mode
-openshift_storage_glusterfs_namespace=app-storage
-openshift_storage_glusterfs_storageclass=true
-openshift_storage_glusterfs_storageclass_default=true
-openshift_storage_glusterfs_block_deploy=true
-openshift_storage_glusterfs_block_host_vol_size=50
-openshift_storage_glusterfs_block_storageclass=true
-openshift_storage_glusterfs_block_storageclass_default=true
+#openshift_storage_glusterfs_namespace=app-storage
+#openshift_storage_glusterfs_storageclass=true
+#openshift_storage_glusterfs_storageclass_default=true
+#openshift_storage_glusterfs_block_deploy=true
+#openshift_storage_glusterfs_block_host_vol_size=50
+#openshift_storage_glusterfs_block_storageclass=true
+#openshift_storage_glusterfs_block_storageclass_default=true
 
 #Registry config
 openshift_hosted_manage_registry=true
-openshift_hosted_registry_storage_kind=glusterfs
-openshift_hosted_registry_storage_volume_size=10Gi
+#openshift_hosted_registry_storage_kind=glusterfs
+#openshift_hosted_registry_storage_volume_size=10Gi
 openshift_hosted_registry_selector='node-role.kubernetes.io/infra=true'
 
 #Router config
@@ -46,7 +46,7 @@ openshift_hosted_router_certificate={"certfile": "/etc/pki/tls/certs/datr.eu.cer
 
 #Metrics config
 openshift_metrics_install_metrics=True
-openshift_metrics_cassandra_storage_type=dynamic
+#openshift_metrics_cassandra_storage_type=dynamic
 openshift_master_metrics_public_url=https://metrics.apps.ocp.datr.eu/hawkular/metrics
 openshift_metrics_hawkular_ca=/etc/pki/tls/certs/ca.cer
 openshift_metrics_hawkular_cert=/etc/pki/tls/certs/datr.eu.cer
@@ -54,7 +54,7 @@ openshift_metrics_hawkular_key=/etc/pki/tls/private/datr.eu.key
 
 #logging config
 openshift_logging_install_logging=true
-openshift_logging_es_pvc_dynamic=true
+#openshift_logging_es_pvc_dynamic=true
 
 #Service broker config
 openshift_enable_service_catalog=true
@@ -67,10 +67,10 @@ master-node-1.novalocal openshift_node_group_name='node-config-master'
 infra-node-1.novalocal openshift_node_group_name='node-config-infra'
 app-node-1.novalocal  openshift_node_group_name='node-config-compute'
 app-node-2.novalocal openshift_node_group_name='node-config-compute'
-app-node-3.novalocal openshift_node_group_name='node-config-compute'
-gluster-node-1.novalocal openshift_node_group_name='node-config-compute'
-gluster-node-2.novalocal openshift_node_group_name='node-config-compute'
-gluster-node-3.novalocal openshift_node_group_name='node-config-compute'
+#app-node-3.novalocal openshift_node_group_name='node-config-compute'
+#gluster-node-1.novalocal openshift_node_group_name='node-config-compute'
+#gluster-node-2.novalocal openshift_node_group_name='node-config-compute'
+#gluster-node-3.novalocal openshift_node_group_name='node-config-compute'
 
 [masters]
 master-node-1.novalocal openshift_hostname=master-node-1.novalocal
@@ -79,11 +79,11 @@ master-node-1.novalocal openshift_hostname=master-node-1.novalocal
 master-node-1.novalocal openshift_hostname=master-node-1.novalocal
 
 [glusterfs]
-gluster-node-1.novalocal glusterfs_devices='[ "/dev/vdc" ]'
-gluster-node-2.novalocal glusterfs_devices='[ "/dev/vdc" ]'
-gluster-node-3.novalocal glusterfs_devices='[ "/dev/vdc" ]'
+#gluster-node-1.novalocal glusterfs_devices='[ "/dev/vdc" ]'
+#gluster-node-2.novalocal glusterfs_devices='[ "/dev/vdc" ]'
+#gluster-node-3.novalocal glusterfs_devices='[ "/dev/vdc" ]'
 
 [glusterfs_registry]
-gluster-node-1.novalocal glusterfs_devices='[ "/dev/vdc" ]'
-gluster-node-2.novalocal glusterfs_devices='[ "/dev/vdc" ]'
-gluster-node-3.novalocal glusterfs_devices='[ "/dev/vdc" ]'
+#gluster-node-1.novalocal glusterfs_devices='[ "/dev/vdc" ]'
+#gluster-node-2.novalocal glusterfs_devices='[ "/dev/vdc" ]'
+#gluster-node-3.novalocal glusterfs_devices='[ "/dev/vdc" ]'
