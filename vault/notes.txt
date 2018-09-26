@@ -1,5 +1,8 @@
 https://blog.openshift.com/vault-integration-using-kubernetes-authentication-method/
 
+https://github.com/raffaelespazzoli/credscontroller
+
+https://github.com/natronq/openshift-vault
 
 
 oc delete project vault-controller
