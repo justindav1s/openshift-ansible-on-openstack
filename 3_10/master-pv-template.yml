@@ -9,6 +9,5 @@ spec:
     - "ReadWriteOnce"
     - "ReadWriteMany"
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: default
   hostPath:
     path: "/kube_volumes/XXXX"
