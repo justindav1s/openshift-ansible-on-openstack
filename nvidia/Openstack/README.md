@@ -7,7 +7,10 @@ Openstack config changes
 https://gist.github.com/claudiok/890ab6dfe76fa45b30081e58038a9215
 
 set metadata in your IMAGE :
-img_hide_hypervisor_id='true'
+img_hide_hypervisor_id = 'yes'
+
+set metadata on FLAVOUR
+pci_passthrough:alias = 'gtx1050:1'
 
 Guest setup
 
@@ -21,9 +24,26 @@ sudo yum update -y
 yum -y groupinstall "Development Tools"
 yum install -y pciutils dkms kernel-devel
 
+
+cat <<EOF > /usr/lib/modprobe.d/nvidia-installer-disable-nouveau.conf
+blacklist nouveau
+options nouveau modeset=0
+EOF
+
+cat <<EOF > /etc/modprobe.d/nvidia-installer-disable-nouveau.conf
+blacklist nouveau
+options nouveau modeset=0
+EOF
+
+mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img
+
+dracut /boot/initramfs-$(uname -r).img $(uname -r)
+
+reboot
+
+
 Install the driver
 
 ./NVIDIA-Linux-x86_64-390.87.run 
 
-Allow it to manage nouveau removal for you, as that works
  
