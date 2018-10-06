@@ -1,5 +1,5 @@
 #/bin/bash
-oc login https://192.168.0.19:8443 -u justin
+oc login https://ocp.datr.eu:8443 -u justin
 
 oc new-project nvidia
 oc project nvidia
@@ -13,7 +13,7 @@ oc get scc | grep nvidia
 
 sleep 10
 
-oc label node 192.168.0.19 openshift.com/gpu-accelerator=true
+oc label node gpu-node1.novalocal openshift.com/gpu-accelerator=true
 
 oc create -f nvidia-device-plugin.yml
 
