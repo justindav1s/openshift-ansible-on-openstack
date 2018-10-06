@@ -1,9 +1,9 @@
 #/bin/bash
-oc login https://192.168.0.19:8443 -u justin
+oc login https://ocp.datr.eu:8443 -u justin
 
 PROJECT=tensorflow
 
-oc project $PROJECT
+oc new-project $PROJECT
 
 oc delete all -l app=tensorflow
 oc delete all -l app=tensorflow-gpu
