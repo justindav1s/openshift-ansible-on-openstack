@@ -12,6 +12,7 @@ img_hide_hypervisor_id = 'yes'
 set metadata on FLAVOUR
 pci_passthrough:alias = 'gtx1050:1'
 
+
 Guest setup
 
 subscription-manager register --username=?? --password=??
@@ -50,4 +51,9 @@ Install Cuda
 
 wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux
 
+Don't install the NVIDIA driver, you've already done that. Cuda will complain, ignore it.
+
+Install OCP
+
+Follow this for details of docker and device plugin config
  
