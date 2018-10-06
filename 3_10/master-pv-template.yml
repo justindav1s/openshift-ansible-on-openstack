@@ -1,0 +1,14 @@
+apiVersion: "v1"
+kind: "PersistentVolume"
+metadata:
+  name: "XXXX"
+spec:
+  capacity:
+    storage: "10Gi"
+  accessModes:
+    - "ReadWriteOnce"
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: master-hostpath
+  hostPath:
+    path: "/kube_volumes/XXXX"
