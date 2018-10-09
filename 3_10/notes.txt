@@ -1,0 +1,5 @@
+192.168.0.137   master-node1.novalocal
+192.168.0.133   compute-node1.novalocal
+192.168.0.138   compute-node2.novalocal
+192.168.0.149   infra-node1.novalocal
+192.168.0.143   gpu-node1.novalocal
