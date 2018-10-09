@@ -2,9 +2,9 @@
 
 
 nohup ansible-playbook -i hosts.3.10 \
-   /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
-   > metrics.log &
+   /usr/share/ansible/openshift-ansible/playbooks/openshift-logging/config.yml \
+   > logging.log &
 
 sleep 5
 
-tail -f metrics.log
+tail -f logging.log
