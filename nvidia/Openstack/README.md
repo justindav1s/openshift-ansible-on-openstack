@@ -56,4 +56,6 @@ Don't install the NVIDIA driver, you've already done that. Cuda will complain, i
 Install OCP
 
 Follow this for details of docker and device plugin config
+
+https://blog.openshift.com/how-to-use-gpus-with-deviceplugin-in-openshift-3-10/
  
