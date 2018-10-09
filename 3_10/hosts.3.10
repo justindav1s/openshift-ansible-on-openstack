@@ -78,7 +78,7 @@ gpu-node1.novalocal  openshift_node_group_name='node-config-compute'
 #12GB 2 CPU
 compute-node1.novalocal openshift_node_group_name='node-config-compute'
 #12GB 2 CPU
-compute-node1.novalocal openshift_node_group_name='node-config-compute'
+compute-node2.novalocal openshift_node_group_name='node-config-compute'
 #20GB 2 CPU
 infra-node1.novalocal openshift_node_group_name='node-config-infra'
 
