@@ -16,7 +16,7 @@ openshift_enable_unsupported_configurations=True
 #Master config
 openshift_master_cluster_public_hostname=ocp.datr.eu
 openshift_master_default_subdomain=apps.ocp.datr.eu
-openshift_master_cluster_hostname=master1.novalocal
+openshift_master_cluster_hostname=master-node1.novalocal
 openshift_logging_master_public_url=https://ocp.datr.eu:8443
 
 # uncomment the following to enable htpasswd authentication; defaults to DenyAllPasswordIdentityProvider
