@@ -48,6 +48,9 @@ openshift_master_metrics_public_url=https://metrics.apps.ocp.datr.eu/hawkular/me
 openshift_metrics_hawkular_ca=/etc/pki/tls/certs/ca.cer
 openshift_metrics_hawkular_cert=/etc/pki/tls/certs/datr.eu.cer
 openshift_metrics_hawkular_key=/etc/pki/tls/private/datr.eu.key
+#openshift_metrics_cassandra_nodeselector={"node-role.kubernetes.io/infra":"true"}
+#openshift_metrics_hawkular_nodeselector={"node-role.kubernetes.io/infra":"true"}
+#openshift_metrics_heapster_nodeselector={"node-role.kubernetes.io/infra":"true"}
 
 #logging config
 openshift_logging_install_logging=true
@@ -58,6 +61,9 @@ openshift_logging_storage_nfs_options='*(rw,root_squash)'
 openshift_logging_storage_volume_name=logging
 openshift_logging_storage_volume_size=50Gi
 openshift_logging_es_cluster_size=1
+#openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
+#openshift_logging_kibana_nodeselector={"node-role.kubernetes.io/infra":"true"}
+#openshift_logging_curator_nodeselector={"node-role.kubernetes.io/infra":"true"}
 
 #Service broker config
 openshift_enable_service_catalog=true
