@@ -12,9 +12,21 @@ img_hide_hypervisor_id = 'yes'
 set metadata on FLAVOUR
 pci_passthrough:alias = 'gtx1050:1'
 
+```
+[root@openstack ~]# diff /etc/nova/nova.conf.pre_nvidia /etc/nova/nova.conf
+6c6,7
+< 
+---
+> pci_alias = { "vendor_id":"10de", "product_id":"1c82", "device_type":"type-PCI", "name":"gtx1050" }
+> pci_passthrough_whitelist = { "vendor_id": "10de", "product_id": "1c82" }
+4913c4914
+< enabled_filters=RetryFilter,AvailabilityZoneFilter,RamFilter,DiskFilter,ComputeFilter,ComputeCapabilitiesFilter,ImagePropertiesFilter,ServerGroupAntiAffinityFilter,ServerGroupAffinityFilter,CoreFilter
+---
+> enabled_filters=RetryFilter,AvailabilityZoneFilter,RamFilter,DiskFilter,ComputeFilter,ComputeCapabilitiesFilter,ImagePropertiesFilter,ServerGroupAntiAffinityFilter,ServerGroupAffinityFilter,CoreFilter,PciPassthroughFilter
+```
 
 Guest setup
-
+```
 subscription-manager register --username=?? --password=??
 subscription-manager attach --pool=<poolid>
 subscription-manager repos --disable=rhel-7-server-htb-rpms
@@ -41,7 +53,7 @@ mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img
 dracut /boot/initramfs-$(uname -r).img $(uname -r)
 
 reboot
-
+```
 
 Install the driver
 
