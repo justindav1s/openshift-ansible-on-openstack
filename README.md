@@ -142,7 +142,7 @@ It's possible to use another disk for cinder-volumes.
 1. clear out any old volume-groups .... vgremove
 2. wipefs -a /dev/sdc
 3. pvcreate /dev/sdc
-4  vgcreate cinder-volumes /dev/sdc
+4. vgcreate cinder-volumes /dev/sdc
 5. in packstack-answers.txt file
    1. CONFIG_CINDER_VOLUMES_CREATE=n
    2. CONFIG_CINDER_VOLUME_NAME=cinder-volumes
