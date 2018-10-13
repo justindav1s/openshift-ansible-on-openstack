@@ -244,7 +244,7 @@ CONFIG_SSL_CERT_DIR=~/packstackca/
 
 # Specify 'y' if you want Packstack to pregenerate the CA
 # Certificate.
-CONFIG_SSL_CACERT_SELFSIGN=n
+CONFIG_SSL_CACERT_SELFSIGN=y
 
 # Enter the ssl certificates subject country.
 CONFIG_SSL_CERT_SUBJECT_C=--
@@ -262,9 +262,9 @@ CONFIG_SSL_CERT_SUBJECT_O=openstack
 CONFIG_SSL_CERT_SUBJECT_OU=packstack
 
 # Enter the ssl certificates subject common name.
-CONFIG_SSL_CERT_SUBJECT_CN=localhost.localdomain
+CONFIG_SSL_CERT_SUBJECT_CN=openstack.datr.eu
 
-CONFIG_SSL_CERT_SUBJECT_MAIL=admin@localhost.localdomain
+CONFIG_SSL_CERT_SUBJECT_MAIL=admin@openstack.datr.eu
 
 # Service to be used as the AMQP broker. Allowed values are: rabbitmq
 # ['rabbitmq']
@@ -299,11 +299,11 @@ CONFIG_MARIADB_HOST=192.168.0.13
 CONFIG_MARIADB_USER=root
 
 # Password for the MariaDB administrative user.
-CONFIG_MARIADB_PW=d5fcd38664f14381
+CONFIG_MARIADB_PW=bc5f630da2e54176
 
 # Password to use for the Identity service (keystone) to access the
 # database.
-CONFIG_KEYSTONE_DB_PW=1a9cdf6826b24440
+CONFIG_KEYSTONE_DB_PW=221999c9a1a44f39
 
 # Enter y if cron job to rotate Fernet tokens should be created.
 CONFIG_KEYSTONE_FERNET_TOKEN_ROTATE_ENABLE=True
@@ -313,7 +313,7 @@ CONFIG_KEYSTONE_FERNET_TOKEN_ROTATE_ENABLE=True
 CONFIG_KEYSTONE_REGION=RegionOne
 
 # Token to use for the Identity service API.
-CONFIG_KEYSTONE_ADMIN_TOKEN=eca2d7a5ee2a46769c55c6381a56af8a
+CONFIG_KEYSTONE_ADMIN_TOKEN=290477370aae472c972e7095423c4b5e
 
 # Email address for the Identity service 'admin' user.  Defaults to
 CONFIG_KEYSTONE_ADMIN_EMAIL=root@localhost
@@ -323,10 +323,10 @@ CONFIG_KEYSTONE_ADMIN_EMAIL=root@localhost
 CONFIG_KEYSTONE_ADMIN_USERNAME=admin
 
 # Password to use for the Identity service 'admin' user.
-CONFIG_KEYSTONE_ADMIN_PW=0ac534048f04404c
+CONFIG_KEYSTONE_ADMIN_PW=1cdcbfa9499e4f84
 
 # Password to use for the Identity service 'demo' user.
-CONFIG_KEYSTONE_DEMO_PW=74f18bbc86144851
+CONFIG_KEYSTONE_DEMO_PW=38f1c482f54c485f
 
 # Identity service API version string. ['v2.0', 'v3']
 CONFIG_KEYSTONE_API_VERSION=v3
@@ -508,11 +508,11 @@ CONFIG_KEYSTONE_LDAP_TLS_REQ_CERT=demand
 
 # Password to use for the Image service (glance) to access the
 # database.
-CONFIG_GLANCE_DB_PW=e9bdf3d0455e47c4
+CONFIG_GLANCE_DB_PW=94b69edb0a0f4305
 
 # Password to use for the Image service to authenticate with the
 # Identity service.
-CONFIG_GLANCE_KS_PW=b73fd1c0ac5949b0
+CONFIG_GLANCE_KS_PW=9bb0ccdf38b74ae5
 
 # Storage backend for the Image service (controls how the Image
 # service stores disk images). Valid options are: file or swift
@@ -523,7 +523,7 @@ CONFIG_GLANCE_BACKEND=file
 
 # Password to use for the Block Storage service (cinder) to access
 # the database.
-CONFIG_CINDER_DB_PW=3c536c81b4504647
+CONFIG_CINDER_DB_PW=9bb7e103325546d3
 
 # Enter y if cron job for removing soft deleted DB rows should be
 # created.
@@ -531,7 +531,7 @@ CONFIG_CINDER_DB_PURGE_ENABLE=True
 
 # Password to use for the Block Storage service to authenticate with
 # the Identity service.
-CONFIG_CINDER_KS_PW=d04cef1872584817
+CONFIG_CINDER_KS_PW=c96acdd9ae05448c
 
 # Storage backend to use for the Block Storage service; valid options
 # are: lvm, gluster, nfs, vmdk, netapp, solidfire. ['lvm', 'gluster',
@@ -544,7 +544,7 @@ CONFIG_CINDER_BACKEND=lvm
 # proof-of-concept installation of the Block Storage service (a file-
 # backed volume group is not suitable for production usage). ['y',
 # 'n']
-CONFIG_CINDER_VOLUMES_CREATE=n
+CONFIG_CINDER_VOLUMES_CREATE=y
 
 # Specify a custom name for the lvm cinder volume group
 CONFIG_CINDER_VOLUME_NAME=cinder-volumes
@@ -554,7 +554,7 @@ CONFIG_CINDER_VOLUME_NAME=cinder-volumes
 # of the volume group will restrict the amount of disk space that you
 # can expose to Compute instances, and that the specified amount must
 # be available on the device used for /var/lib/cinder.
-CONFIG_CINDER_VOLUMES_SIZE=1700G
+CONFIG_CINDER_VOLUMES_SIZE=20G
 
 # A single or comma-separated list of Red Hat Storage (gluster)
 # volume shares to mount. Example: 'ip-address:/vol-name', 'domain
@@ -712,11 +712,11 @@ CONFIG_NOVA_DB_PURGE_ENABLE=True
 
 # Password to use for the Compute service (nova) to access the
 # database.
-CONFIG_NOVA_DB_PW=ea307b51da1e4e90
+CONFIG_NOVA_DB_PW=41bbdae58e6e4b17
 
 # Password to use for the Compute service to authenticate with the
 # Identity service.
-CONFIG_NOVA_KS_PW=4ff88f72669a4ae9
+CONFIG_NOVA_KS_PW=d242a3f6a12a4a1c
 
 # Whether or not Packstack should manage a default initial set of
 # Nova flavors. Defaults to 'y'.
@@ -739,11 +739,11 @@ CONFIG_NOVA_COMPUTE_MIGRATE_PROTOCOL=ssh
 # leave blank if one should be generated, this certificate should not
 # require a passphrase. If CONFIG_HORIZON_SSL is set to 'n' this
 # parameter is ignored.
-CONFIG_VNC_SSL_CERT=/root/certs/openstack.datr.eu.crt
+CONFIG_VNC_SSL_CERT=
 
 # SSL keyfile corresponding to the certificate if one was entered. If
 # CONFIG_HORIZON_SSL is set to 'n' this parameter is ignored.
-CONFIG_VNC_SSL_KEY=/root/certs/openstack.datr.eu.key
+CONFIG_VNC_SSL_KEY=
 
 # Enter the PCI passthrough array of hash in JSON style for
 # controller eg. [{"vendor_id":"1234", "product_id":"5678",
@@ -762,11 +762,11 @@ CONFIG_NOVA_LIBVIRT_VIRT_TYPE=%{::default_hypervisor}
 
 # Password to use for OpenStack Networking (neutron) to authenticate
 # with the Identity service.
-CONFIG_NEUTRON_KS_PW=d9265a3c68af4147
+CONFIG_NEUTRON_KS_PW=2c819c8ee5ec404b
 
 # The password to use for OpenStack Networking to access the
 # database.
-CONFIG_NEUTRON_DB_PW=dee9fac0edb34827
+CONFIG_NEUTRON_DB_PW=d3435b66f3b14875
 
 # The name of the Open vSwitch bridge (or empty for linuxbridge) for
 # the OpenStack Networking L3 agent to use for external  traffic.
@@ -775,7 +775,7 @@ CONFIG_NEUTRON_DB_PW=dee9fac0edb34827
 CONFIG_NEUTRON_L3_EXT_BRIDGE=br-ex
 
 # Password for the OpenStack Networking metadata agent.
-CONFIG_NEUTRON_METADATA_PW=3ec69697213a4bcf
+CONFIG_NEUTRON_METADATA_PW=b26b92fbd3ed4964
 
 # Specify 'y' to install OpenStack Networking's Load-Balancing-
 # as-a-Service (LBaaS). ['y', 'n']
@@ -870,8 +870,7 @@ CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=extnet:br-ex
 # issuing the following command: packstack --allinone --os-neutron-
 # ovs-bridge-mappings=ext-net:br-ex --os-neutron-ovs-bridge-interfaces
 # =br-ex:eth0
-#CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:eth0
-CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:enp0s31f6
+CONFIG_NEUTRON_OVS_BRIDGE_IFACES=
 
 # Comma-separated list of Open vSwitch bridges that must be created
 # and connected to interfaces in compute nodes when flat or vlan type
@@ -1110,24 +1109,24 @@ CONFIG_MANILA_GLUSTERFS_PATH_TO_PRIVATE_KEY=
 CONFIG_MANILA_GLUSTERFS_GANESHA_SERVER_IP=
 
 # Specify 'y' to set up Horizon communication over https. ['y', 'n']
-CONFIG_HORIZON_SSL=y
+CONFIG_HORIZON_SSL=n
 
 # Secret key to use for Horizon Secret Encryption Key.
-CONFIG_HORIZON_SECRET_KEY=359a4cc941ee4dd48669deaf9d5edf86
+CONFIG_HORIZON_SECRET_KEY=10e5d08f6afa4c1b89811e7e7b9d64e9
 
 # PEM-encoded certificate to be used for SSL connections on the https
 # server. To generate a certificate, leave blank.
-CONFIG_HORIZON_SSL_CERT=/root/certs/openstack.datr.eu.crt
+CONFIG_HORIZON_SSL_CERT=
 
 # SSL keyfile corresponding to the certificate if one was specified.
 # The certificate should not require a passphrase.
-CONFIG_HORIZON_SSL_KEY=/root/certs/openstack.datr.eu.key
+CONFIG_HORIZON_SSL_KEY=
 
-CONFIG_HORIZON_SSL_CACERT=/root/certs/openstack.datr.eu.issuer.crt
+CONFIG_HORIZON_SSL_CACERT=
 
 # Password to use for the Object Storage service to authenticate with
 # the Identity service.
-CONFIG_SWIFT_KS_PW=32650fe0daf84cf5
+CONFIG_SWIFT_KS_PW=df3aced5d4a24f28
 
 # Comma-separated list of devices to use as storage device for Object
 # Storage. Each entry must take the format /path/to/dev (for example,
@@ -1151,7 +1150,7 @@ CONFIG_SWIFT_STORAGE_FSTYPE=ext4
 # Custom seed number to use for swift_hash_path_suffix in
 # /etc/swift/swift.conf. If you do not provide a value, a seed number
 # is automatically generated.
-CONFIG_SWIFT_HASH=74d4f87b6015460c
+CONFIG_SWIFT_HASH=af058f382fa74664
 
 # Size of the Object Storage loopback file storage device.
 CONFIG_SWIFT_STORAGE_SIZE=2G
@@ -1162,7 +1161,7 @@ CONFIG_HEAT_DB_PW=PW_PLACEHOLDER
 
 # Encryption key to use for authentication in the Orchestration
 # database (16, 24, or 32 chars).
-CONFIG_HEAT_AUTH_ENC_KEY=fb7342618ab648b3
+CONFIG_HEAT_AUTH_ENC_KEY=febdbacc054c4481
 
 # Password to use for the Orchestration service to authenticate with
 # the Identity service.
@@ -1183,7 +1182,7 @@ CONFIG_HEAT_DOMAIN_ADMIN=heat_admin
 CONFIG_HEAT_DOMAIN_PASSWORD=PW_PLACEHOLDER
 
 # Specify 'y' to provision for demo usage and testing. ['y', 'n']
-CONFIG_PROVISION_DEMO=n
+CONFIG_PROVISION_DEMO=y
 
 # Specify 'y' to configure the OpenStack Integration Test Suite
 # (tempest) for testing. The test suite requires OpenStack Networking
@@ -1279,18 +1278,18 @@ CONFIG_RUN_TEMPEST_TESTS=smoke
 CONFIG_PROVISION_OVS_BRIDGE=y
 
 # Password to use for Gnocchi to access the database.
-CONFIG_GNOCCHI_DB_PW=4db32361994f48bb
+CONFIG_GNOCCHI_DB_PW=c67a435a8c2741cf
 
 # Password to use for Gnocchi to authenticate with the Identity
 # service.
-CONFIG_GNOCCHI_KS_PW=167750687fd74cd5
+CONFIG_GNOCCHI_KS_PW=f4351f25733a43c1
 
 # Secret key for signing Telemetry service (ceilometer) messages.
-CONFIG_CEILOMETER_SECRET=986f0e4ba0a24566
+CONFIG_CEILOMETER_SECRET=02d0069a0e0d48fd
 
 # Password to use for Telemetry to authenticate with the Identity
 # service.
-CONFIG_CEILOMETER_KS_PW=75db57a8f41e4cb9
+CONFIG_CEILOMETER_KS_PW=fe99c603378b45ab
 
 # Ceilometer service name. ['httpd', 'ceilometer']
 CONFIG_CEILOMETER_SERVICE_NAME=httpd
@@ -1311,11 +1310,11 @@ CONFIG_REDIS_PORT=6379
 
 # Password to use for Telemetry Alarming to authenticate with the
 # Identity service.
-CONFIG_AODH_KS_PW=d98014c853f2492f
+CONFIG_AODH_KS_PW=f5e240f96c7b4df7
 
 # Password to use for Telemetry Alarming (AODH) to access the
 # database.
-CONFIG_AODH_DB_PW=39037e041ce24dc4
+CONFIG_AODH_DB_PW=b0840cbd28144ae5
 
 # Password to use for Panko to access the database.
 CONFIG_PANKO_DB_PW=PW_PLACEHOLDER
