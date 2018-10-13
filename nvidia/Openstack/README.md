@@ -7,9 +7,11 @@ Openstack config changes
 https://gist.github.com/claudiok/890ab6dfe76fa45b30081e58038a9215
 
 set metadata in your IMAGE :
+
 img_hide_hypervisor_id = 'yes'
 
 set metadata on FLAVOUR
+
 pci_passthrough:alias = 'gtx1050:1'
 
 ```
