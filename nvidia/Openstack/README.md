@@ -76,4 +76,13 @@ https://blog.openshift.com/how-to-use-gpus-with-deviceplugin-in-openshift-3-10/
 for 3.11 this is important
 
 https://bugzilla.redhat.com/show_bug.cgi?id=1636292
+
+Can only deploy NVIDIA device plugin, as in 311 this is the only namespace that supports the priority it needs
+
+oc label node 311-gpu1.novalocal openshift.com/gpu-accelerator=true
+oc project kube-system
+oc create serviceaccount nvidia-deviceplugin
+oc create -f nvidia-deviceplugin-scc.yaml
+oc create -f nvidia-device-plugin.yml
+
  
