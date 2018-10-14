@@ -871,7 +871,7 @@ CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=extnet:br-ex
 # ovs-bridge-mappings=ext-net:br-ex --os-neutron-ovs-bridge-interfaces
 # =br-ex:eth0
 #CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:eth0
-CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:enp0s31f6
+CONFIG_NEUTRON_OVS_BRIDGE_IFACES=
 
 # Comma-separated list of Open vSwitch bridges that must be created
 # and connected to interfaces in compute nodes when flat or vlan type
