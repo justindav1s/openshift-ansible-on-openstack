@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: cuda-vector-add
-  namespace: nvidia
+  namespace: tensorflow
 spec:
   restartPolicy: OnFailure
   serviceAccount: nvidia-deviceplugin
