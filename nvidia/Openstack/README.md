@@ -72,4 +72,8 @@ Install OCP
 Follow this for details of docker and device plugin config
 
 https://blog.openshift.com/how-to-use-gpus-with-deviceplugin-in-openshift-3-10/
+
+for 3.11 this is important
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1636292
  
