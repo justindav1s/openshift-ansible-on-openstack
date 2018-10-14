@@ -11,5 +11,7 @@ oc delete serviceaccount tensorflowuser
 oc create serviceaccount tensorflowuser
 oc adm policy add-scc-to-user privileged -z tensorflowuser
 
+oc create -f cuda-vector-add.yaml
+
 oc new-app -f tensorflow_gpu.yaml
 oc new-app -f tensorflow.yaml
