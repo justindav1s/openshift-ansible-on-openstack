@@ -1,0 +1,5 @@
+192.168.0.72   311-master1.novalocal
+192.168.0.68   311-infra1.novalocal
+192.168.0.66   311-app1.novalocal
+192.168.0.75   311-app2.novalocal
+192.168.0.65   311-gpu1.novalocal
