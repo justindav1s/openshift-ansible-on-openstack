@@ -20,6 +20,10 @@ openshift_master_cluster_hostname=311-master1.novalocal
 openshift_hostname_check=false
 openshift_logging_master_public_url=https://ocp.datr.eu:8443
 
+oreg_url=registry.redhat.io/openshift3/ose-${component}:${version}
+oreg_auth_user="{{ lookup('env','RHDN_USERNAME') }}"
+oreg_auth_password="{{ lookup('env','RHDN_PASSWORD') }}"
+
 # uncomment the following to enable htpasswd authentication; defaults to DenyAllPasswordIdentityProvider
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
 openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP.'}
