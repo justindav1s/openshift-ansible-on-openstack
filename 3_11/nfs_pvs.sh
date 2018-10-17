@@ -25,7 +25,7 @@ spec:
   nfs:
     path: "/exports/${PV_NAME}"
     server: "${NFS_HOST}"
-persistentVolumeReclaimPolicy: "Recycle"
+  persistentVolumeReclaimPolicy: "Recycle"
 EOF
 
 	oc delete pv $PV_NAME
@@ -60,7 +60,7 @@ spec:
   nfs:
     path: "/exports/${PV_NAME}"
     server: "${NFS_HOST}"
-persistentVolumeReclaimPolicy: "Recycle"
+  persistentVolumeReclaimPolicy: "Recycle"
 EOF
 
 oc create -f $PV_NAME.yml
