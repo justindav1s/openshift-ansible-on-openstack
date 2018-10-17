@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-#/bin/bash
 
 oc login https://localhost:8443 -u justin
 
