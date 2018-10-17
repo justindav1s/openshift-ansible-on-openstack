@@ -1,0 +1,31 @@
+apiVersion: "istio.openshift.com/v1alpha1"
+kind: "Installation"
+metadata:
+ name: "istio-installation"
+spec:
+  deployment_type: openshift
+  istio:
+    authentication: false
+    community: false
+    prefix: openshift-istio-tech-preview/
+    version: 0.2.0
+  jaeger:
+    prefix: distributed-tracing-tech-preview/
+    version: 1.7.0
+    elasticsearch_memory: 1Gi
+  kiali:
+    username: username
+    password: password
+    prefix: openshift-istio-tech-preview/
+    version: latest
+  launcher:
+    openshift:
+      user: justin
+      password: S@far123
+    github:
+      username: justindav1s
+      token: 4faedb2bdb63bd3847802ad077658c5553a9c860
+    catalog:
+      filter: booster.mission.metadata.istio
+      branch: v62
+      repo: https://github.com/fabric8-launcher/launcher-booster-catalog.git

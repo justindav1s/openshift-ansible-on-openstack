@@ -662,3 +662,7 @@ Install on the Openstack server :
 yum install cockpit cockpit-kubernetes cockpit-dashboard
 openstack
 systemctl start cockpit
+
+### Adding a fixed ip to an openstack instance
+
+openstack server add fixed ip --fixed-ip-address 192.168.0.72 <instance name or id> <network name or id>
