@@ -4,7 +4,7 @@
 oc login https://localhost:8443 -u justin
 
 PV_STUB="nfspv000"
-NFS_HOST="311-infra1.novalocal"
+NFS_HOST="192.168.0.76"
 
 
 for i in {1..20}; do
@@ -32,7 +32,8 @@ EOF
 	ssh root@${NFS_HOST} "rm -rf /exports/$PV_NAME"
 	ssh root@${NFS_HOST} "mkdir /exports/$PV_NAME"
 	ssh root@${NFS_HOST} "chmod -R 777 /exports/$PV_NAME"
-
+    ssh root@${NFS_HOST} "chown -R nfsnobody:nfsnobody /exports/$PV_NAME"
+    ssh root@$NFS_HOST "echo /exports/$PV_NAME *\(rw,root_squash\) >> /etc/exports.d/openshift-uservols.exports"
 	oc create -f $PV_NAME.yml
 	rm -rf $PV_NAME.yml
 done
@@ -45,6 +46,7 @@ oc delete pv $PV_NAME
 ssh root@${NFS_HOST} "rm -rf /exports/$PV_NAME"
 ssh root@${NFS_HOST} "mkdir /exports/$PV_NAME"
 ssh root@${NFS_HOST} "chmod -R 777 /exports/$PV_NAME"
+ssh root@$NFS_HOST "echo /exports/$PV_NAME *\(rw,root_squash\) >> /etc/exports.d/openshift-uservols.exports"
 
 cat <<EOF > ${PV_NAME}.yml
 apiVersion: "v1"
@@ -65,5 +67,7 @@ EOF
 
 oc create -f $PV_NAME.yml
 rm -rf $PV_NAME.yml
+
+ssh root@$NFS_HOST "systemctl restart nfs-server.service"
 
 oc get pv
