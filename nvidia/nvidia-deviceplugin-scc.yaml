@@ -9,7 +9,7 @@ allowedCapabilities:
 allowedFlexVolumes: null
 apiVersion: v1
 defaultAddCapabilities:
-- '*'
+- 'all'
 fsGroup:
   type: RunAsAny
 groups:
