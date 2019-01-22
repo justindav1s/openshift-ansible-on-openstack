@@ -1,0 +1,1 @@
+ERROR! the playbook: /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/redeploy-master-certificates.yml could not be found
