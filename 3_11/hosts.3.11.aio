@@ -1,0 +1,85 @@
+[OSEv3:children]
+masters
+nodes
+etcd
+
+# Set variables common for all OSEv3 hosts
+[OSEv3:vars]
+debug_level=4
+ansible_ssh_user=root
+openshift_deployment_type=openshift-enterprise
+openshift_disable_check=disk_availability,docker_storage,memory_availability,docker_image_availability,package_version
+
+openshift_enable_unsupported_configurations=True
+
+#Master config
+openshift_master_cluster_public_hostname=ocp.datr.eu
+openshift_master_default_subdomain=apps.ocp.datr.eu
+openshift_master_cluster_hostname=aio-ocp-311.novalocal
+openshift_hostname_check=false
+openshift_logging_master_public_url=https://ocp.datr.eu:8443
+
+oreg_url=registry.redhat.io/openshift3/ose-${component}:${version}
+oreg_auth_user="{{ lookup('env','RHDN_USERNAME') }}"
+oreg_auth_password="{{ lookup('env','RHDN_PASSWORD') }}"
+
+# uncomment the following to enable htpasswd authentication; defaults to DenyAllPasswordIdentityProvider
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
+openshift_master_htpasswd_users={'justin': '$apr1$dCb5zcYj$VbbgLQOfRK0f8W3TSALDP.'}
+
+openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}]
+
+
+#Registry config
+openshift_hosted_manage_registry=true
+#openshift_hosted_registry_selector='node-role.kubernetes.io/infra=true'
+#openshift_hosted_registry_storage_kind=nfs
+#openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
+#openshift_hosted_registry_storage_nfs_directory=/exports
+#openshift_hosted_registry_storage_nfs_options='*(rw,root_squash)'
+#openshift_hosted_registry_storage_volume_name=registry
+#openshift_hosted_registry_storage_volume_size=50Gi
+
+#Router config
+openshift_hosted_manage_router=true
+openshift_router_selector='node-role.kubernetes.io/infra=true'
+openshift_hosted_router_certificate={"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}
+
+#Metrics config
+openshift_metrics_install_metrics=True
+openshift_master_metrics_public_url=https://metrics.apps.ocp.datr.eu/hawkular/metrics
+openshift_metrics_hawkular_ca=/etc/pki/tls/certs/ca.cer
+openshift_metrics_hawkular_cert=/etc/pki/tls/certs/datr.eu.cer
+openshift_metrics_hawkular_key=/etc/pki/tls/private/datr.eu.key
+#openshift_metrics_cassandra_nodeselector={"node-role.kubernetes.io/infra":"true"}
+#openshift_metrics_hawkular_nodeselector={"node-role.kubernetes.io/infra":"true"}
+#openshift_metrics_heapster_nodeselector={"node-role.kubernetes.io/infra":"true"}
+
+#logging config
+openshift_logging_install_logging=true
+#openshift_logging_storage_kind=nfs
+#openshift_logging_storage_access_modes=['ReadWriteOnce']
+#openshift_logging_storage_nfs_directory=/exports
+#openshift_logging_storage_nfs_options='*(rw,root_squash)'
+#openshift_logging_storage_volume_name=logging
+#openshift_logging_storage_volume_size=50Gi
+#openshift_logging_es_cluster_size=1
+#openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
+#openshift_logging_kibana_nodeselector={"node-role.kubernetes.io/infra":"true"}
+#openshift_logging_curator_nodeselector={"node-role.kubernetes.io/infra":"true"}
+
+#Service broker config
+openshift_enable_service_catalog=true
+ansible_service_broker_install=true
+template_service_broker_install=true
+ansible_service_broker_local_registry_whitelist=['.*-apb$']
+
+[nodes]
+#8GB 2 CPU
+aio-ocp-311.novalocal openshift_node_group_name='node-config-all-in-one'
+
+[masters]
+aio-ocp-311.novalocal
+
+[etcd]
+aio-ocp-311.novalocal

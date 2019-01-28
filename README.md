@@ -666,3 +666,7 @@ systemctl start cockpit
 ### Adding a fixed ip to an openstack instance
 
 openstack server add fixed ip --fixed-ip-address 192.168.0.72 <instance name or id> <network name or id>
+
+###Node Labelling 
+
+oc label node 311-infra1.novalocal capability=infra
