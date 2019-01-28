@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-nohup ansible-playbook -i hosts.3.11.singleinstance \
+nohup ansible-playbook -i hosts.3.11.aio \
    /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml \
    > prereqs.log &
 
