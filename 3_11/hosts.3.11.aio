@@ -32,13 +32,11 @@ openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/datr.eu.ce
 
 #Registry config
 openshift_hosted_manage_registry=true
-#openshift_hosted_registry_selector='node-role.kubernetes.io/infra=true'
-#openshift_hosted_registry_storage_kind=nfs
-#openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
-#openshift_hosted_registry_storage_nfs_directory=/exports
-#openshift_hosted_registry_storage_nfs_options='*(rw,root_squash)'
-#openshift_hosted_registry_storage_volume_name=registry
-#openshift_hosted_registry_storage_volume_size=50Gi
+openshift_hosted_registry_storage_kind=hostpath
+openshift_hosted_registry_storage_access_modes=['ReadWriteOnce']
+openshift_hosted_registry_storage_volume_name=registry
+openshift_hosted_registry_storage_volume_size=10Gi
+openshift_hosted_registry_storage_hostpath_path=/kube_volumes/aio-pv0001
 
 #Router config
 openshift_hosted_manage_router=true
@@ -51,22 +49,18 @@ openshift_master_metrics_public_url=https://metrics.apps.ocp.datr.eu/hawkular/me
 openshift_metrics_hawkular_ca=/etc/pki/tls/certs/ca.cer
 openshift_metrics_hawkular_cert=/etc/pki/tls/certs/datr.eu.cer
 openshift_metrics_hawkular_key=/etc/pki/tls/private/datr.eu.key
-#openshift_metrics_cassandra_nodeselector={"node-role.kubernetes.io/infra":"true"}
-#openshift_metrics_hawkular_nodeselector={"node-role.kubernetes.io/infra":"true"}
-#openshift_metrics_heapster_nodeselector={"node-role.kubernetes.io/infra":"true"}
 
 #logging config
 openshift_logging_install_logging=true
-#openshift_logging_storage_kind=nfs
-#openshift_logging_storage_access_modes=['ReadWriteOnce']
-#openshift_logging_storage_nfs_directory=/exports
-#openshift_logging_storage_nfs_options='*(rw,root_squash)'
-#openshift_logging_storage_volume_name=logging
-#openshift_logging_storage_volume_size=50Gi
-#openshift_logging_es_cluster_size=1
-#openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
-#openshift_logging_kibana_nodeselector={"node-role.kubernetes.io/infra":"true"}
-#openshift_logging_curator_nodeselector={"node-role.kubernetes.io/infra":"true"}
+openshift_logging_storage_kind=hostpath
+openshift_logging_storage_access_modes=['ReadWriteOnce']
+openshift_logging_storage_volume_name=logging
+openshift_logging_storage_volume_size=10Gi
+openshift_logging_es_cluster_size=1
+openshift_logging_storage_hostpath_path=/kube_volumes/aio-pv0002
+openshift_logging_es_nodeselector={"node-role.kubernetes.io/master":"true"}
+openshift_logging_kibana_nodeselector={"node-role.kubernetes.io/master":"true"}
+openshift_logging_curator_nodeselector={"node-role.kubernetes.io/master":"true"}
 
 #Service broker config
 openshift_enable_service_catalog=true
