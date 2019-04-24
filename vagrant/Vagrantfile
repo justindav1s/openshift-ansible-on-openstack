@@ -78,7 +78,7 @@ subscription-manager repos \
     --enable="rhel-7-server-ansible-2.6-rpms" \
     --enable="rh-gluster-3-client-for-rhel-7-server-rpms"
 yum update -y
-yum install -y wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct openshift-ansible docker-1.13.1
+yum install -y skopeo wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct openshift-ansible docker-1.13.1
 
 systemctl enable docker
 systemctl start docker
