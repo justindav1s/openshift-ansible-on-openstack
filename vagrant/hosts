@@ -1,0 +1,66 @@
+[OSEv3:children]
+masters
+nodes
+etcd
+
+# Set variables common for all OSEv3 hosts
+[OSEv3:vars]
+debug_level=4
+ansible_ssh_user=root
+openshift_deployment_type=openshift-enterprise
+openshift_disable_check=disk_availability,docker_storage,memory_availability,docker_image_availability,package_version
+
+openshift_enable_unsupported_configurations=True
+
+#Master config
+openshift_master_cluster_public_hostname=192.168.33.10.xip.io
+openshift_master_default_subdomain=apps.192.168.33.10.xip.io
+openshift_master_cluster_hostname=192.168.33.10
+openshift_hostname_check=false
+openshift_logging_master_public_url=https://192.168.33.10.xip.io:8443
+
+oreg_url=registry.redhat.io/openshift3/ose-${component}:${version}
+oreg_auth_user="{{ lookup('env','RHDN_USERNAME') }}"
+oreg_auth_password="{{ lookup('env','RHDN_PASSWORD') }}"
+
+# uncomment the following to enable htpasswd authentication; defaults to DenyAllPasswordIdentityProvider
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
+openshift_master_htpasswd_users={'<username>': '<htpasswd encodes passwd>'}
+
+openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}]
+
+
+#Registry config
+openshift_hosted_manage_registry=true
+openshift_hosted_registry_storage_kind=hostpath
+openshift_hosted_registry_storage_access_modes=['ReadWriteOnce']
+openshift_hosted_registry_storage_volume_name=registry
+openshift_hosted_registry_storage_volume_size=10Gi
+openshift_hosted_registry_storage_hostpath_path=/kube_volumes/aio-pv0001
+
+#Router config
+openshift_hosted_manage_router=true
+openshift_router_selector='node-role.kubernetes.io/infra=true'
+openshift_hosted_router_certificate={"certfile": "/etc/pki/tls/certs/datr.eu.cer", "keyfile": "/etc/pki/tls/private/datr.eu.key", "cafile": "/etc/pki/tls/certs/ca.cer"}
+
+#Metrics config
+openshift_metrics_install_metrics=false
+
+#logging config
+openshift_logging_install_logging=false
+
+#Service broker config
+openshift_enable_service_catalog=true
+ansible_service_broker_install=true
+template_service_broker_install=true
+ansible_service_broker_local_registry_whitelist=['.*-apb$']
+
+[nodes]
+#8GB 2 CPU
+192.168.33.10 openshift_node_group_name='node-config-all-in-one'
+
+[masters]
+192.168.33.10
+
+[etcd]
+192.168.33.10
