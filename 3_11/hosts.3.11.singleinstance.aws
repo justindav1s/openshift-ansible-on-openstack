@@ -51,8 +51,8 @@ ansible_service_broker_local_registry_whitelist=['.*-apb$']
 master.aws.datr.eu openshift_node_group_name='node-config-all-in-one'
 
 [masters]
-node1.aws.datr.eu
+master.aws.datr.eu
 
 [etcd]
-etcd-0.aws.datr.eu
+master.aws.datr.eu
 
