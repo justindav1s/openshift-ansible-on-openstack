@@ -8,7 +8,7 @@ PV_STUB=${ENV}-pv000
 
 sudo mkdir $HOST_ROOT
 
-for i in {1..10}; do
+for i in {1..30}; do
 	PV_NAME=$PV_STUB$i
 	echo Setting up $PV_NAME
 	oc delete pv $PV_NAME
