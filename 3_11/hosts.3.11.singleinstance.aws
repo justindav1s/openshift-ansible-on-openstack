@@ -48,11 +48,11 @@ ansible_service_broker_local_registry_whitelist=['.*-apb$']
 
 [nodes]
 #8GB 2 CPU
-master.aws.datr.eu openshift_node_group_name='node-config-all-in-one'
+10.0.2.192 openshift_node_group_name='node-config-all-in-one'
 
 [masters]
-master.aws.datr.eu
+10.0.2.192
 
 [etcd]
-master.aws.datr.eu
+10.0.2.192
 
