@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
 
-nohup ansible-playbook -vvv -i hosts.3.11.singleinstance.aws \
-   /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml \
-   > prereqs.log &
-
-sleep 5
-
-tail -f prereqs.log
+ansible-playbook -v -i hosts.3.11.aio \
+   /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
