@@ -13,11 +13,11 @@ openshift_disable_check=disk_availability,docker_storage,memory_availability,doc
 openshift_enable_unsupported_configurations=True
 
 #Master config
-openshift_master_cluster_public_hostname=192.168.0.2.xip.io
-openshift_master_default_subdomain=apps.192.168.0.2.xip.io
-openshift_master_cluster_hostname=192.168.0.2.xip.io
+openshift_master_cluster_public_hostname=192.168.33.10.xip.io
+openshift_master_default_subdomain=apps.192.168.33.10.xip.io
+openshift_master_cluster_hostname=192.168.33.10.xip.io
 openshift_hostname_check=false
-openshift_logging_master_public_url=https://192.168.0.2.xip.io:8443
+openshift_logging_master_public_url=https://192.168.33.10.xip.io:8443
 
 oreg_url=registry.redhat.io/openshift3/ose-${component}:${version}
 oreg_auth_user="{{ lookup('env','RHDN_USERNAME') }}"
@@ -47,7 +47,7 @@ openshift_hosted_router_certificate={"certfile": "/etc/pki/tls/certs/datr.eu.cer
 
 #Metrics config
 openshift_metrics_install_metrics=True
-openshift_master_metrics_public_url=https://metrics.apps.192.168.0.2.xip.io/hawkular/metrics
+openshift_master_metrics_public_url=https://metrics.apps.192.168.33.10.xip.io/hawkular/metrics
 openshift_metrics_hawkular_ca=/etc/pki/tls/certs/ca.cer
 openshift_metrics_hawkular_cert=/etc/pki/tls/certs/datr.eu.cer
 openshift_metrics_hawkular_key=/etc/pki/tls/private/datr.eu.key
@@ -76,10 +76,10 @@ ansible_service_broker_local_registry_whitelist=['.*-apb$']
 
 [nodes]
 #8GB 2 CPU
-192.168.0.2.xip.io openshift_node_group_name='node-config-all-in-one'
+192.168.33.10.xip.io openshift_node_group_name='node-config-all-in-one'
 
 [masters]
-192.168.0.2.xip.io
+192.168.33.10.xip.io
 
 [etcd]
-192.168.0.2.xip.io
+192.168.33.10.xip.io
