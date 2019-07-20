@@ -1,5 +1,5 @@
 #/bin/bash
-oc login https://192.168.33.10.xip.io:8443 justin
+oc login https://ocp.datr.eu:8443 -u justin
 
 ENV=master
 HOST_ROOT=/kube_volumes

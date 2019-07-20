@@ -12,9 +12,9 @@ openshift_disable_check=disk_availability,docker_storage,memory_availability,doc
 openshift_enable_unsupported_configurations=True
 
 #Master config
-openshift_master_cluster_public_hostname=ocp.192.168.122.131.xip.io
-openshift_master_default_subdomain=apps.ocp.192.168.122.131.xip.io
-openshift_master_cluster_hostname=192.168.122.131.xip.io
+openshift_master_cluster_public_hostname=ocp.datr.eu
+openshift_master_default_subdomain=apps.ocp.ocp.datr.eu
+openshift_master_cluster_hostname=ocp.datr.eu
 openshift_hostname_check=false
 
 oreg_url=registry.redhat.io/openshift3/ose-${component}:${version}
@@ -47,12 +47,11 @@ template_service_broker_install=true
 ansible_service_broker_local_registry_whitelist=['.*-apb$']
 
 [nodes]
-#8GB 2 CPU
-192.168.122.131.xip.io openshift_node_group_name='node-config-all-in-one'
+192.168.0.13 openshift_node_group_name='node-config-all-in-one'
 
 [masters]
-192.168.122.131.xip.io
+192.168.0.13
 
 [etcd]
-192.168.122.131.xip.io
+192.168.0.13
 
