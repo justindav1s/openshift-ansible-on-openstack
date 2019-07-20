@@ -29,6 +29,7 @@ openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/datr.eu.ce
 
 #Registry config
 openshift_hosted_manage_registry=true
+osm_use_cockpit=false
 
 #Router config
 openshift_hosted_manage_router=true
