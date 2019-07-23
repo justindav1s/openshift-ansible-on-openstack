@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-
-oc login https://localhost:8443 -u justin
-
 PV_STUB="nfspv000"
-NFS_HOST="192.168.0.76"
+NFS_HOST="192.168.0.13"
+
+oc login https://${NFS_HOST}:8443 -u justin
 
 
-for i in {20..30}; do
+for i in {1..30}; do
 	PV_NAME=$PV_STUB$i
 	echo Setting up $PV_NAME
 
@@ -18,7 +17,7 @@ metadata:
   name: "${PV_NAME}"
 spec:
   capacity:
-    storage: "10Gi"
+    storage: "30Gi"
   accessModes:
     - "ReadWriteOnce"
     - "ReadWriteMany"
@@ -29,11 +28,11 @@ spec:
 EOF
 
 	oc delete pv $PV_NAME
-	ssh root@${NFS_HOST} "rm -rf /exports/$PV_NAME"
-	ssh root@${NFS_HOST} "mkdir /exports/$PV_NAME"
-	ssh root@${NFS_HOST} "chmod -R 777 /exports/$PV_NAME"
-    	ssh root@${NFS_HOST} "chown -R nfsnobody:nfsnobody /exports/$PV_NAME"
-    	ssh root@$NFS_HOST "echo /exports/$PV_NAME *\(rw,root_squash\) >> /etc/exports.d/openshift-uservols.exports"
+	rm -rf /exports/$PV_NAME
+	mkdir /exports/$PV_NAME
+	chmod -R 777 /exports/$PV_NAME
+    chown -R nfsnobody:nfsnobody /exports/$PV_NAME
+    echo /exports/$PV_NAME *\(rw,root_squash\) >> /etc/exports.d/openshift-uservols.exports
 	oc create -f $PV_NAME.yml
 	rm -rf $PV_NAME.yml
 done
