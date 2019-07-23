@@ -13,7 +13,7 @@ openshift_enable_unsupported_configurations=True
 
 #Master config
 openshift_master_cluster_public_hostname=ocp.datr.eu
-openshift_master_default_subdomain=apps.ocp.ocp.datr.eu
+openshift_master_default_subdomain=apps.ocp.datr.eu
 openshift_master_cluster_hostname=ocp.datr.eu
 openshift_hostname_check=false
 
