@@ -31,13 +31,13 @@ openshift_master_named_certificates=[{"certfile": "/etc/pki/tls/certs/datr.eu.ce
 
 #Registry config
 osm_use_cockpit=false
-openshift_hosted_manage_registry=true
-openshift_hosted_registry_storage_kind=nfs
-openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
-openshift_hosted_registry_storage_nfs_directory=/exports
-openshift_hosted_registry_storage_nfs_options='*(rw,root_squash)'
-openshift_hosted_registry_storage_volume_name=registry
-openshift_hosted_registry_storage_volume_size=30Gi
+#openshift_hosted_manage_registry=true
+#openshift_hosted_registry_storage_kind=nfs
+#openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
+#openshift_hosted_registry_storage_nfs_directory=/exports
+#openshift_hosted_registry_storage_nfs_options='*(rw,root_squash)'
+#openshift_hosted_registry_storage_volume_name=registry
+#openshift_hosted_registry_storage_volume_size=30Gi
 
 #Router config
 openshift_hosted_manage_router=true
